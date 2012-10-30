@@ -1,0 +1,430 @@
+* {box-sizing: border-box; -moz-box-sizing: border-box; ; -webkit-box-sizing: border-box}
+
+.clear {clear:both}
+
+i {-webkit-font-smoothing: antialiased} /* stands for icon not italic */
+
+#container {
+  font: 400 13px/21px Open Sans;
+  border-top: 1px solid #111;
+  overflow: hidden;
+  height: 100%;
+}
+
+#header {
+  height: 42px;
+  border-top: 1px solid #727272;
+  border-bottom: 1px solid #161616;
+  background-image: linear-gradient(top, rgb(88,88,88) 0%, rgb(44,44,44) 100%);
+  background-image: -o-linear-gradient(top, rgb(88,88,88) 0%, rgb(44,44,44) 100%);
+  background-image: -moz-linear-gradient(top, rgb(88,88,88) 0%, rgb(44,44,44) 100%);
+  background-image: -webkit-linear-gradient(top, rgb(88,88,88) 0%, rgb(44,44,44) 100%);
+  background-image: -ms-linear-gradient(top, rgb(88,88,88) 0%, rgb(44,44,44) 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgb(88,88,88)), color-stop(1, rgb(44,44,44)));
+}
+
+/* searchbox */
+#search input {
+  float: left;
+  width: 160px;
+  height: 21px;
+  margin: 9px 0 0 10px;
+  border-radius: 15px;
+  outline: none;
+  border: none;
+  padding-left: 20px;
+  -webkit-appearance: none; 
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
+}
+
+#search i {
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  color: #808080;
+}
+
+#header > button {
+  float: left;
+  /* bathax for now */
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+/* sidebar */
+#menu {
+  float: left; 
+  width: 120px;
+  height: 100%;
+  background-color: #111;
+  border-right: 1px solid #000;
+  text-shadow: 0 -2px 0 #000;
+  font-weight: 600;
+  color: #fff;
+}
+
+#menu ul a {
+  display:block;
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+
+#menu ul li {
+  display: block;
+  text-align: center;
+  font-weight: 100;
+  padding: 30px 0 10px;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #000;
+  box-shadow: inset 0 0 20px hsl(0, 0%, 9%);
+
+  -webkit-transition:color 0.1s ease-in;
+  -moz-transition:color 0.2s ease-in;
+  -o-transition:color 0.2s ease-in;
+  transition:color 0.2s ease-in; 
+}
+
+#menu ul li:first-child {border-top: none}
+
+#menu ul a:hover, #menu ul a:focus {color: #458afb} /* needs to be applied to a in order for focus to work*/
+
+#menu ul li.selected {
+  position: relative; /* has to be in order for :after absolute */
+  color: #458afb;
+  box-shadow: inset 0 0 35px #000;
+  border-top-color: #000;
+}
+
+#menu ul li.selected:after { /* inset arrow */
+  content: "";
+  position: absolute;
+  top: 33px;
+  right: -1px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #fff;
+}
+  /*#menu ul li.selected:after {right: -11px; border-left: 10px solid #000;} <- outset arrow */
+
+#menu ul li i {
+  margin: 0 auto 4px;
+  font-size: 40px;
+  display: block;
+}
+
+/* table */
+#contents {
+  margin-left: 120px;
+  height: 100%;
+  overflow: auto;
+}
+
+#table {
+  background-color: #fff;
+  width: 100%;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+#table th {
+  color: #34313a;
+  font-weight: 600;
+  text-shadow: 0 1px 0 #f9f9f9;
+
+  background-image: linear-gradient(bottom, lightGrey, #F3F3F3);
+  background-image: -o-linear-gradient(bottom, lightGrey, #F3F3F3);
+  background-image: -moz-linear-gradient(bottom, lightGrey, #F3F3F3);
+  background-image: -webkit-linear-gradient(bottom, lightGrey, #F3F3F3);
+  background-image: -ms-linear-gradient(bottom, lightGrey, #F3F3F3);
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, lightGrey), color-stop(1,#F3F3F3))
+}
+
+#table tr:nth-of-type(odd) {
+  background-color: hsl(261, 9%, 93%);
+}
+
+#table td, #table th {
+  text-align: left; 
+  border-top: 1px solid #c8c4d2;
+  border-bottom: 1px solid #c8c4d2;
+  padding: 2px; /* 3 */
+}
+
+#table tr.active {
+  background-color: #478dff;
+  color: #fff;
+  border-bottom-color: #2674f0;
+  border-top-color: #2674f0;
+  text-shadow: 0px 0px 1px black; /* this should be left at least on track_num:after (icon) */
+} 
+
+#table tr.active td {
+  border-bottom-color: #2674f0;
+  border-top-color: #2674f0;
+}
+
+#table .cover {
+  width: 150px;
+  background-color: #fff;
+}
+
+#table .cover img {
+  height: 150px;
+  margin: 3px 10px 0;
+  vertical-align: top; /* prevent the cell collapse */
+  border: 1px solid #111;
+}
+
+#table .active .cover { /* ignore the cover border */
+  border-bottom-color: #c8c4d2;
+  border-top-color: #c8c4d2;
+}
+
+#table .track_num  {
+  text-align: right;
+  width: 12px;
+  padding: 0 20px 0 15px;
+}
+
+#table .track_num:after { /* the play/pause icon */
+  font-family: FontAwesome;
+  display: inline-block;
+  position: relative;
+  left: 4px;
+  width: 0; /* fixes the fuckup of the padding */
+  -webkit-font-smoothing: antialiased;
+}
+  #table .playing .track_num:after {content: "\f028"}
+  #table .paused .track_num:after {content: "\f026"}
+
+#table .time { /* td and th */
+  text-align: right;
+  padding-right: 15px;
+}
+
+/* default button style */
+button {
+  background-color: #52a8e8;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #52a8e8), color-stop(100%, #377ad0));
+  background-image: -webkit-linear-gradient(top, #52a8e8, #377ad0);
+  background-image: -moz-linear-gradient(top, #52a8e8, #377ad0);
+  background-image: -ms-linear-gradient(top, #52a8e8, #377ad0);
+  background-image: -o-linear-gradient(top, #52a8e8, #377ad0);
+  background-image: linear-gradient(top, #52a8e8, #377ad0);
+  border-top: 1px solid #4081af;
+  border-right: 1px solid #2e69a3;
+  border-bottom: 1px solid #20559a;
+  border-left: 1px solid #2e69a3;
+  border-radius: 16px;
+  box-shadow: inset 0 1px 0 0 #72b9eb;
+  color: #fff;
+  font: normal 11px Open Sans;
+  line-height: 1;
+  padding: 2px 5px 5px;
+  text-align: center;
+  text-shadow: 0 -1px 1px #3275bc;
+  width: 112px;
+  background-clip: padding-box; 
+}
+
+button:hover {
+  background-color: #3e9ee5;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3e9ee5), color-stop(100%, #206bcb));
+  background-image: -webkit-linear-gradient(top, #3e9ee5 0%, #206bcb 100%);
+  background-image: -moz-linear-gradient(top, #3e9ee5 0%, #206bcb 100%);
+  background-image: -ms-linear-gradient(top, #3e9ee5 0%, #206bcb 100%);
+  background-image: -o-linear-gradient(top, #3e9ee5 0%, #206bcb 100%);
+  background-image: linear-gradient(top, #3e9ee5 0%, #206bcb 100%);
+  border-top: 1px solid #2a73a6;
+  border-right: 1px solid #165899;
+  border-bottom: 1px solid #07428f;
+  border-left: 1px solid #165899;
+  box-shadow: inset 0 1px 0 0 #62b1e9;
+  cursor: pointer;
+  text-shadow: 0 -1px 1px #1d62ab;
+  background-clip: padding-box;
+}
+
+button:active {
+  background: #3282d3;
+  border: 1px solid #154c8c;
+  border-bottom: 1px solid #0e408e;
+  box-shadow: inset 0 0 6px 3px #1657b5, 0 1px 0 0 rgba(255,255,255, 0.1);
+  text-shadow: 0 -1px 1px #2361a4;
+  background-clip: padding-box; 
+}
+
+button::-moz-focus-inner {border: 0; padding: 0}
+
+button::before {margin-right: 5px} /* adds icon margin (if any) */
+
+/* default input styles */
+input[type="text"] {
+  margin-top: 0;
+  padding: 3px;
+  height: 24px;
+  border: 1px solid hsl(0, 0%, 87%);
+  border-top: 1px solid hsl(0, 0%, 80%);
+  box-shadow: 0 1px 0 hsl(0, 0%, 95%), inset 0 1px 1px hsl(0, 0%, 88%);
+  background-color: #fff;
+}
+
+input[type="text"][disabled] {
+  background-color: #F5F5F5;
+  color: #999;
+  cursor: not-allowed;
+}
+
+input[type="text"]:focus {
+  border: 1px solid hsl(203, 83%, 64%);
+  box-shadow: inset 0 1px 3px hsla(0, 0%, 0%, .05),0 0 3px hsla(206, 80%, 62%, .6);
+}
+
+label, legend {
+  font-weight: 700;
+  font-size: 12px;
+}
+
+/* modal */
+#overlay {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  opacity: 0.7;
+  z-index: 100 !important;
+  background-color: #34313a;
+}
+
+#modal {
+  width: 50%;
+  max-width: 680px;
+  padding: 15px;
+  z-index: 101 !important;
+  background-color: #fff;
+  border: 1px solid #666;
+  box-shadow: 0 0px 15px rgba(0,0,0,0.5);
+  overflow-y: auto;
+}
+
+#modal h1 {
+  float: left;
+  padding-bottom: 15px;
+  font-size: 26px;
+  font-weight: 200;
+  color: #458afb;
+}
+
+#modal .close {
+  float: right;
+  font-size: 170%;
+}
+
+#modal .close:hover {
+  color: #52a8e8;
+  cursor: pointer;
+}
+
+/* mess */
+#edit input[type="text"] {
+  margin-bottom: 2px;
+  width: 100%;
+}
+
+#large-fields {float: left}
+#small-fields {
+  width: 90px;
+  float: right;
+}
+
+#id3_bpm, #id3_year, #small-fields fieldset {text-align: center}
+
+#id3_track, #id3_total_tracks, #id3_disc, #id3_total_discs {
+  text-align: center;
+  width: 34px !important;
+}
+#id3_track, #id3_disc {float: left}
+#id3_total_tracks, #id3_total_discs {float: right}
+
+#edit .save {
+  float: right;
+  font-size: 12px;
+  margin-top: 50px;
+}
+
+/* multibox mess */
+/*#edit.multi #checkboxes {
+  float: left;
+}
+
+#edit.multi span {
+  margin: 21px 5px 23px 0;
+  padding-top: 5px;
+  display: block;
+  height: 24px;
+}
+
+#edit input[type="checkbox"] {
+  margin: 0;
+}*/
+
+/* multibox mess */
+.table {display: table; width: 100%;}
+.row {display: table-row}
+.cell {display: table-cell}
+.cell:last-child {width: 100px; padding-left: 10px; text-align: center;}
+#edit input[type="checkbox"] {display: table-cell; margin:0; margin-right: -4px; position: relative; top: 24px;}
+
+
+/* audio player */
+#audio-container {
+  float: left;width:560px;  height:30px;
+  /*bathaxx*/
+  margin-top: 6px;
+}
+.mejs-timeseparator {margin: 0 3px}
+.mejs-controls {background: none !important}
+
+/**************************** 
+    PAGES 
+****************************/
+
+/* player page */
+
+#contents.player {
+  background-color: #000;
+  color: #fff;
+}
+
+#contents.player #data {
+  display: table;
+  margin: 20px auto 0;
+  text-align: right;
+}
+
+#contents.player h1 {font-size: 40px; margin-bottom: 10px}
+#contents.player h2 {color: #999}
+#contents.player span {color: #fff}
+
+#contents.player #cover, #contents.player #info {
+  display: table-cell; 
+  vertical-align: middle;
+  padding: 10px;
+}
+#contents.player img {
+  /*border-radius: 5px; ? yes/no? */
+  max-width: 500px;
+}
+
+/* mimics the waveform */
+#waveform {
+  margin: 20px;
+  background-image: -webkit-linear-gradient(top, #444, #111);
+}
+
+#waveform img {width: 100%}

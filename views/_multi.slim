@@ -1,0 +1,46 @@
+#overlay
+#modal 
+  h1 Edit tags
+  a
+    i class="icon-remove-circle close"
+  .clear
+  form#edit.multi
+    input type="hidden" name="tag[id]" value=query
+    .table
+      .row
+        input type="checkbox" name="check[artist]"
+        .cell
+          label for="id3_artist" Artist
+          input type="text" name="tag[artist]" id="id3_artist" value=track.artist disabled=true
+        .cell
+          label Year
+          input type="text" name="tag[year]" id="id3_year" value=track.year
+      .row
+        input type="checkbox" name="check[albumartist]"
+        .cell
+          label for="id3_albumartist" Album artist
+          input type="text" name="tag[albumartist]" id="id3_albumartist" value=track.albumartist disabled=true
+        .cell
+          label Track number
+          input type="text" name="tag[track]" id="id3_track" disabled=true
+          input type="text" name="tag[total_tracks]" id="id3_total_tracks" value=track.total_tracks
+          div of
+      .row
+        input type="checkbox" name="check[album]"
+        .cell
+          label for="id3_album" Album
+          input type="text" name="tag[album]" id="id3_album" value=track.album disabled=true
+        .cell
+          label Disc number
+          input type="text" name="tag[disc]" id="id3_disc" value=track.disc
+          input type="text" name="tag[total_discs]" id="id3_total_discs" value=track.total_discs
+          div of
+      .row
+        input type="checkbox" name="check[genre]"
+        .cell
+          label for="id3_genre" Genre
+          input type="text" name="tag[genre]" id="id3_genre" value=track.genre disabled=true
+        .cell
+          label BPM
+          input type="text" name="tag[bpm]" id="id3_bpm" value=track.bpm disabled=true
+    button class="save icon-ok" Save

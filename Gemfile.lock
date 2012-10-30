@@ -1,0 +1,120 @@
+GIT
+  remote: git://github.com/archSeer/mm-nested-attributes.git
+  revision: 5248cef901fbbb362f9bc6a38355d9a20a40099b
+  specs:
+    mm-nested-attributes (0.1.3)
+      mongo_mapper (>= 0.8.2)
+
+GIT
+  remote: git://github.com/igrigorik/em-http-request.git
+  revision: 4e93b61a5c7d5e46268ebbe59534da7ea4738e28
+  specs:
+    em-http-request (1.0.3)
+      addressable (>= 2.2.3)
+      cookiejar
+      em-socksify
+      eventmachine (>= 1.0.0.beta.4)
+      http_parser.rb (>= 0.5.3)
+
+GIT
+  remote: git://github.com/jnunemaker/mongomapper.git
+  revision: 197c2f649f574a0932773e73cca2c5cb1235af3f
+  specs:
+    mongo_mapper (0.12.0)
+      activemodel (~> 3.0)
+      activesupport (~> 3.0)
+      plucky (~> 0.5.2)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    activemodel (3.2.8)
+      activesupport (= 3.2.8)
+      builder (~> 3.0.0)
+    activesupport (3.2.8)
+      i18n (~> 0.6)
+      multi_json (~> 1.0)
+    addressable (2.3.2)
+    async_sinatra (1.0.0)
+      rack (>= 1.4.1)
+      sinatra (>= 1.3.2)
+    backports (2.6.4)
+    bson (1.7.0)
+    bson_ext (1.7.0)
+      bson (~> 1.7.0)
+    builder (3.0.4)
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.4.0)
+    cookiejar (0.3.0)
+    daemons (1.1.9)
+    em-socksify (0.2.1)
+      eventmachine (>= 1.0.0.beta.4)
+    eventmachine (1.0.0)
+    execjs (1.4.0)
+      multi_json (~> 1.0)
+    htmlentities (4.3.1)
+    http_parser.rb (0.5.3)
+    i18n (0.6.1)
+    json (1.7.5)
+    mongo (1.7.0)
+      bson (~> 1.7.0)
+    multi_json (1.3.6)
+    plucky (0.5.2)
+      mongo (~> 1.5)
+    rack (1.4.1)
+    rack-protection (1.2.0)
+      rack
+    rack-test (0.6.2)
+      rack (>= 1.0)
+    rufus-scheduler (2.0.17)
+      tzinfo (>= 0.3.23)
+    sinatra (1.3.3)
+      rack (~> 1.3, >= 1.3.6)
+      rack-protection (~> 1.2)
+      tilt (~> 1.3, >= 1.3.3)
+    sinatra-contrib (1.3.2)
+      backports (>= 2.0)
+      eventmachine
+      rack-protection
+      rack-test
+      sinatra (~> 1.3.0)
+      tilt (~> 1.3)
+    sinatra-reloader (1.0)
+      sinatra-contrib
+    slim (1.3.3)
+      temple (~> 0.5.5)
+      tilt (~> 1.3.3)
+    taglib-ruby (0.5.2)
+    temple (0.5.5)
+    thin (1.5.0)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
+    tilt (1.3.3)
+    time-lord (0.2.5)
+    tzinfo (0.3.34)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  activesupport
+  async_sinatra
+  bson_ext
+  coffee-script
+  em-http-request!
+  eventmachine
+  htmlentities
+  json
+  mm-nested-attributes!
+  mongo_mapper!
+  rufus-scheduler
+  sinatra
+  sinatra-contrib
+  sinatra-reloader
+  slim
+  taglib-ruby
+  thin
+  time-lord

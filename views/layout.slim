@@ -1,0 +1,18 @@
+html
+  head
+    meta charset="utf-8"
+    title Boombox
+    link rel='stylesheet' type='text/css' href='/stylesheets/reset.css'
+    link rel='stylesheet' type='text/css' href='/stylesheets/application.css'
+
+    link rel='stylesheet' type='text/css' href='/stylesheets/open-sans.css'
+    link rel="stylesheet" href="/stylesheets/font-awesome.css"
+
+    script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"
+    script type="text/javascript" src="/jquery-pjax.js"
+    script type="text/javascript" src="/coffeescripts/main.coffee"
+    == yield_content :head
+
+  body
+    #container
+      == yield

@@ -1,0 +1,13 @@
+- rowspan = generate_coverspan tracks
+- tracks.each_with_index do |track, index|
+  tr id="#{track.id}"
+    - if track.album != tracks[index-1].album || index == 0
+      td.cover rowspan=(row = rowspan.shift)
+        - if row > 5
+          / display image only when we have enough space. (at least 6)
+          img src=track.cover
+    td.track_num = track.track
+    td.title = track.title
+    td.time = track.length
+    td.artist = track.artist
+    td.album = track.album
