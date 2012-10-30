@@ -19,3 +19,5 @@ public/music/
 .yardoc
 _yardoc
 doc/
+
+Gemfile.lock
