@@ -36,16 +36,14 @@ $(document).ready ->
   $(window).resize resize_window
 
   # AJAX search
-  minlength = 3
   previousSearch = "" # we check if the query has actually changed
   $('#searchbox').keyup ->
-    that = this
     value = $(this).val()
 
-    if value isnt previousSearch #and value.length >= minlength 
+    if value isnt previousSearch #and value.length >= 3 #minlength 
       $.post 'ajax/search', { query: value }, (data) ->
         previousSearch = value
-        $('#table tbody').html(data) if value is $(that).val() # we need to check if the value is the same
+        $('#table tbody').html(data)
 
   # tag editing
   $('#edit').on 'click', ->

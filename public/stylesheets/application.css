@@ -429,16 +429,31 @@ label, legend {
 
 #waveform img {width: 100%}
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 860px) {
   #audio-container {
-    position: absolute;
-    float: none; background-color: #f00; 
-    margin-top: 200px;
+    float: none; 
+    clear: both;
+    margin: 0 auto;
     z-index: 100;
+    width: auto;
+    
   }
+  #header {height: auto;}
   #menu {float: none; width: 100%; height: auto;}
-  #menu a li {float: left; padding: 20px 15px 10px;}
+  #menu a li {float: left; padding: 20px 10px 10px; height: 77px; max-width: 65px;}
+  #menu a li h1 {font-size: 11px;}
   #menu a li i {font-size: 26px}
   #menu ul li.selected:after {display: none;}
   #contents {margin-left: 0;}
+  #edit, #search {display: none}
+  /* player page */
+  #contents.player #data, #contents.player #cover, #contents.player #info {
+    display: block; 
+  }
+  #contents.player #info {
+    padding-right: 20px;
+  }
+  #contents.player img {
+    max-width: 100%;
+  }
 }

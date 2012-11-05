@@ -1,7 +1,7 @@
 - tracks = Track.sort(:album, :track).all
 
 #header
-  form#search
+  form#search onsubmit="return false"
     input id="searchbox" name="q" type="text" size="10" placeholder="Search"
     i class="icon-search"
   button id="edit" Edit tags
@@ -29,10 +29,10 @@
         li
           i class="icon-refresh"
           h1 Refresh DB
-      a href="#"
-        li
-          i class="icon-hdd" 
-          h1 Song
+      /a href="#"
+      /  li
+      /    i class="icon-hdd" 
+      /    h1 Song
       a href="#"
         li 
           i class="icon-download-alt"
