@@ -13,7 +13,7 @@ class window.Player
         @addEventListener('play', (=> @nowPlaying.replaceClass('paused', 'playing')), false)
         @addEventListener('ended', (=> @playNextSong() ), false)
 
-
+        Player.triggerCallbacks()
     })
 
     @nowPlaying = undefined # Not sure how to track properly the nowPlaying row item, here?...
@@ -25,10 +25,10 @@ class window.Player
   # This is ...weird
   @_callbacks = []
   @executeOnLoad: (func) ->
-    #if !Boombox?
-    @_callbacks.push func
-    #else
-    #  func.call(Boombox)
+    if !Boombox?
+      @_callbacks.push func
+    else
+      func.call(Boombox)
 
   @triggerCallbacks: ->
     while @_callbacks.length isnt 0
