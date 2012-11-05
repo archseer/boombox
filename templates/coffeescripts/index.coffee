@@ -1,3 +1,4 @@
+Boombox?.unloadTempEventListeners()
 # Table cell selection
 lastCell = ''
 $('#table tbody').on 'click', 'tr', (e) ->

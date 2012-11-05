@@ -1,4 +1,4 @@
-Boombox.unloadTempEventListeners()
+Boombox?.unloadTempEventListeners()
 
 oldID = -1 # something that the ID will never be for start value
 loadData =->
@@ -10,5 +10,7 @@ loadData =->
       $('#contents.player .title').text data.title
       oldID = Boombox.songID
 
-loadData()
-Boombox.registerTempEventListener('play', loadData, false)
+loadData() if Boombox?
+
+Player.executeOnLoad ->
+  Boombox.registerTempEventListener('play', loadData, false)

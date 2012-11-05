@@ -12,6 +12,8 @@ class window.Player
         @addEventListener('pause', (=> @nowPlaying.replaceClass('playing', 'paused')), false)
         @addEventListener('play', (=> @nowPlaying.replaceClass('paused', 'playing')), false)
         @addEventListener('ended', (=> @playNextSong() ), false)
+
+
     })
 
     @nowPlaying = undefined # Not sure how to track properly the nowPlaying row item, here?...
@@ -19,6 +21,19 @@ class window.Player
     @songID = undefined
     @tempEventListeners = []
     return true
+
+  # This is ...weird
+  @_callbacks = []
+  @executeOnLoad: (func) ->
+    #if !Boombox?
+    @_callbacks.push func
+    #else
+    #  func.call(Boombox)
+
+  @triggerCallbacks: ->
+    while @_callbacks.length isnt 0
+      @_callbacks.unshift().call(Boombox)
+  # weird END
 
   addEventListener: (type, listener, useCapture) ->
     @mediaElement.addEventListener type, listener, useCapture
