@@ -428,3 +428,17 @@ label, legend {
 }
 
 #waveform img {width: 100%}
+
+@media only screen and (max-width: 800px) {
+  #audio-container {
+    position: absolute;
+    float: none; background-color: #f00; 
+    margin-top: 200px;
+    z-index: 100;
+  }
+  #menu {float: none; width: 100%; height: auto;}
+  #menu a li {float: left; padding: 20px 15px 10px;}
+  #menu a li i {font-size: 26px}
+  #menu ul li.selected:after {display: none;}
+  #contents {margin-left: 0;}
+}

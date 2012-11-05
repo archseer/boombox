@@ -1,9 +1,3 @@
-- content_for :head do
-  link rel="stylesheet" href="./me-js/skin/mediaelementplayer.css"
-  script src='./me-js/mediaelement.js'
-  script src='./me-js/mediaelementplayer.js'
-  script src="/coffeescripts/menu.coffee"
-  script src="/coffeescripts/audio.coffee"
 - tracks = Track.sort(:album, :track).all
 
 #header
@@ -11,9 +5,9 @@
     input id="searchbox" name="q" type="text" size="10" placeholder="Search"
     i class="icon-search"
   button id="edit" Edit tags
-
   #audio-container
     audio controls="" preload="none" width="640" height="30" id="player" src="http://archive.org/download/DWK159/Mr._Moods_-_03_-_Burst_Into_Flames.mp3"
+  .clear
 
 #body
   #menu
@@ -43,6 +37,7 @@
         li 
           i class="icon-download-alt"
           h1 Torrent
+      .clear
   #contents
     table#table
       thead
@@ -58,3 +53,4 @@
         == partial :tracklist, :locals => {:tracks => tracks}
 
   .clear
+  script src="/coffeescripts/index.coffee"

@@ -1,9 +1,7 @@
 #=+=+=+=+=+=+= 
 # menu buttons
-#=+=+=+=+=+=+= 
-
+#=============
 $(document).ready ->
-
   $('#menu a').pjax('#contents')
 
   $('#contents').on 'pjax:error', (e, xhr, err)->

@@ -1,3 +1,7 @@
+###
+  main.coffee - Controls the UI that will not get replaced via pjax
+###
+
 jQuery.fn.between = (elm0, elm1) ->
   index0 = $(this).index(elm0)
   index1 = $(this).index(elm1)
@@ -8,10 +12,13 @@ jQuery.fn.between = (elm0, elm1) ->
     return this.slice index1, index0 + 1
 
 jQuery.fn.center = ->
-  this.css("position","absolute");
-  this.css("top", Math.max(0, (($(window).height() - this.outerHeight()) / 2) + $(window).scrollTop()) + "px")
-  this.css("left", Math.max(0, (($(window).width() - this.outerWidth()) / 2) + $(window).scrollLeft()) + "px")
+  @css "position", "absolute"
+  @css("top", Math.max(0, (($(window).height() - @outerHeight()) / 2) + $(window).scrollTop()) + "px")
+  @css("left", Math.max(0, (($(window).width() - @outerWidth()) / 2) + $(window).scrollLeft()) + "px")
   this
+
+jQuery.fn.replaceClass = (original, replacement) ->
+  @removeClass(original).addClass(replacement)
 
 resize_window = ->
   $('#body').height $(window).height() - $('#header').outerHeight()
@@ -19,23 +26,14 @@ resize_window = ->
   modal.center() if modal?
   $('#large-fields').width(modal.width() - $('#small-fields').width() - 20) if $('#large-fields')?
 
-$(document).ready -> # supposedly able to be replaced by $->
+
+$(document).ready ->
+  # Create Boombox!
+  window.Boombox = new Player
+
   resize_window()
   #add the window resize callback
   $(window).resize resize_window
-
-  # Table cell selection
-  lastCell = ''
-  $('#table tbody').on 'click', 'tr', (e) ->
-    if e.ctrlKey
-      $(this).toggleClass 'active'
-      lastCell = $(this) if $(this).hasClass 'active'
-    else if e.shiftKey and lastCell? and lastCell isnt ''
-      $('#table tr').between($(this), lastCell).each ->
-        lastCell = $(this).addClass 'active'
-    else
-      $('#table tr').removeClass 'active'
-      lastCell = $(this).addClass 'active'
 
   # AJAX search
   minlength = 3

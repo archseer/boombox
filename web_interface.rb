@@ -57,7 +57,11 @@ class WebInterface < Sinatra::Base
   end
 
   get '/' do
-    slim :index
+    if !request.pjax?
+      slim :index
+    else
+      partial :index
+    end
   end
 
   get '/test' do

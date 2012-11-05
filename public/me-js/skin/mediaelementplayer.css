@@ -292,20 +292,16 @@
 .mejs-controls .mejs-time-rail .mejs-time-float {
   position: absolute;
   display: none;
-  background: #C2C8CF;
-  background: -webkit-linear-gradient(#E3E6E9, #C2C8CF);
-  background: -moz-linear-gradient(#E3E6E9, #C2C8CF);
-  background: -o-linear-gradient(#E3E6E9, #C2C8CF);
-  background: -ms-linear-gradient(#E3E6E9, #C2C8CF);
-  background: linear-gradient(#E3E6E9, #C2C8CF);
-  width: 36px;
+  width: 38px;
   height: 17px;
   border-radius: 4px;
   box-shadow:0 1px 1px rgba(0, 0, 0, .4);
   top: 16px;
   margin-left: -18px;
   text-align: center;
-  color: #111;
+  
+  background: #000;
+  color: #e0e0e0;
 }
 
 .mejs-controls .mejs-time-rail .mejs-time-float-current {
@@ -321,8 +317,8 @@
   width: 0;
   height: 0;
   line-height: 0;
-  border: solid 4px #C2C8CF;
-  border-color: transparent transparent #E3E6E9 transparent;
+  border: solid 4px #000;
+  border-color: transparent transparent #000 transparent;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
