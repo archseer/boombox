@@ -358,22 +358,6 @@ label, legend {
 }
 
 /* multibox mess */
-/*#edit.multi #checkboxes {
-  float: left;
-}
-
-#edit.multi span {
-  margin: 21px 5px 23px 0;
-  padding-top: 5px;
-  display: block;
-  height: 24px;
-}
-
-#edit input[type="checkbox"] {
-  margin: 0;
-}*/
-
-/* multibox mess */
 .table {display: table; width: 100%;}
 .row {display: table-row}
 .cell {display: table-cell}
@@ -383,7 +367,9 @@ label, legend {
 
 /* audio player */
 #audio-container {
-  float: left;width:560px;  height:30px;
+  float: left;
+  width:560px;  
+  height:30px;
   /*bathaxx*/
   margin-top: 6px;
 }
@@ -394,8 +380,7 @@ label, legend {
     PAGES 
 ****************************/
 
-/* player page */
-
+/* ---------> player page */
 #contents.player {
   background-color: #000;
   color: #fff;
@@ -403,11 +388,15 @@ label, legend {
 
 #contents.player #data {
   display: table;
-  margin: 20px auto 0;
+  margin: 0 auto;
   text-align: right;
+  height: 100%;
 }
 
-#contents.player h1 {font-size: 40px; margin-bottom: 10px}
+#contents.player h1 {
+  font-size: 40px; 
+  margin-bottom: 10px
+}
 #contents.player h2 {color: #999}
 #contents.player span {color: #fff}
 
@@ -447,6 +436,9 @@ label, legend {
   #contents {margin-left: 0;}
   #edit, #search {display: none}
   /* player page */
+  #contents.player #data {
+    margin-top: 20px;
+  }
   #contents.player #data, #contents.player #cover, #contents.player #info {
     display: block; 
   }

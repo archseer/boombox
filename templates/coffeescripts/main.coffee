@@ -43,7 +43,6 @@ $(document).ready ->
   previousSearch = "" # we check if the query has actually changed
   $('#searchbox').keyup ->
     value = $(this).val()
-
     if value isnt previousSearch #and value.length >= 3 #minlength 
       $.post 'ajax/search', { query: value }, (data) ->
         previousSearch = value
@@ -75,9 +74,9 @@ $(document).ready ->
             $('#container').html(data)
 
         # multi track edit
-        checkboxes = $('#modal input[type="checkbox"]') # #checkboxes
+        checkboxes = $('#modal input[type="checkbox"]')
         if checkboxes?
-          checkboxes.on 'click', -> # checkboxes.on 'click', 'input', ->
+          checkboxes.on 'click', ->
             obj = $(this)
             name = obj.attr('name').match(/check\[(\w+)\]/)[1]
             
@@ -103,3 +102,4 @@ $(document).ready ->
     # adds the link title to class of contents for easy styling.
     $(this).removeClass().addClass $(e.relatedTarget).attr("href").slice(1)
 
+  return true

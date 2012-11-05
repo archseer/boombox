@@ -60,7 +60,7 @@ class WebInterface < Sinatra::Base
     if !request.pjax?
       slim :index
     else
-      partial :index
+      pjax_partial :index
     end
   end
 

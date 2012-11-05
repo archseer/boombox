@@ -1,56 +1,14 @@
 - tracks = Track.sort(:album, :track).all
+table#table
+  thead
+    tr
+      th.cover
+      th.track_num
+      th.title Title
+      th.time Time
+      th.artist Artist
+      th.album Album
 
-#header
-  form#search onsubmit="return false"
-    input id="searchbox" name="q" type="text" size="10" placeholder="Search"
-    i class="icon-search"
-  button id="edit" Edit tags
-  #audio-container
-    audio controls="" preload="none" width="640" height="30" id="player" src="http://archive.org/download/DWK159/Mr._Moods_-_03_-_Burst_Into_Flames.mp3"
-  .clear
-
-#body
-  #menu
-    ul
-      a href="/"
-        li.selected 
-          i class="icon-music"
-          h1 Music
-          /span = tracks.count
-      a href="/player"
-        li
-          i class="icon-headphones" 
-          h1 Player
-      a href="#"
-        li 
-          i class="icon-retweet"
-          h1 Syncronize
-      a href="#"
-        li
-          i class="icon-refresh"
-          h1 Refresh DB
-      /a href="#"
-      /  li
-      /    i class="icon-hdd" 
-      /    h1 Song
-      a href="#"
-        li 
-          i class="icon-download-alt"
-          h1 Torrent
-      .clear
-  #contents
-    table#table
-      thead
-        tr
-          th.cover
-          th.track_num
-          th.title Title
-          th.time Time
-          th.artist Artist
-          th.album Album
-
-      tbody
-        == partial :tracklist, :locals => {:tracks => tracks}
-
-  .clear
-  script src="/coffeescripts/index.coffee"
+  tbody
+    == partial :tracklist, :locals => {:tracks => tracks}
+script src="/coffeescripts/index.coffee"

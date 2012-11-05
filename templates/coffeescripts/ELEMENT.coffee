@@ -15,7 +15,7 @@ class window.Player
     })
 
     @nowPlaying = undefined # Not sure how to track properly the nowPlaying row item, here?...
-    # substitute @nowPlaying with $("#song-#{@songID}")
+    # substitute @nowPlaying with $("#song-#{@songID}")?
     @songID = undefined
     @tempEventListeners = []
     return true
@@ -45,7 +45,7 @@ class window.Player
     !@mediaElement.paused
 
   playSong: (e) -> # e is a row in the list of songs
-    $.post 'ajax/track', { track_id: $(e).attr('id') }, (data) => # => means this points to the previous value of this
+    $.post 'ajax/track', { track_id: $(e).attr('id') }, (data) =>
       @pause()
       @setSrc(data.track)
       @play()
