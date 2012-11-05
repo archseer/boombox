@@ -1,5 +1,5 @@
 ###
-  main.coffee - Controls the UI that will not get replaced via pjax
+  global.coffee - Controls the UI that will not get replaced via pjax
 ###
 
 jQuery.fn.between = (elm0, elm1) ->

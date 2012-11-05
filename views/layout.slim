@@ -36,20 +36,20 @@ html
         #menu
           ul
             a href="/"
-              li.selected 
+              li class=("selected" if request.path_info == "/")
                 i class="icon-music"
                 h1 Music
                 /span = tracks.count
             a href="/player"
-              li
+              li class=("selected" if request.path_info.starts_with? "/player")
                 i class="icon-headphones" 
                 h1 Player
             a href="#"
-              li 
+              li class=("selected" if request.path_info.starts_with? "/sync")
                 i class="icon-retweet"
                 h1 Syncronize
             a href="#"
-              li
+              li class=("selected" if request.path_info.starts_with? "/refresh")
                 i class="icon-refresh"
                 h1 Refresh DB
             /a href="#"
@@ -57,9 +57,9 @@ html
             /    i class="icon-hdd" 
             /    h1 Song
             a href="#"
-              li 
+              li class=("selected" if request.path_info.starts_with? "/torrent")
                 i class="icon-download-alt"
                 h1 Torrent
             .clear
-        #contents
+        #contents class=(request.path[1..-1])
           == yield

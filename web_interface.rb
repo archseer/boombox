@@ -133,7 +133,11 @@ class WebInterface < Sinatra::Base
 
   # pjax calls
   aget '/player' do
-    body partial :player
+    if !request.pjax?
+      body slim :player
+    else
+      body pjax_partial :player
+    end
   end
 
 end
