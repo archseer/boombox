@@ -20,8 +20,12 @@ jQuery.fn.center = ->
 jQuery.fn.replaceClass = (original, replacement) ->
   @removeClass(original).addClass(replacement)
 
-resize_window = ->
+resizeWindow = ->
   $('#body').height $(window).height() - $('#header').outerHeight()
+  if $(window).width() < 860
+    $('#contents').height ($(window).height() - $('#header').outerHeight() - $('#menu').outerHeight())
+  else
+    $('#contents').css('height', '')
   modal = $('#modal')
   modal.center() if modal?
   $('#large-fields').width(modal.width() - $('#small-fields').width() - 20) if $('#large-fields')?
@@ -31,9 +35,9 @@ $(document).ready ->
   # Create Boombox!
   window.Boombox = new Player
 
-  resize_window()
+  resizeWindow()
   #add the window resize callback
-  $(window).resize resize_window
+  $(window).resize resizeWindow
 
   # AJAX search
   previousSearch = "" # we check if the query has actually changed
