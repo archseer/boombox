@@ -24,4 +24,11 @@ $('#waveform').on 'click', (e) ->
   if Boombox.mediaElement.duration
     Boombox.setCurrentTime Boombox.mediaElement.duration * (e.offsetX / $("#waveform img").width())
 
+$('#waveform').mousemove (e) ->
+  $('#wave-handle').css 'opacity', '1'
+  $('#wave-handle').css 'left', e.offsetX
+$('#waveform').mouseleave ->
+  $('#wave-handle').css 'opacity', '0'
+
+
 # generate waveforms with 'waveform <file> <output.png> --method rms -ctransparent -b#fffff'

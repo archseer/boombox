@@ -412,12 +412,14 @@ label, legend {
 
 /* mimics the waveform */
 #waveform {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
   margin: 20px;
   position: relative;
   background-image: -webkit-linear-gradient(top, #444, #111);
   z-index: 1;
 }
-#wave-loaded, #wave-played {
+#wave-loaded, #wave-played, #wave-handle {
   width: 0;
   height: 100%;
   position: absolute;
@@ -426,6 +428,10 @@ label, legend {
 }
 #wave-loaded {background-color: #111;}
 #wave-played {background-color: #458afb;}
+#wave-handle {
+  width: 1px;
+  background-color: #f00;
+}
 #waveform img {width: 100%}
 
 /* Mobile version */
