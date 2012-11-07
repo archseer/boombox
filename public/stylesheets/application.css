@@ -424,7 +424,6 @@ label, legend {
   top: 0;
   z-index: -1;
 }
-#clicker {width: 100%}
 #wave-loaded {background-color: #111;}
 #wave-played {background-color: #458afb;}
 #waveform img {width: 100%}
