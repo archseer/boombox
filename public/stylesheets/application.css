@@ -417,7 +417,7 @@ label, legend {
   background-image: -webkit-linear-gradient(top, #444, #111);
   z-index: 1;
 }
-#wave-loaded, #wave-played, #clicker {
+#wave-loaded, #wave-played {
   width: 0;
   height: 100%;
   position: absolute;
