@@ -417,14 +417,15 @@ label, legend {
   background-image: -webkit-linear-gradient(top, #444, #111);
   z-index: -2;
 }
-#wave-played{
+#wave-loaded, #wave-played {
   width: 0;
+  height: 100%;
   position: absolute;
   top: 0;
-  height: 100%;
-  background-color: #458afb;
   z-index: -1;
 }
+#wave-loaded {background-color: #111;}
+#wave-played {background-color: #458afb;}
 #waveform img {width: 100%}
 
 /* Mobile version */
