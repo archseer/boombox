@@ -19,6 +19,14 @@ Player.executeOnLoad ->
       $('#wave-loaded').width("#{Boombox.mediaElement.bufferedTime * 100 / Boombox.mediaElement.duration}%")
   , false)
 
+  oldID = -1 # something that the ID will never be for start value
+  loadWaveform =->
+    unless oldID == Boombox.songID
+      $('#waveform img').attr 'src', "waveforms/#{Boombox.songID}.png"
+      oldID = Boombox.songID
+  Boombox.registerTempEventListener('play', loadWaveform, false)
+  loadWaveform()
+
 
 $('#waveform').on 'click', (e) ->
   if Boombox.mediaElement.duration

@@ -25,6 +25,10 @@ module Tagger
         :bpm => tag.frame_list('TBPM').first,
       )
       t.filename = sinatra.relative_to filename
+        
+      # pwd is project root
+      %x{bin/waveform --width 1200 --height 180 --color-bg ffffffff --color-center 00000000 --color-outer 00000000 "public/#{t.filename}" "public/waveforms/#{t.id}.png"}
+
       t.save!
     }
   end
