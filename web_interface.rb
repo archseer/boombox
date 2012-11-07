@@ -142,5 +142,13 @@ class WebInterface < Sinatra::Base
     end
   end
 
+  aget '/waveform' do
+    if !request.pjax?
+      body slim :waveform
+    else
+      body pjax_partial :waveform
+    end
+  end
+
 end
 
