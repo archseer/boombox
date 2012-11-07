@@ -12,8 +12,9 @@ test/tmp
 test/version_tmp
 tmp
 
-#Music files
+# Music files
 public/music/
+public/waveforms/
 
 # YARD artifacts
 .yardoc

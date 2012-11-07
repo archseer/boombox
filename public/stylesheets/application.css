@@ -430,7 +430,7 @@ label, legend {
 #wave-played {background-color: #458afb;}
 #wave-handle {
   width: 1px;
-  background-color: #f00;
+  background-color: hsl(108, 87%, 59%);
 }
 #waveform img {width: 100%}
 
