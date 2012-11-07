@@ -415,15 +415,16 @@ label, legend {
   margin: 20px;
   position: relative;
   background-image: -webkit-linear-gradient(top, #444, #111);
-  z-index: -2;
+  z-index: 1;
 }
-#wave-loaded, #wave-played {
+#wave-loaded, #wave-played, #clicker {
   width: 0;
   height: 100%;
   position: absolute;
   top: 0;
   z-index: -1;
 }
+#clicker {width: 100%}
 #wave-loaded {background-color: #111;}
 #wave-played {background-color: #458afb;}
 #waveform img {width: 100%}

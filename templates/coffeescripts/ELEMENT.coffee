@@ -32,7 +32,7 @@ class window.Player
 
   @triggerCallbacks: ->
     while @_callbacks.length isnt 0
-      @_callbacks.unshift().call(Boombox)
+      @_callbacks.shift().call(Boombox)
   # weird END
 
   addEventListener: (type, listener, useCapture) ->
@@ -56,6 +56,9 @@ class window.Player
   setSrc: (src) ->
     @instance.setSrc(src)
 
+  setCurrentTime: (t) ->
+    @instance.setCurrentTime(t)
+    
   isPlaying: ->
     !@mediaElement.paused
 
