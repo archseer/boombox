@@ -1,7 +1,7 @@
 require 'sinatra/reloader'
 require 'sinatra/json'
 require 'sinatra/content_for'
-require_relative 'lib/rack/flash'
+require 'rack-flash'
 require_relative 'lib/core_ext/hash'
 require_relative 'helpers/sinatra'
 require_relative 'models/track'
@@ -65,7 +65,7 @@ class WebInterface < Sinatra::Base
       pjax_partial :index
     end
   end
-
+  
   get '/test' do
     Tagger.generate_db self
   end

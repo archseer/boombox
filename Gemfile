@@ -12,6 +12,7 @@ gem 'time-lord' # pretty output of 'x time ago'
 gem "em-http-request", :git => 'git://github.com/igrigorik/em-http-request.git'
 
 # Web Interface
+gem 'rack-flash3'
 gem 'coffee-script'
 gem 'thin'
 gem 'sinatra'
