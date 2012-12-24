@@ -1,7 +1,6 @@
 require 'sinatra/reloader'
 require 'sinatra/json'
 require 'sinatra/content_for'
-require 'rack-flash'
 require_relative 'lib/core_ext/hash'
 require_relative 'helpers/sinatra'
 require_relative 'models/track'
@@ -43,8 +42,6 @@ class WebInterface < Sinatra::Base
   use Rack::Session::Cookie, :secret => 'onelovemang'
   use Rack::MethodOverride
   use Rack::Flash
-
-  set :root, File.dirname(__FILE__)
 
   def generate_coverspan tracks
     result = [] << 1 # add 1 for first entry
