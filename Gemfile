@@ -24,4 +24,3 @@ gem 'json'
 
 # music utils
 gem 'taglib-ruby'
-gem 'activesupport'
