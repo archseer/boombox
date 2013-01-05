@@ -21,14 +21,10 @@ jQuery.fn.replaceClass = (original, replacement) ->
   @removeClass(original).addClass(replacement)
 
 resizeWindow = ->
-  $('#body').height $(window).height() - $('#header').outerHeight()
-  if $(window).width() < 860
-    $('#contents').height ($(window).height() - $('#header').outerHeight() - $('#menu').outerHeight())
-  else
-    $('#contents').css('height', '')
   modal = $('#modal')
   modal.center() if modal?
   $('#large-fields').width(modal.width() - $('#small-fields').width() - 20) if $('#large-fields')?
+  return true
 
 
 $(document).ready ->

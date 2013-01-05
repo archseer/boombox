@@ -23,6 +23,14 @@ i {-webkit-font-smoothing: antialiased} /* stands for icon not italic */
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgb(88,88,88)), color-stop(1, rgb(44,44,44)));
 }
 
+#body {
+  top: 43px;
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+  overflow: auto;
+}
+
 /* searchbox */
 #search input {
   float: left;
