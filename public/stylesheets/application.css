@@ -457,8 +457,7 @@ label, legend {
     clear: both;
     margin: 0 auto;
     z-index: 100;
-    width: auto;
-    
+    width: auto; 
   }
   #header {height: auto;}
   #body {top: 33px;}

@@ -43,6 +43,8 @@ class WebInterface < Sinatra::Base
   use Rack::MethodOverride
   use Rack::Flash
 
+  set :server, :thin
+
   def generate_coverspan tracks
     result = [] << 1 # add 1 for first entry
     tracks.each_cons(2) do |track, next_track|
@@ -128,6 +130,11 @@ class WebInterface < Sinatra::Base
     else
       body json :album => "Unknown", :artist => "Unknown", :title => "No song", :cover => "blank.png"
     end
+  end
+
+  aget '/a' do
+    sleep 10
+    body "test"
   end
 
   # pjax calls
