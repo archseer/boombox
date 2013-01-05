@@ -4,6 +4,8 @@
 
 i {-webkit-font-smoothing: antialiased} /* stands for icon not italic */
 
+body {overflow: hidden}
+
 #container {
   font: 400 13px/21px Open Sans;
   border-top: 1px solid #111;
@@ -28,7 +30,6 @@ i {-webkit-font-smoothing: antialiased} /* stands for icon not italic */
   bottom: 0;
   width: 100%;
   position: absolute;
-  overflow: auto;
 }
 
 /* searchbox */
@@ -344,10 +345,17 @@ label, legend {
   width: 100%;
 }
 
-#large-fields {float: left}
+#edit {position:relative}
+
+#large-fields {
+  margin-right: 110px;
+  float: left;
+}
 #small-fields {
   width: 90px;
   float: right;
+  right: 0;
+  position: absolute;
 }
 
 #id3_bpm, #id3_year, #small-fields fieldset {text-align: center}
@@ -453,12 +461,19 @@ label, legend {
     
   }
   #header {height: auto;}
+  #body {top: 33px;}
   #menu {float: none; width: 100%; height: auto;}
   #menu a li {float: left; padding: 20px 10px 10px; height: 77px; max-width: 65px;}
   #menu a li h1 {font-size: 11px;}
   #menu a li i {font-size: 26px}
   #menu ul li.selected:after {display: none;}
-  #contents {margin-left: 0;}
+  #contents {
+    margin-left: 0;
+    position: absolute;
+    top: 77px;
+    bottom: 0px;
+    width: 100%;
+  }
   #edit, #search {display: none}
   /* player page */
   #contents.player #data {

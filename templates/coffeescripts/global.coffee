@@ -23,7 +23,7 @@ jQuery.fn.replaceClass = (original, replacement) ->
 resizeWindow = ->
   modal = $('#modal')
   modal.center() if modal?
-  $('#large-fields').width(modal.width() - $('#small-fields').width() - 20) if $('#large-fields')?
+  #$('#large-fields').width(modal.width() - $('#small-fields').width() - 20) if $('#large-fields')?
   return true
 
 
@@ -54,7 +54,7 @@ $(document).ready ->
       $.post 'ajax/edit-modal', { query: ids }, (data) ->
         $('#container').append data
         modal = $('#modal')
-        $('#large-fields').width(modal.width() - $('#small-fields').width()-20)
+        #$('#large-fields').width(modal.width() - $('#small-fields').width()-20)
         modal.center()
 
         # add save and close actions
