@@ -132,11 +132,6 @@ class WebInterface < Sinatra::Base
     end
   end
 
-  aget '/a' do
-    sleep 10
-    body "test"
-  end
-
   # pjax calls
   aget '/player' do
     if !request.pjax?
