@@ -24,3 +24,8 @@ gem 'json'
 
 # music utils
 gem 'taglib-ruby'
+
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end

@@ -8,6 +8,8 @@ require 'taglib'
 require 'pathname'
 require 'json'
 
+require "better_errors"
+
 require_relative 'lib/tagger'
 
 # disable running by default, otherwise just requiring it would trigger a duplicate
@@ -39,11 +41,14 @@ class WebInterface < Sinatra::Base
   helpers WebHelpers
 
   use CoffeeHandler
-  use Rack::Session::Cookie, :secret => 'onelovemang'
   use Rack::MethodOverride
-  use Rack::Flash
 
   set :server, :thin
+
+  configure :development do
+    use BetterErrors::Middleware
+    BetterErrors.application_root = File.expand_path("..", __FILE__)
+  end
 
   def generate_coverspan tracks
     result = [] << 1 # add 1 for first entry
@@ -58,11 +63,7 @@ class WebInterface < Sinatra::Base
   end
 
   get '/' do
-    if !request.pjax?
-      slim :index
-    else
-      pjax_partial :index
-    end
+    slim :index, :layout => !request.pjax?
   end
 
   get '/reset' do
@@ -108,14 +109,15 @@ class WebInterface < Sinatra::Base
       tag.delete_if {|key, value| !params[:check].include? key }
     end
 
-    ids.each {|id| 
+    ids.each do |id| 
       track = Track.find(id)
       track.update_attributes! tag
       track.write_tags
-    }
+    end
     body params[:check].inspect
   end
 
+  # API
   get '/api/track/:id' do
     if params[:id] != "undefined"
       track = Track.find params[:id]
@@ -123,7 +125,7 @@ class WebInterface < Sinatra::Base
         content_type 'application/json'
         track.to_json
       else
-        json :title => "Track not found."
+        json :error => "404 - Not Found"
       end
     else
       json :album => "Unknown", :artist => "Unknown", :title => "No song", :cover => "blank.png"
@@ -132,19 +134,11 @@ class WebInterface < Sinatra::Base
 
   # pjax calls
   get '/player' do
-    if !request.pjax?
-      body slim :player
-    else
-      body pjax_partial :player
-    end
+    body slim :player, :layout => !request.pjax?
   end
 
   get '/waveform' do
-    if !request.pjax?
-      body slim :waveform
-    else
-      body pjax_partial :waveform
-    end
+    body slim :waveform, :layout => !request.pjax?
   end
 
 end
