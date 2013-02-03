@@ -70,7 +70,15 @@ class Boombox < Sinatra::Base
   end
 
   get '/' do
-    slim :index, :layout => !request.pjax?
+    slim :index
+  end
+
+  get '/player' do
+    body slim :player
+  end
+
+  get '/waveform' do
+    body slim :waveform
   end
 
   get '/reset' do
@@ -139,13 +147,9 @@ class Boombox < Sinatra::Base
     end
   end
 
-  # pjax calls
-  get '/player' do
-    body slim :player, :layout => !request.pjax?
-  end
-
-  get '/waveform' do
-    body slim :waveform, :layout => !request.pjax?
+  # Disable layout if request is via pjax 
+  before do
+    @default_layout = false if request.pjax?
   end
 
   # start the server if ruby file executed directly
