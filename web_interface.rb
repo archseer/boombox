@@ -64,8 +64,9 @@ class WebInterface < Sinatra::Base
       pjax_partial :index
     end
   end
-  
-  get '/test' do
+
+  get '/reset' do
+    Track.delete_all
     Tagger.generate_db self
   end
 
@@ -110,30 +111,27 @@ class WebInterface < Sinatra::Base
     ids.each {|id| 
       track = Track.find(id)
       track.update_attributes! tag
-      Tagger.write_tags track
+      track.write_tags
     }
     body params[:check].inspect
   end
 
-  apost '/ajax/track' do
-    body json :track => URI.escape(Track.find(params[:track_id]).filename)
-  end
-
-  aget '/ajax/track/:id' do
+  get '/api/track/:id' do
     if params[:id] != "undefined"
       track = Track.find params[:id]
       if track
-        body json :album => track.album, :artist => track.artist, :title => track.title, :cover => track.cover
+        content_type 'application/json'
+        track.to_json
       else
-        body json :title => "Track not found."
+        json :title => "Track not found."
       end
     else
-      body json :album => "Unknown", :artist => "Unknown", :title => "No song", :cover => "blank.png"
+      json :album => "Unknown", :artist => "Unknown", :title => "No song", :cover => "blank.png"
     end
   end
 
   # pjax calls
-  aget '/player' do
+  get '/player' do
     if !request.pjax?
       body slim :player
     else
@@ -141,7 +139,7 @@ class WebInterface < Sinatra::Base
     end
   end
 
-  aget '/waveform' do
+  get '/waveform' do
     if !request.pjax?
       body slim :waveform
     else

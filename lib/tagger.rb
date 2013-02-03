@@ -32,42 +32,4 @@ module Tagger
       t.save!
     }
   end
-
-  def self.write_tags track
-    # Load an ID3v2 tag from a file
-    TagLib::MPEG::File.open("public/#{track.filename}") do |file|
-      tag = file.id3v2_tag
-
-      tag.title = track.title
-      tag.artist = track.artist
-      tag.album = track.album
-      tag.year = track.year.to_i
-      tag.genre = track.genre
-      # track count
-      if track.total_tracks and track.track
-        tag.frame_list('TRCK').first.text = "#{track.track}/#{track.total_tracks}"
-      elsif tag.track
-        tag.track = track.track.to_i
-      end
-      # add album artist
-      if track.albumartist
-        tag.add_frame TagLib::ID3v2::TextIdentificationFrame.new('TPE2',TagLib::String::UTF8) if tag.frame_list('TPE2').empty?
-        tag.frame_list('TPE2').first.text = track.albumartist
-      end
-      # add disc
-      if track.disc
-        tag.add_frame TagLib::ID3v2::TextIdentificationFrame.new('TPOS',TagLib::String::UTF8) if tag.frame_list('TPOS').empty?
-        disc = track.disc.to_s
-        disc << "/#{track.total_discs}" if track.total_discs
-        tag.frame_list('TPOS').first.text = disc
-      end
-      # bpm
-      if track.bpm
-        tag.add_frame TagLib::ID3v2::TextIdentificationFrame.new('TBPM',TagLib::String::UTF8) if tag.frame_list('TBPM').empty?
-        tag.frame_list('TBPM').first.text = track.bpm.to_s
-      end
-
-      file.save
-    end
-  end
 end

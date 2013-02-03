@@ -63,9 +63,9 @@ class window.Player
     !@mediaElement.paused
 
   playSong: (e) -> # e is a row in the list of songs
-    $.post 'ajax/track', { track_id: $(e).attr('id') }, (data) =>
+    $.get "api/track/#{$(e).attr('id')}", (data) =>
       @pause()
-      @setSrc(data.track)
+      @setSrc(data.filename)
       @play()
       @songID = $(e).attr 'id'
       @nowPlaying.removeClass('playing paused') if @nowPlaying
