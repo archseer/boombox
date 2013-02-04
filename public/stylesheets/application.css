@@ -462,7 +462,7 @@ label, legend {
   #header {height: auto;}
   #body {top: 33px;}
   #menu {float: none; width: 100%; height: auto;}
-  #menu a li {float: left; padding: 20px 10px 10px; height: 77px; max-width: 65px;}
+  #menu a li {float: left; padding: 20px 10px 10px; height: 77px; width: 85px;}
   #menu a li h1 {font-size: 11px;}
   #menu a li i {font-size: 26px}
   #menu ul li.selected:after {display: none;}

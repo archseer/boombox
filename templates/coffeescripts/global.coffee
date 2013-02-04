@@ -21,9 +21,7 @@ jQuery.fn.replaceClass = (original, replacement) ->
   @removeClass(original).addClass(replacement)
 
 resizeWindow = ->
-  modal = $('#modal')
-  modal.center() if modal?
-  #$('#large-fields').width(modal.width() - $('#small-fields').width() - 20) if $('#large-fields')?
+  $('#modal').center()
   return true
 
 
@@ -75,7 +73,7 @@ $(document).ready ->
           checkboxes.on 'click', ->
             obj = $(this)
             name = obj.attr('name').match(/check\[(\w+)\]/)[1]
-            
+
             if obj.is(':checked')
               $("input#id3_#{name}").removeAttr("disabled")
             else

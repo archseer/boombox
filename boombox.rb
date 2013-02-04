@@ -74,11 +74,11 @@ class Boombox < Sinatra::Base
   end
 
   get '/player' do
-    body slim :player
+    slim :player
   end
 
   get '/waveform' do
-    body slim :waveform
+    slim :waveform
   end
 
   get '/reset' do
@@ -137,7 +137,7 @@ class Boombox < Sinatra::Base
     if params[:id] != "undefined"
       track = Track.find params[:id]
       if track
-        content_type 'application/json'
+        content_type "application/json"
         track.to_json
       else
         json :error => "404 - Not Found"

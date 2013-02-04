@@ -65,7 +65,7 @@ class window.Player
   playSong: (e) -> # e is a row in the list of songs
     $.get "api/track/#{$(e).attr('id')}", (data) =>
       @pause()
-      @setSrc(data.filename)
+      @setSrc("/#{data.filename}")
       @play()
       @songID = $(e).attr 'id'
       @nowPlaying.removeClass('playing paused') if @nowPlaying
