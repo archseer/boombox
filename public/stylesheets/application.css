@@ -168,7 +168,7 @@ body {overflow: hidden}
   color: #fff;
   border-bottom-color: #2674f0;
   border-top-color: #2674f0;
-  text-shadow: 0px 0px 1px black; /* this should be left at least on track_num:after (icon) */
+  text-shadow: 0px 0px 1px rgba(0,0,0,.5); /* this should be left at least on track_num:after (icon) */
 } 
 
 #table tr.active td {
@@ -228,7 +228,7 @@ button {
   border-right: 1px solid #2e69a3;
   border-bottom: 1px solid #20559a;
   border-left: 1px solid #2e69a3;
-  border-radius: 16px;
+  border-radius: 4px;
   box-shadow: inset 0 1px 0 0 #72b9eb;
   color: #fff;
   font: normal 11px Open Sans;
@@ -236,7 +236,7 @@ button {
   padding: 2px 5px 5px;
   text-align: center;
   text-shadow: 0 -1px 1px #3275bc;
-  width: 112px;
+  width: 100px;
   background-clip: padding-box; 
 }
 
@@ -378,7 +378,13 @@ label, legend {
 .row {display: table-row}
 .cell {display: table-cell}
 .cell:last-child {width: 100px; padding-left: 10px; text-align: center;}
-#edit input[type="checkbox"] {display: table-cell; margin:0; margin-right: -4px; position: relative; top: 24px;}
+#edit input[type="checkbox"] {
+  display: table-cell;
+  margin:0;
+  margin-right: -4px;
+  position: relative;
+  top: 24px;
+}
 
 
 /* audio player */
@@ -410,8 +416,9 @@ label, legend {
 }
 
 #contents.player h1 {
-  font-size: 40px; 
-  margin-bottom: 10px
+  font-size: 40px;
+  line-height: 40px;
+  margin-bottom: 10px;
 }
 #contents.player h2 {color: #999}
 #contents.player span {color: #fff}
@@ -473,7 +480,10 @@ label, legend {
     bottom: 0px;
     width: 100%;
   }
-  #edit, #search {display: none}
+  .edit-button, #search {display: none}
+  #edit input[type="checkbox"] {
+    margin-right: 0;
+  }
   /* player page */
   #contents.player #data {
     margin-top: 20px;

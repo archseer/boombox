@@ -43,7 +43,7 @@ $(document).ready ->
         $('#table tbody').html(data)
 
   # tag editing
-  $('#edit').on 'click', ->
+  $('.edit-button').on 'click', ->
     ids = (n.id for n in $('#table tr.active'))
     #ids = $.map $('#table tr.active'), (n) -> n.id
 
