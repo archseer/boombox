@@ -17,12 +17,12 @@ module Tagger
         :track => tag.track || old_tag.track,
         :time => file.audio_properties.length,
         :disc => disc[0],
-        :albumartist => tag.frame_list('TPE2').first,
+        :albumartist => tag.frame_list('TPE2').first.to_s,
         :total_tracks => tag.frame_list('TRCK').first.to_s.split('/')[1],
         :total_discs => disc[1],
         :genre => tag.genre || old_tag.genre,
         #:rating => ,
-        :bpm => tag.frame_list('TBPM').first,
+        :bpm => tag.frame_list('TBPM').first.to_s.to_i,
       )
       t.filename = sinatra.relative_to filename
         
