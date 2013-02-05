@@ -1,6 +1,6 @@
 module Tagger
   def self.generate_db sinatra
-    files = Dir["#{File.dirname(__FILE__)}/../public/music/**/*.mp3"]
+    files = Dir["#{File.dirname(__FILE__)}/../public/music/**{,/*/**}/*.mp3"] #symlink follow
     files.each {|filename|
       file = TagLib::MPEG::File.new filename
       tag = file.id3v2_tag

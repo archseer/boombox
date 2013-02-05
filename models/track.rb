@@ -23,7 +23,7 @@ class Track
   def cover
     if folder = "public/#{File.dirname self.filename}/Folder.jpg" and File.exist? folder
       path = folder
-    elsif dir = Dir.glob("public/#{File.dirname self.filename}/*.jpg", File::FNM_CASEFOLD)
+    elsif dir = Dir.glob("public/#{File.dirname self.filename}/*.{jpg,jpeg,png}", File::FNM_CASEFOLD)
       path = dir.first
     end
     path ||= "blank.png"

@@ -108,7 +108,7 @@ body {overflow: hidden}
 #menu ul li.selected:after { /* inset arrow */
   content: "";
   position: absolute;
-  top: 35px;
+  top: 38px;
   right: -1px;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
