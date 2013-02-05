@@ -92,7 +92,7 @@ class Boombox < Sinatra::Base
 
   post '/ajax/search' do
     # if string is empty, return all tracks instead of searching for it, speed optimization
-    tracks = params[:query].blank? ? Track.sort(:album, :track).all : Track.where(:$or => [
+    tracks = params[:query].blank? ? Track.sort(:album, :disc, :track).all : Track.where(:$or => [
       {:album => /#{params[:query]}/i},
       {:artist => /#{params[:query]}/i},
       {:title => /#{params[:query]}/i},
