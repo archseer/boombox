@@ -38,28 +38,28 @@ html
             a href="/"
               li class=("selected" if request.path_info == "/")
                 i class="icon-music"
-                h1 Music
+                | Music
                 /span = tracks.count
             a href="/player"
               li class=("selected" if request.path_info.starts_with? "/player")
-                i class="icon-headphones" 
-                h1 Player
+                i class="icon-headphones"
+                | Player
             a href="/waveform"
               li class=("selected" if request.path_info.starts_with? "/sync")
                 i class="icon-retweet"
-                h1 Syncronize
+                | Syncronize
             a href="#"
               li class=("selected" if request.path_info.starts_with? "/refresh")
                 i class="icon-refresh"
-                h1 Update DB
+                | Update DB
             /a href="#"
             /  li
-            /    i class="icon-hdd" 
+            /    i class="icon-hdd"
             /    h1 Song
             a href="#"
               li class=("selected" if request.path_info.starts_with? "/torrent")
                 i class="icon-download-alt"
-                h1 Torrent
+                | Torrent
             .clear
         #contents class=(request.path[1..-1])
           == yield

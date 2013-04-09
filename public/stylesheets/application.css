@@ -42,7 +42,7 @@ body {overflow: hidden}
   outline: none;
   border: none;
   padding-left: 20px;
-  -webkit-appearance: none; 
+  -webkit-appearance: none;
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
 }
 
@@ -62,65 +62,49 @@ body {overflow: hidden}
 
 /* sidebar */
 #menu {
-  float: left; 
-  width: 120px;
+  float: left;
+  width: 210px;
   height: 100%;
-  background-color: #111;
-  border-right: 1px solid #000;
-  text-shadow: 0 -2px 0 #000;
+  background-color: #e3eafa;
+  border-right: 1px solid #a4b0ca;
+  text-shadow: 0 1px 0 #fff;
   font-weight: 600;
-  color: #fff;
+  color: #515765;
+
+  padding-top: 26px;
 }
 
 #menu ul a {
-  display:block;
-  text-decoration: none;
   color: inherit;
-  outline: none;
+  text-decoration: none;
 }
 
 #menu ul li {
   display: block;
-  text-align: center;
-  font-weight: 100;
-  padding: 15px 0 10px;
-  border-top: 1px solid #222;
-  border-bottom: 1px solid #000;
-  box-shadow: inset 0 0 20px hsl(0, 0%, 9%);
+
+  padding: 5px 15px;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
 
   -webkit-transition:color 0.1s ease-in;
-  -moz-transition:color 0.2s ease-in;
-  -o-transition:color 0.2s ease-in;
-  transition:color 0.2s ease-in; 
+  -moz-transition:color 0.1s ease-in;
+  -o-transition:color 0.1s ease-in;
+  transition:color 0.1s ease-in;
 }
-
-#menu ul li:first-child {border-top: none}
 
 #menu ul a:hover, #menu ul a:focus {color: #458afb} /* needs to be applied to a in order for focus to work*/
 
 #menu ul li.selected {
-  position: relative; /* has to be in order for :after absolute */
-  color: #458afb;
-  box-shadow: inset 0 0 35px #000;
-  border-top-color: #000;
+ background-color: #478afb;
+ color: #fff;
+ text-shadow: 0 1px 0 #376df1;
+ border-color: #2674f0;
 }
 
-#menu ul li.selected:after { /* inset arrow */
-  content: "";
-  position: absolute;
-  top: 38px;
-  right: -1px;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-right: 10px solid #fff;
-}
-  /*#menu ul li.selected:after {right: -11px; border-left: 10px solid #000;} <- outset arrow */
+#menu ul li i {font-size: 14px; margin-right: 10px;}
 
-#menu ul li i {
-  margin: 0 auto 4px;
-  font-size: 40px;
-  display: block;
-}
+#menu ul li h1 {font-size: 14px; display: inline-block;}
+
 
 /* table */
 #contents {
@@ -157,7 +141,7 @@ body {overflow: hidden}
 }
 
 #table td, #table th {
-  text-align: left; 
+  text-align: left;
   border-top: 1px solid #c8c4d2;
   border-bottom: 1px solid #c8c4d2;
   padding: 2px; /* 3 */
@@ -169,7 +153,7 @@ body {overflow: hidden}
   border-bottom-color: #2674f0;
   border-top-color: #2674f0;
   text-shadow: 0px 0px 1px rgba(0,0,0,.5); /* this should be left at least on track_num:after (icon) */
-} 
+}
 
 #table tr.active td {
   border-bottom-color: #2674f0;
@@ -237,7 +221,7 @@ button {
   text-align: center;
   text-shadow: 0 -1px 1px #3275bc;
   width: 100px;
-  background-clip: padding-box; 
+  background-clip: padding-box;
 }
 
 button:hover {
@@ -264,7 +248,7 @@ button:active {
   border-bottom: 1px solid #0e408e;
   box-shadow: inset 0 0 6px 3px #1657b5, 0 1px 0 0 rgba(255,255,255, 0.1);
   text-shadow: 0 -1px 1px #2361a4;
-  background-clip: padding-box; 
+  background-clip: padding-box;
 }
 
 button::-moz-focus-inner {border: 0; padding: 0}
@@ -390,7 +374,7 @@ label, legend {
 /* audio player */
 #audio-container {
   float: left;
-  width:560px;  
+  width:560px;
   height:30px;
   /*bathaxx*/
   margin-top: 6px;
@@ -398,8 +382,8 @@ label, legend {
 .mejs-timeseparator {margin: 0 3px}
 .mejs-controls {background: none !important}
 
-/**************************** 
-    PAGES 
+/****************************
+    PAGES
 ****************************/
 
 /* ---------> player page */
@@ -424,7 +408,7 @@ label, legend {
 #contents.player span {color: #fff}
 
 #contents.player #cover, #contents.player #info {
-  display: table-cell; 
+  display: table-cell;
   vertical-align: middle;
   padding: 10px;
 }
@@ -460,11 +444,11 @@ label, legend {
 /* Mobile version */
 @media only screen and (max-width: 860px) {
   #audio-container {
-    float: none; 
+    float: none;
     clear: both;
     margin: 0 auto;
     z-index: 100;
-    width: auto; 
+    width: auto;
   }
   #header {height: auto;}
   #body {top: 33px;}
@@ -489,7 +473,7 @@ label, legend {
     margin-top: 20px;
   }
   #contents.player #data, #contents.player #cover, #contents.player #info {
-    display: block; 
+    display: block;
   }
   #contents.player #info {
     padding-right: 20px;

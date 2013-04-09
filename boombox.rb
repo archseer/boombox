@@ -23,7 +23,7 @@ set :run, false
 
 class CoffeeHandler < Sinatra::Base
   set :views, File.dirname(__FILE__) + '/templates/coffeescripts'
-  
+
   get "/coffeescripts/*.coffee" do
     filename = params[:splat].first
     coffee filename.to_sym
@@ -41,7 +41,7 @@ class Boombox < Sinatra::Base
   register Sinatra::Async
   also_reload "helpers/*.rb"
   also_reload "models/*.rb"
-  
+
   helpers Sinatra::ContentFor
   helpers Sinatra::JSON
   helpers WebHelpers
@@ -106,7 +106,7 @@ class Boombox < Sinatra::Base
     else
       result = {}
       placeholder = {:artist => [], :year =>[], :total_tracks => [], :disc => [], :total_discs => [], :albumartist => [], :album => [], :genre => [], :bpm => []}
-      Track.find(params[:query]).each {|track| 
+      Track.find(params[:query]).each {|track|
         placeholder.each_pair {|key, value| value << track.send(key)}
       }
       placeholder.each_pair {|key, arry| arry.uniq!; result[key] = arry.length == 1 ?  arry.first : nil}
@@ -124,11 +124,11 @@ class Boombox < Sinatra::Base
       tag.delete_if {|key, value| !params[:check].include? key }
     end
 
-    ids.each do |id| 
-      track = Track.find(id)
-      track.update_attributes! tag
-      track.write_tags
-    end
+
+    tracks = Track.find(ids)
+    tracks.update_attributes! tag
+    tracks.each {|track| track.write_tags }
+
     body params[:check].inspect
   end
 
@@ -147,7 +147,7 @@ class Boombox < Sinatra::Base
     end
   end
 
-  # Disable layout if request is via pjax 
+  # Disable layout if request is via pjax
   before do
     @default_layout = false if request.pjax?
   end
