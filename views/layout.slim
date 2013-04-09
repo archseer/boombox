@@ -1,3 +1,4 @@
+doctype html
 html
   head
     meta charset="utf-8"
@@ -23,18 +24,22 @@ html
 
   body
     #container
-      #header
-        form#search onsubmit="return false"
-          input id="searchbox" name="q" type="text" size="10" placeholder="Search"
-          i class="icon-search"
-        button class="edit-button" Edit tags
+      #header.cf
+        #toolbar.cf
+
+          form#search onsubmit="return false"
+            input id="searchbox" name="q" type="text" size="10" placeholder="Search..."
+            i class="icon-search"
+          #player-buttons
+          button class="edit-button" Edit tags
         #audio-container
           audio controls="" preload="none" width="640" height="30" id="player" src="http://archive.org/download/DWK159/Mr._Moods_-_03_-_Burst_Into_Flames.mp3"
         .clear
 
       #body
         #menu
-          ul
+          h1 Library
+          ul.cf
             a href="/"
               li class=("selected" if request.path_info == "/")
                 i class="icon-music"
@@ -60,6 +65,7 @@ html
               li class=("selected" if request.path_info.starts_with? "/torrent")
                 i class="icon-download-alt"
                 | Torrent
-            .clear
+
+          h1 Playlists
         #contents class=(request.path[1..-1])
           == yield

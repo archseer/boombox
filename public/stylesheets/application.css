@@ -2,31 +2,56 @@
 
 .clear {clear:both}
 
+.cf:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
 i {-webkit-font-smoothing: antialiased} /* stands for icon not italic */
 
 body {overflow: hidden}
 
 #container {
   font: 400 13px/21px Open Sans;
-  border-top: 1px solid #111;
+  border-top: 1px solid #252525;
   overflow: hidden;
   height: 100%;
 }
 
 #header {
-  height: 42px;
-  border-top: 1px solid #727272;
-  border-bottom: 1px solid #161616;
-  background-image: linear-gradient(top, rgb(88,88,88) 0%, rgb(44,44,44) 100%);
-  background-image: -o-linear-gradient(top, rgb(88,88,88) 0%, rgb(44,44,44) 100%);
-  background-image: -moz-linear-gradient(top, rgb(88,88,88) 0%, rgb(44,44,44) 100%);
-  background-image: -webkit-linear-gradient(top, rgb(88,88,88) 0%, rgb(44,44,44) 100%);
-  background-image: -ms-linear-gradient(top, rgb(88,88,88) 0%, rgb(44,44,44) 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgb(88,88,88)), color-stop(1, rgb(44,44,44)));
+  height: 103px; /* 55 + 48 */
+}
+
+#toolbar {
+  padding: 0 10px;
+  line-height: 53px; /* - border */
+  height: 55px;
+
+  border-top: 1px solid #ececec;
+  border-bottom: 1px solid #252525;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #d4d4d4), color-stop(1, #a8a8a8));
+  background-image: -o-linear-gradient(top, #d4d4d4 0%, #a8a8a8 100%);
+  background-image: -moz-linear-gradient(top, #d4d4d4 0%, #a8a8a8 100%);
+  background-image: -ms-linear-gradient(top, #d4d4d4 0%, #a8a8a8 100%);
+  background-image: -webkit-linear-gradient(top, #d4d4d4 0%, #a8a8a8 100%);
+  background-image: linear-gradient(top, #d4d4d4 0%, #a8a8a8 100%);
+
+  box-shadow: 0 1px 3px rgba(0,0,0, .3);
+  position: relative;
+  z-index: 1;
+}
+
+#audio-container {
+  height: 48px;
+  background-color: #383b44;
 }
 
 #body {
-  top: 43px;
+  top: 104px;
   bottom: 0;
   width: 100%;
   position: absolute;
@@ -34,30 +59,34 @@ body {overflow: hidden}
 
 /* searchbox */
 #search input {
-  float: left;
-  width: 160px;
-  height: 21px;
-  margin: 9px 0 0 10px;
+  width: 200px;
+  font-size: 14px;
   border-radius: 15px;
   outline: none;
-  border: none;
-  padding-left: 20px;
+  border: 1px solid #8e8e8e;
+
+  padding-left: 24px;
   -webkit-appearance: none;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
+  box-shadow: inset 0px 1px 3px -1px rgba(0,0,0,.4);
+
+}
+#search {
+  float: right;
+  padding-left: 25px;
+  border-left: 1px solid #d5d5d5;
+  position: relative;
 }
 
 #search i {
   position: absolute;
-  left: 16px;
-  top: 14px;
+  top: 19px;
+  left: 34px;
   color: #808080;
 }
 
-#header > button {
-  float: left;
-  /* bathax for now */
-  margin-top: 10px;
-  margin-left: 10px;
+#player-buttons {
+  float: right;
+  border-right: 1px solid #a5a5a5;
 }
 
 /* sidebar */
@@ -71,7 +100,18 @@ body {overflow: hidden}
   font-weight: 600;
   color: #515765;
 
-  padding-top: 26px;
+  padding-top: 15px;
+}
+
+#menu h1 {
+  margin-left: 15px;
+  margin-bottom: 7px;
+  text-transform: uppercase;
+  color: #828a9f;
+}
+
+#menu h1:nth-child(n+2) { /* don't apply to first item */
+  margin-top: 30px;
 }
 
 #menu ul a {
@@ -82,7 +122,7 @@ body {overflow: hidden}
 #menu ul li {
   display: block;
 
-  padding: 5px 15px;
+  padding: 4px 15px;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
 
@@ -372,13 +412,6 @@ label, legend {
 
 
 /* audio player */
-#audio-container {
-  float: left;
-  width:560px;
-  height:30px;
-  /*bathaxx*/
-  margin-top: 6px;
-}
 .mejs-timeseparator {margin: 0 3px}
 .mejs-controls {background: none !important}
 
