@@ -30,8 +30,15 @@ html
           form#search onsubmit="return false"
             input id="searchbox" name="q" type="text" size="10" placeholder="Search..."
             i class="icon-search"
+          #volume
+            i.icon-volume-down
+            #volume-bar
+            i.icon-volume-up
+          /button class="edit-button" style='float:left' Edit tags
           #player-buttons
-          button class="edit-button" Edit tags
+            button.backward : i.icon-backward
+            button.play : i.icon-play
+            button.forward : i.icon-forward
         #audio-container
           audio controls="" preload="none" width="640" height="30" id="player" src="http://archive.org/download/DWK159/Mr._Moods_-_03_-_Burst_Into_Flames.mp3"
         .clear

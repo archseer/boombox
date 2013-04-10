@@ -19,14 +19,4 @@ class Hash # instead of hash[:key][:key], hash.key.key
     return self[key] if key
     super
   end
-
-  # deletes each of the objects without returning the values. should be faster than below.
-  def delete_keys *args
-    args.each {|arg| self.delete(arg)}
-  end
-
-  # deletes each of the objects and returns their values in an array
-  def delete_each *args
-    args.each_with_object([]) {|arg, obj| obj << self.delete(arg)}
-  end
 end

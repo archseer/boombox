@@ -11,95 +11,6 @@
   position: absolute;
 }
 
-.mejs-embed, .mejs-embed body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background: #000;
-  overflow: hidden;
-}
-
-.mejs-container-fullscreen {
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  overflow: hidden;
-  z-index: 1000;
-}
-.mejs-container-fullscreen .mejs-mediaelement,
-.mejs-container-fullscreen video {
-  width: 100%;
-  height: 100%;
-}
-
-/* Start: LAYERS */
-.mejs-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.mejs-mediaelement {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-.mejs-poster {
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow:hidden;
-}
-.mejs-poster img {
-  border: 0;
-  padding: 0;
-  border: 0;
-  display: block;
-  width: auto;
-  height: 100%;
-}
-.mejs-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.mejs-overlay-play {
-  cursor: pointer;
-}
-.mejs-overlay-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100px;
-  height: 100px;
-  margin: -50px 0 0 -50px;
-  background: url(bigplay.png) no-repeat;
-}
-.mejs-overlay:hover .mejs-overlay-button{
-  background-position: 0 -100px ;
-}
-.mejs-overlay-loading {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 80px;
-  height: 80px;
-  margin: -40px 0 0 -40px;
-}
-.mejs-overlay-loading span {
-  display:block;
-  width: 80px;
-  height: 80px;
-  background: #3A3C3D url(loading.gif) 50% 50% no-repeat;
-  border-radius: 40px;
-}
-
-/* End: LAYERS */
-
 /* Start: CONTROL BAR */
 .mejs-container .mejs-controls {
   position: absolute;
@@ -109,12 +20,6 @@
   left: 0;
   height: 30px;
   width: 100%;
-  background: #3a3c3d url(background.png);
-  background: -webkit-linear-gradient(#4a4c4d, #2b2d2d); 
-  background: -moz-linear-gradient(#4a4c4d, #2b2d2d);
-  background: -o-linear-gradient(#4a4c4d, #2b2d2d); 
-  background: -ms-linear-gradient(#4a4c4d, #2b2d2d);  
-  background: linear-gradient(#4a4c4d, #2b2d2d);  
   list-style: none;
 }
 
@@ -506,7 +411,7 @@
   right: -10px;
   width: 130px;
   height: 100px;
-  background: #3A3C3D;  
+  background: #3A3C3D;
   border: solid 1px transparent;
   padding: 10px;
   overflow: hidden;
@@ -572,7 +477,7 @@
   background: -moz-linear-gradient(top, rgba(74, 76, 77, 0.7), rgba(0, 0, 0, 0.7));
   background: -o-linear-gradient(top, rgba(74, 76, 77, 0.7), rgba(0, 0, 0, 0.7));
   background: -ms-linear-gradient(top, rgba(74, 76, 77, 0.7), rgba(0, 0, 0, 0.7));
-  background: linear-gradient(top, rgba(74, 76, 77, 0.7), rgba(0, 0, 0, 0.7));  
+  background: linear-gradient(top, rgba(74, 76, 77, 0.7), rgba(0, 0, 0, 0.7));
   overflow: hidden;
   border: 0;
 }
@@ -599,7 +504,7 @@
   background: -moz-linear-gradient(top, rgba(102,102,102,0.7), rgba(50,50,50,0.6));
   background: -o-linear-gradient(top, rgba(102,102,102,0.7), rgba(50,50,50,0.6));
   background: -ms-linear-gradient(top, rgba(102,102,102,0.7), rgba(50,50,50,0.6));
-  background: linear-gradient(rgba(102,102,102,0.7), rgba(50,50,50,0.6)); 
+  background: linear-gradient(rgba(102,102,102,0.7), rgba(50,50,50,0.6));
 }
 .mejs-chapters .mejs-chapter .mejs-chapter-block .ch-title{
   font-size: 12px;
@@ -736,7 +641,7 @@
   height: 1px;
   font-size: 0;
   margin: 5px 6px;
-  background: #333; 
+  background: #333;
 }
 
 .mejs-contextmenu .mejs-contextmenu-item {
@@ -744,7 +649,7 @@
   font-size: 12px;
   padding: 4px 6px;
   cursor: pointer;
-  color: #333;  
+  color: #333;
 }
 .mejs-contextmenu .mejs-contextmenu-item:hover {
   background: #2C7C91;

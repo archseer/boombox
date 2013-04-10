@@ -1,13 +1,13 @@
 module Tagger
   def self.generate_db sinatra
-    files = Dir["#{File.dirname(__FILE__)}/../public/music/**{,/*/**}/*.mp3"] #symlink follow
+    files = Dir["#{File.dirname(__FILE__)}/../public/music/**/*.mp3"].uniq #symlink follow {,/*/**}
     files.each {|filename|
       puts filename
       file = TagLib::MPEG::File.new filename
       tag = file.id3v2_tag
       old_tag = file.id3v1_tag
 
-      disc = tag.frame_list('TPOS').first 
+      disc = tag.frame_list('TPOS').first
       disc = disc ? disc.to_s.split('/') : [nil, nil]
 
       t = Track.new(
@@ -26,7 +26,7 @@ module Tagger
         :bpm => tag.frame_list('TBPM').first.to_s.to_i,
       )
       t.filename = sinatra.relative_to filename
-        
+
       # pwd is project root
       # %x{bin/waveform --width 1200 --height 180 --color-bg ffffffff --color-center 00000000 --color-outer 00000000 "public/#{t.filename}" "public/waveforms/#{t.id}.png"}
 

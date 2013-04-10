@@ -58,7 +58,7 @@ class window.Player
 
   setCurrentTime: (t) ->
     @instance.setCurrentTime(t)
-    
+
   isPlaying: ->
     !@mediaElement.paused
 

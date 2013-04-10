@@ -37,7 +37,7 @@ $(document).ready ->
   previousSearch = "" # we check if the query has actually changed
   $('#searchbox').keyup ->
     value = $(this).val()
-    if value isnt previousSearch #and value.length >= 3 #minlength 
+    if value isnt previousSearch #and value.length >= 3 #minlength
       $.post 'ajax/search', { query: value }, (data) ->
         previousSearch = value
         $('#table tbody').html(data)
@@ -84,7 +84,7 @@ $(document).ready ->
   $('#menu a').pjax('#contents')
 
   $('#contents').on 'pjax:error', (e, xhr, err)->
-    $(this).html "Something went wrong: #{err}" 
+    $(this).html "Something went wrong: #{err}"
 
   $('#contents').on 'pjax:timeout', ->
     $(this).html "The request has timed out. Your connection may be down."

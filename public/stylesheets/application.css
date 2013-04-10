@@ -1,4 +1,4 @@
-* {box-sizing: border-box; -moz-box-sizing: border-box; ; -webkit-box-sizing: border-box}
+* {box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box}
 
 .clear {clear:both}
 
@@ -27,7 +27,7 @@ body {overflow: hidden}
 }
 
 #toolbar {
-  padding: 0 10px;
+  padding-right: 10px;
   line-height: 53px; /* - border */
   height: 55px;
 
@@ -43,11 +43,17 @@ body {overflow: hidden}
   box-shadow: 0 1px 3px rgba(0,0,0, .3);
   position: relative;
   z-index: 1;
+
+  /*
+  box-shadow: 0 1px 3px rgba(0,0,0, .3), inset 0 15px 50px -30px rgba(0,0,0,.4), inset 0 -15px 50px -20px rgba(0,0,0,.4);
+  */
 }
 
 #audio-container {
   height: 48px;
   background-color: #383b44;
+
+  /* background: linear-gradient(rgb(74, 76, 77), rgb(43, 45, 45)) repeat scroll 0% 0% transparent; */
 }
 
 #body {
@@ -84,9 +90,72 @@ body {overflow: hidden}
   color: #808080;
 }
 
-#player-buttons {
-  float: right;
+#volume {
+  width: 152px;
+  float: left;
   border-right: 1px solid #a5a5a5;
+  text-align: center;
+  font-size: 14px;
+
+  color: #666;
+  text-shadow: 0 -1px 0 #000, 0 1px 0 #fff;
+}
+
+#volume-bar {
+  display: inline-block;
+  
+  border: 1px solid #858585;
+  
+  background-image: -moz-linear-gradient(bottom, #bebebe, #fff);
+  background-image: -webkit-linear-gradient(bottom, #bebebe, #fff);
+  width: 80px;
+  height: 10px;
+  border-radius: 5px;
+  margin: 0 8px;
+}
+
+#player-buttons {
+  border-left: 1px solid #d5d5d5;
+  border-right: 1px solid #a5a5a5;
+  position: relative;
+  text-align: center;
+  
+  margin-left: 152px;
+  margin-right: 226px; /* HAXX search width */
+}
+
+/*  HAXX TODO center i inside button! look into redbird code */
+#player-buttons button {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  padding: 0;
+  margin: 0 4px;  
+  
+  color: #666;
+  text-shadow: 0 -1px 0 #222, 0 1px 0 #fff;
+  background: -moz-linear-gradient(bottom, #aaa 0%, #ccc 40%, #eee 100%);
+  background: -webkit-linear-gradient(bottom, #aaa 0%, #ccc 40%, #eee 100%);
+  background: linear-gradient(bottom, #aaa 0%, #ccc 40%, #eee 100%);
+  border: 1px solid #888;
+
+  box-sizing: content-box; -moz-box-sizing: content-box; -webkit-box-sizing: content-box;
+  box-shadow: 0 1px 0 rgba(255,255,255,.35);
+ 
+}
+
+#player-buttons button.play {
+  font-size: 16px;
+  width: 40px;
+  height: 40px;
+}
+
+#player-buttons button:hover {
+  color: #888;
+}
+
+#player-buttons button:active {
+  background: #bbb;
 }
 
 /* sidebar */
@@ -413,7 +482,6 @@ label, legend {
 
 /* audio player */
 .mejs-timeseparator {margin: 0 3px}
-.mejs-controls {background: none !important}
 
 /****************************
     PAGES
@@ -476,24 +544,16 @@ label, legend {
 
 /* Mobile version */
 @media only screen and (max-width: 860px) {
-  #audio-container {
-    float: none;
-    clear: both;
-    margin: 0 auto;
-    z-index: 100;
-    width: auto;
-  }
-  #header {height: auto;}
-  #body {top: 33px;}
-  #menu {float: none; width: 100%; height: auto;}
-  #menu a li {float: left; padding: 15px 10px 10px; height: 77px; width: 85px;}
-  #menu a li h1 {font-size: 11px;}
-  #menu a li i {font-size: 26px}
-  #menu ul li.selected:after {display: none;}
+  #menu {width: 100%;}
+  #menu a li {float: left; font-size: 11px;}
+  #menu h1 {display: none}
+
+  #player-buttons {margin-right: 0; border-right: none}
+  
   #contents {
     margin-left: 0;
     position: absolute;
-    top: 77px;
+    top: 60px;
     bottom: 0px;
     width: 100%;
   }

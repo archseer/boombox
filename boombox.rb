@@ -3,7 +3,6 @@ Bundler.require
 
 MongoMapper.database = "boombox"
 
-require 'active_support/core_ext'
 require 'fileutils'
 require 'sinatra/reloader'
 require 'sinatra/json'
@@ -12,7 +11,6 @@ require "better_errors"
 require_relative 'lib/core_ext/hash'
 require_relative 'helpers/sinatra'
 require_relative 'models/track'
-require 'taglib'
 require 'pathname'
 require 'json'
 
@@ -119,11 +117,10 @@ class Boombox < Sinatra::Base
     ids = JSON.parse(tag.delete 'id') # parse the stringified ID array
 
     if ids.length > 1
-      tag.delete_keys 'title' # delete per-track specific title
+      tag.delete 'title' # delete per-track specific title
       # delete any keys that aren't checkmarked
       tag.delete_if {|key, value| !params[:check].include? key }
     end
-
 
     tracks = Track.find(ids)
     tracks.update_attributes! tag

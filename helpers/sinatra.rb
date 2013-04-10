@@ -13,8 +13,4 @@ module WebHelpers
       slim(:"#{template}", options)
     end
   end
-
-  def modal(title, template)
-    partial :modal, :locals => {:title => title, :template => template}
-  end
 end

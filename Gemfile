@@ -5,7 +5,7 @@ gem 'eventmachine'
 gem 'bson_ext'
 gem 'mongo_mapper', :git => 'git://github.com/jnunemaker/mongomapper.git'
 gem 'rufus-scheduler'
-gem 'activesupport'
+gem 'activesupport', :require => 'active_support/core_ext'
 
 gem "em-http-request", :git => 'git://github.com/igrigorik/em-http-request.git'
 
@@ -22,7 +22,7 @@ gem 'json'
 
 
 # music utils
-gem 'taglib-ruby'
+gem 'taglib-ruby', :require => 'taglib'
 
 group :development do
   gem "better_errors"
