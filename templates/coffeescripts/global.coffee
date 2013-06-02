@@ -96,4 +96,6 @@ $(document).ready ->
     # adds the link title to class of contents for easy styling.
     $(this).removeClass().addClass $(e.relatedTarget).attr("href").slice(1)
 
+  Boombox.registerHooks()
+
   return true

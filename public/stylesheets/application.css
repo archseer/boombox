@@ -49,6 +49,43 @@ body {overflow: hidden}
   */
 }
 
+#statusbar {
+  height: 48px;
+  line-height: 48px;
+  background-color: #fff;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+/* fake the split */
+#side-status {
+  /* TODO merge with sidebar styles */
+  float: left;
+  width: 210px;
+  height: 100%;
+  background-color: #e3eafa;
+  border-right: 1px solid #a4b0ca;
+  text-shadow: 0 1px 0 #fff;
+  font-weight: 600;
+  color: #515765;
+
+  padding-top: 15px;
+
+  border-top: 1px solid #a5b1c9;
+}
+#main-status {
+  border-top: 1px solid #d1d5e1;
+  margin-left: 210px;
+  color: #959db0;
+   font-weight: 600;
+}
+
+#side-status, #main-status {
+  padding: 0 15px;
+}
+
 #audio-container {
   height: 48px;
   background-color: #383b44;
@@ -58,7 +95,7 @@ body {overflow: hidden}
 
 #body {
   top: 104px;
-  bottom: 0;
+  bottom: 48px;
   width: 100%;
   position: absolute;
 }
@@ -144,7 +181,7 @@ body {overflow: hidden}
  
 }
 
-#player-buttons button.play {
+#player-buttons button.playpause {
   font-size: 16px;
   width: 40px;
   height: 40px;
@@ -170,6 +207,7 @@ body {overflow: hidden}
   color: #515765;
 
   padding-top: 15px;
+  position: relative; /* for now-playing */
 }
 
 #menu h1 {
@@ -215,6 +253,39 @@ body {overflow: hidden}
 #menu ul li h1 {font-size: 14px; display: inline-block;}
 
 
+
+#now-playing {
+  position: absolute;
+  bottom: 0; left: 0;
+}
+
+#menu #now-playing .title {
+  text-transform: uppercase;
+  font-size: 14px;
+  text-align: center;
+  margin: 0;
+  height: 26px;
+  line-height: 26px;
+  background-color: rgb(212, 218, 233);
+  border-top: 1px solid rgb(186, 197, 219);
+  color: #525866;
+  text-shadow: 0 1px 0 rgba(255,255,255,.9);
+}
+
+#now-playing .cover img {
+  display: block;
+  max-width: 100%;
+  /* above doesn't work in moz, so.. */ width: 210px; min-height: 200px;
+  background-color: #333;
+}
+#now-playing .cover {position: relative;}
+#now-playing .cover:before {
+    content: ' ';   
+    box-shadow: inset 0 0 10px #000;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
 /* table */
 #contents {
   margin-left: 120px;
@@ -237,6 +308,9 @@ body {overflow: hidden}
   font-weight: 600;
   text-shadow: 0 1px 0 #f9f9f9;
 
+  border-top: 1px solid #c8c4d2;
+  border-bottom: 1px solid #c8c4d2;
+
   background-image: linear-gradient(bottom, lightGrey, #F3F3F3);
   background-image: -o-linear-gradient(bottom, lightGrey, #F3F3F3);
   background-image: -moz-linear-gradient(bottom, lightGrey, #F3F3F3);
@@ -251,8 +325,6 @@ body {overflow: hidden}
 
 #table td, #table th {
   text-align: left;
-  border-top: 1px solid #c8c4d2;
-  border-bottom: 1px solid #c8c4d2;
   padding: 2px; /* 3 */
 }
 
@@ -262,11 +334,6 @@ body {overflow: hidden}
   border-bottom-color: #2674f0;
   border-top-color: #2674f0;
   text-shadow: 0px 0px 1px rgba(0,0,0,.5); /* this should be left at least on track_num:after (icon) */
-}
-
-#table tr.active td {
-  border-bottom-color: #2674f0;
-  border-top-color: #2674f0;
 }
 
 #table .cover {
@@ -279,11 +346,6 @@ body {overflow: hidden}
   margin: 3px 10px 0;
   vertical-align: top; /* prevent the cell collapse */
   border: 1px solid #111;
-}
-
-#table .active .cover { /* ignore the cover border */
-  border-bottom-color: #c8c4d2;
-  border-top-color: #c8c4d2;
 }
 
 #table .track_num  {

@@ -14,9 +14,10 @@ html
     script type="text/javascript" src="/jquery-pjax.js"
     script type="text/javascript" src='/toe.js'
 
-    link rel='stylesheet' href='./me-js/skin/mediaelementplayer.css'
+    link rel='stylesheet' href='./mediaelementplayer.css'
+    / me-js/skin/
     script src='./me-js/mediaelement.js'
-    script src='./me-js/mediaelementplayer.js'
+    script src='./me-js/slim.js'
 
     script type="text/javascript" src='/coffeescripts/ELEMENT.coffee'
     script type="text/javascript" src="/coffeescripts/global.coffee"
@@ -37,7 +38,7 @@ html
           /button class="edit-button" style='float:left' Edit tags
           #player-buttons
             button.backward : i.icon-backward
-            button.play : i.icon-play
+            button.playpause : i.icon-play
             button.forward : i.icon-forward
         #audio-container
           audio controls="" preload="none" width="640" height="30" id="player" src="http://archive.org/download/DWK159/Mr._Moods_-_03_-_Burst_Into_Flames.mp3"
@@ -74,5 +75,13 @@ html
                 | Torrent
 
           h1 Playlists
+
+          #now-playing
+            .title Now Playing
+            .cover: img src=''
         #contents class=(request.path[1..-1])
           == yield
+
+      #statusbar
+        #side-status
+        #main-status Songs: #{Track.count}

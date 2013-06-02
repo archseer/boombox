@@ -1,21 +1,37 @@
 class window.Player
   constructor: ->
     @instance = new MediaElementPlayer('audio', {
-      audioWidth: '100%',
+      width: '100%',
       features: ['playpause','progress','current','duration','volume'],
       timeAndDurationSeparator: ' <span class="mejs-timeseparator"> / </span> ',
       success: (mediaElement, domObject) =>
         # keep track of the mediaElement object for additional callbacks
-        @mediaElement = mediaElement
+        #@mediaElement = mediaElement
+
+        # Speed Up: Make elements and add their class the right way, but ugly.
+        $('.mejs-volume-button button').append('<i class="icon-volume-up"></i><i class="icon-volume-off"></i>')
+        $('.mejs-playpause-button button').append('<i class="icon-play"></i><i class="icon-pause"></i>')
+        $('.mejs-stop-button button').append('<i class="icon-stop"></i>')
+        $('.mejs-fullscreen-button button').append('<i class="icon-fullscreen"></i>')
+        $('.mejs-unfullscreen-button button').append('<i class="icon-resize-small"></i>')
+        $('.mejs-loop-button button').append('<i class="icon-repeat"></i>')
 
         # Setup basic event listeners
-        @addEventListener('pause', (=> @nowPlaying.replaceClass('playing', 'paused')), false)
-        @addEventListener('play', (=> @nowPlaying.replaceClass('paused', 'playing')), false)
-        @addEventListener('ended', (=> @playNextSong() ), false)
+        mediaElement.addEventListener('pause', (=> @nowPlaying.replaceClass('playing', 'paused')), false)
+        mediaElement.addEventListener('play', (=> @nowPlaying.replaceClass('paused', 'playing')), false)
+        mediaElement.addEventListener('ended', (=> @playNextSong() ), false)
 
-        Player.triggerCallbacks()
+        mediaElement.addEventListener('play', =>
+          $.get "api/track/#{@songID}", (data) ->
+            $('#now-playing .cover img').attr 'src', data.cover
+        , false)
+
     })
 
+    @mediaElement = @instance.media # alias
+
+    Player.triggerCallbacks()
+    
     @nowPlaying = undefined # Not sure how to track properly the nowPlaying row item, here?...
     # substitute @nowPlaying with $("#song-#{@songID}")?
     @songID = undefined
@@ -36,7 +52,7 @@ class window.Player
   # weird END
 
   addEventListener: (type, listener, useCapture) ->
-    @mediaElement.addEventListener type, listener, useCapture
+    @instance.media.addEventListener type, listener, useCapture
 
   # Allows us to register a set of event listeners which we can then remove by calling unloadTempEventListeners()
   registerTempEventListener: (type, listener, useCapture) ->
@@ -45,7 +61,7 @@ class window.Player
 
   unloadTempEventListeners: ->
     $(@tempEventListeners).each (index, el) =>
-      @mediaElement.removeEventListener(el.type, el.listener, el.useCapture)
+      @instance.media.removeEventListener(el.type, el.listener, el.useCapture)
 
   play: ->
     @instance.play()
@@ -60,7 +76,7 @@ class window.Player
     @instance.setCurrentTime(t)
 
   isPlaying: ->
-    !@mediaElement.paused
+    !@instance.media.paused
 
   playSong: (e) -> # e is a row in the list of songs
     $.get "api/track/#{$(e).attr('id')}", (data) =>
@@ -73,3 +89,32 @@ class window.Player
 
   playNextSong: ->
     @playSong @nowPlaying.next()
+
+
+  registerHooks: ->
+    icon = $('#player-buttons .playpause i')
+
+    # addEventListener doesn't work for FF... WTF?
+    @addEventListener('play', ->
+      icon.removeClass('icon-play').addClass('icon-pause')
+    , false)
+    @addEventListener('playing', ->
+      icon.removeClass('icon-play').addClass('icon-pause')
+    , false)
+
+    @addEventListener('pause', ->
+      icon.removeClass('icon-pause').addClass('icon-play')
+    , false)
+    @addEventListener('paused', ->
+      icon.removeClass('icon-pause').addClass('icon-play')
+    , false)
+
+    playButton = $('#player-buttons .playpause')
+
+    playButton.click (e) =>
+      e.preventDefault()
+
+      if @isPlaying()
+        @pause()
+      else 
+        @play()

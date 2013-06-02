@@ -1,6 +1,7 @@
 .mejs-container {
   position: relative;
   min-width:150px;
+  width: 100%;
   border-left: none;
   font-family: sans-serif;
   text-align: left;
