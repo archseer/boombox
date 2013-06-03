@@ -20,18 +20,12 @@ class window.Player
         mediaElement.addEventListener('pause', (=> @nowPlaying.replaceClass('playing', 'paused')), false)
         mediaElement.addEventListener('play', (=> @nowPlaying.replaceClass('paused', 'playing')), false)
         mediaElement.addEventListener('ended', (=> @playNextSong() ), false)
-
-        mediaElement.addEventListener('play', =>
-          $.get "api/track/#{@songID}", (data) ->
-            $('#now-playing .cover img').attr 'src', data.cover
-        , false)
-
     })
 
     @mediaElement = @instance.media # alias
 
     Player.triggerCallbacks()
-    
+
     @nowPlaying = undefined # Not sure how to track properly the nowPlaying row item, here?...
     # substitute @nowPlaying with $("#song-#{@songID}")?
     @songID = undefined
@@ -82,10 +76,12 @@ class window.Player
     $.get "api/track/#{$(e).attr('id')}", (data) =>
       @pause()
       @setSrc("/#{data.filename}")
+      $("#player")[0].load()
       @play()
       @songID = $(e).attr 'id'
       @nowPlaying.removeClass('playing paused') if @nowPlaying
       @nowPlaying = e.addClass 'playing'
+      $('#now-playing .cover img').attr 'src', data.cover
 
   playNextSong: ->
     @playSong @nowPlaying.next()
@@ -116,5 +112,5 @@ class window.Player
 
       if @isPlaying()
         @pause()
-      else 
+      else
         @play()

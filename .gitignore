@@ -13,8 +13,8 @@ test/version_tmp
 tmp
 
 # Music files
-public/music/
-public/waveforms/
+public/music
+public/waveforms
 
 # YARD artifacts
 .yardoc
