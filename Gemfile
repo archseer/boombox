@@ -1,4 +1,4 @@
-source :rubygems
+source "https://rubygems.org"
 
 # Main Platform
 gem 'eventmachine'
