@@ -88,40 +88,6 @@
 }
 /* End: Time (current / duration) */
 
-
-/* Start: Play/pause */
-.mejs-container .mejs-controls .mejs-playpause-button {
-  cursor: pointer;
-  border-left: none;
-  width: 30px;
-}
-.mejs-controls .mejs-playpause-button button {
-  margin:7px 8px;
-}
-.mejs-controls .mejs-play button {
-  background-position:0 0;
-}
-.mejs-controls .mejs-play:hover button {
-  background-position:0 -32px;
-}
-.mejs-controls .mejs-pause button {
-  background-position:0 -16px;
-}
-.mejs-controls .mejs-pause:hover button {
-  background-position:0 -48px;
-}
-/* End: Play/pause */
-
-
-/* Stop */
-.mejs-controls .mejs-stop button {
-  background-position: -112px 0;
-}
-.mejs-controls .mejs-stop:hover button {
-  background-position: -112px -32px;
-}
-/* End: Play/pause */
-
 /* Start: Progress bar */
 .mejs-controls div.mejs-time-rail {
   width: 200px;
