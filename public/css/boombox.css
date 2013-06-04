@@ -85,6 +85,7 @@ footer.statusbar {
 }
 
 #audio-container {
+  padding: 0 10px;
   height: 48px;
   background-color: #383b44;
 
@@ -136,17 +137,33 @@ section.main {
   text-shadow: 0 -1px 0 #000, 0 1px 0 #fff;
 }
 
-#volume-bar {
+.volume-bar {
   display: inline-block;
 
-  border: 1px solid #858585;
+  border: 1px solid #7c7c7c;
+  border-top-color: #6b6b6b;
+  border-bottom-color: #9d9d9d;
 
-  background-image: -moz-linear-gradient(bottom, #bebebe, #fff);
-  background-image: -webkit-linear-gradient(bottom, #bebebe, #fff);
+  background-image: -moz-linear-gradient(bottom, #ababab, #8d8d8d);
+  background-image: -webkit-linear-gradient(bottom, #ababab, #8d8d8d);
   width: 80px;
   height: 10px;
   border-radius: 5px;
   margin: 0 8px;
+}
+
+.volume-bar-slider {
+  border: 1px solid #858585;
+
+  background-image: -moz-linear-gradient(bottom, #bebebe, #fff);
+  background-image: -webkit-linear-gradient(bottom, #bebebe, #fff);
+  width: 50px;
+  height: 10px;
+  border-radius: 5px;
+
+  position: relative;
+  top: -1px;
+  left: -1px;
 }
 
 #player-buttons {
@@ -183,6 +200,14 @@ section.main {
   font-size: 16px;
   width: 40px;
   height: 40px;
+}
+
+/* icons aren't entirely centered, pixel perfect shift them! */
+#player-buttons button.back i {
+  margin-left: -4px;
+}
+#player-buttons button.next i {
+  margin-right: -2px;
 }
 
 #player-buttons button:hover {
@@ -305,14 +330,13 @@ section.main {
   font-weight: 600;
   text-shadow: 0 1px 0 #f9f9f9;
 
-  border-top: 1px solid #c8c4d2;
+  /*border-top: 1px solid #c8c4d2;*/
   border-bottom: 1px solid #c8c4d2;
 
   background-image: linear-gradient(bottom, lightGrey, #F3F3F3);
   background-image: -o-linear-gradient(bottom, lightGrey, #F3F3F3);
   background-image: -moz-linear-gradient(bottom, lightGrey, #F3F3F3);
   background-image: -webkit-linear-gradient(bottom, lightGrey, #F3F3F3);
-  background-image: -ms-linear-gradient(bottom, lightGrey, #F3F3F3);
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, lightGrey), color-stop(1,#F3F3F3))
 }
 
