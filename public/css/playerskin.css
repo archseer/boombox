@@ -21,6 +21,7 @@
   margin-right: 6px;
   height: 24px;
   font-size: 11px;
+  margin-top: 5px;
 }
 
 .mejs-controls .mejs-button button {
@@ -50,6 +51,7 @@
   box-sizing: content-box;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
+  margin-top: 6px;
 }
 .mejs-container .mejs-controls .mejs-time span {
   display: block;
@@ -59,7 +61,7 @@
 
 /*
 
-  FontAwesome Buttons override  
+  FontAwesome Buttons override
 
 */
 /* Start: Play/pause */
@@ -134,6 +136,7 @@ end
 }
 .mejs-controls .mejs-time-rail .mejs-time-total {
   background: #494d59;
+  margin-top: 8px;
 }
 
 .mejs-controls .mejs-time-rail .mejs-time-loaded {
