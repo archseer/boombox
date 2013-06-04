@@ -18,6 +18,11 @@ body {
   border-top: 1px solid #252525;
   overflow: hidden;
   height: 100%;
+
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 header {
@@ -45,6 +50,12 @@ header {
   /*
   box-shadow: 0 1px 3px rgba(0,0,0, .3), inset 0 15px 50px -30px rgba(0,0,0,.4), inset 0 -15px 50px -20px rgba(0,0,0,.4);
   */
+}
+
+#toolbar i {
+  font-size: 14px;
+  color: #666;
+  text-shadow: 0 -1px 0 #000, 0 1px 0 #fff;
 }
 
 footer.statusbar {
@@ -112,6 +123,7 @@ section.main {
   box-shadow: inset 0px 1px 3px -1px rgba(0,0,0,.4);
 
 }
+
 #search {
   float: right;
   padding-left: 25px;
@@ -131,10 +143,16 @@ section.main {
   float: left;
   border-right: 1px solid #a5a5a5;
   text-align: center;
-  font-size: 14px;
+}
 
-  color: #666;
-  text-shadow: 0 -1px 0 #000, 0 1px 0 #fff;
+#controls {
+  margin-left: 12px;
+  width: 80px;
+  float: left;
+  text-align: center;
+}
+#controls i {
+  margin: 0 12px;
 }
 
 .volume-bar {
@@ -192,7 +210,6 @@ section.main {
   margin-right: 226px; /* HAXX search width */
 }
 
-/*  HAXX TODO center i inside button! look into redbird code */
 #player-buttons button {
   width: 30px;
   height: 30px;
@@ -209,20 +226,24 @@ section.main {
 
   box-sizing: content-box; -moz-box-sizing: content-box; -webkit-box-sizing: content-box;
   box-shadow: 0 1px 0 rgba(255,255,255,.35);
-
 }
 
 #player-buttons button.playpause {
-  font-size: 16px;
   width: 40px;
   height: 40px;
 }
+#player-buttons button.playpause i {
+  font-size: 15px;
+}
 
+/*  HAXX TODO center i inside button! look into redbird code */
 /* icons aren't entirely centered, pixel perfect shift them! */
 #player-buttons button.back i {
+  font-size: 11px;
   margin-left: -4px;
 }
 #player-buttons button.next i {
+  font-size: 11px;
   margin-right: -2px;
 }
 
@@ -334,10 +355,6 @@ section.main {
 #table {
   background-color: #fff;
   width: 100%;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
   cursor: default;
 }
 
