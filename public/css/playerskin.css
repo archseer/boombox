@@ -64,18 +64,6 @@
   FontAwesome Buttons override
 
 */
-/* Start: Play/pause */
-.mejs-controls .mejs-play .icon-pause {
-  cursor: pointer;
-  display: none;
-}
-.mejs-controls .mejs-pause button {
-  left: -2px;
-}
-.mejs-controls .mejs-pause .icon-play {
-  display: none;
-}
-/* End: Play/pause */
 
 /* Start: Mute/Volume */
 .mejs-controls .mejs-mute .icon-volume-off {

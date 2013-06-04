@@ -11,10 +11,7 @@ class window.Player
 
         # Speed Up: Make elements and add their class the right way, but ugly.
         $('.mejs-volume-button button').append('<i class="icon-volume-up"></i><i class="icon-volume-off"></i>')
-        $('.mejs-playpause-button button').append('<i class="icon-play"></i><i class="icon-pause"></i>')
         $('.mejs-stop-button button').append('<i class="icon-stop"></i>')
-        $('.mejs-fullscreen-button button').append('<i class="icon-fullscreen"></i>')
-        $('.mejs-unfullscreen-button button').append('<i class="icon-resize-small"></i>')
         $('.mejs-loop-button button').append('<i class="icon-repeat"></i>')
 
         # Setup basic event listeners
