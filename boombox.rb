@@ -20,9 +20,9 @@ require_relative 'lib/tagger'
 set :run, false
 
 class CoffeeHandler < Sinatra::Base
-  set :views, File.dirname(__FILE__) + '/templates/coffeescripts'
+  set :views, File.dirname(__FILE__) + '/coffee'
 
-  get "/coffeescripts/*.coffee" do
+  get "/coffee/*.js" do
     filename = params[:splat].first
     coffee filename.to_sym
   end
