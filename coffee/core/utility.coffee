@@ -16,6 +16,6 @@ jQuery.fn.center = ->
 jQuery.fn.replaceClass = (original, replacement) ->
   @removeClass(original).addClass(replacement)
 
-resizeWindow = ->
+window.resizeWindow = ->
   $('#modal').center()
-  return true
+  true

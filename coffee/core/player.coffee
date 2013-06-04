@@ -1,4 +1,5 @@
 class window.Player
+
   constructor: ->
     @instance = new MediaElementPlayer('audio', {
       width: '100%',

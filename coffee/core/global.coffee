@@ -3,15 +3,16 @@
 ###
 
 $(document).ready ->
+
   # Create Boombox!
   window.Boombox = new Player
 
-  resizeWindow()
   #add the window resize callback
   $(window).resize resizeWindow
+  resizeWindow()
 
   # AJAX search
-  previousSearch = "" # we check if the query has actually changed
+  previousSearch = '' # we check if the query has actually changed
   $('#searchbox').keyup ->
     value = $(this).val()
     if value isnt previousSearch #and value.length >= 3 #minlength
@@ -25,9 +26,11 @@ $(document).ready ->
     #ids = $.map $('#table tr.active'), (n) -> n.id
 
     if ids.length > 0
+
       # if something is selected, ajax load the modal
       $.post 'ajax/edit-modal', { query: ids }, (data) ->
-        $('#container').append data
+
+        $('body').append data
         modal = $('#modal')
         #$('#large-fields').width(modal.width() - $('#small-fields').width()-20)
         modal.center()
@@ -52,27 +55,34 @@ $(document).ready ->
             name = obj.attr('name').match(/check\[(\w+)\]/)[1]
 
             if obj.is(':checked')
-              $("input#id3_#{name}").removeAttr("disabled")
+              $('input#id3_#{name}').removeAttr('disabled')
             else
-              $("input#id3_#{name}").prop('disabled', true)
+              $('input#id3_#{name}').prop('disabled', true)
 
-  # menu buttons control, load "pages" over pjax
+  # menu buttons control, load 'pages' over pjax
   #=============
-  $('#menu a').pjax('#contents')
+
+  # Link still gets followed with the standard .pjax()
+  $('.sidebar a').click (e) ->
+    $.pjax.click e, '#contents'
+    e.preventDefault
+    false;
 
   $('#contents').on 'pjax:error', (e, xhr, err)->
-    $(this).html "Something went wrong: #{err}"
+    $(this).html 'Something went wrong: #{err}'
 
   $('#contents').on 'pjax:timeout', ->
-    $(this).html "The request has timed out. Your connection may be down."
+    $(this).html 'The request has timed out. Your connection may be down.'
 
   $('#contents').on 'pjax:success', (e) ->
+
     # makes the current page in the menu selected
-    $('#menu li').removeClass 'selected'
+    $('.sidebar li').removeClass 'selected'
     $(e.relatedTarget).children('li').addClass 'selected'
+
     # adds the link title to class of contents for easy styling.
-    $(this).removeClass().addClass $(e.relatedTarget).attr("href").slice(1)
+    $(this).removeClass().addClass $(e.relatedTarget).attr('href').slice(1)
 
   Boombox.registerHooks()
 
-  return true
+  true

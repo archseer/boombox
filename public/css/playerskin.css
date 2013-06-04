@@ -97,7 +97,7 @@
     -o-transition: color 0.2s ease;
     transition: color 0.2s ease;
 }
-.mejs-container .mejs-controls button { 
+.mejs-container .mejs-controls button {
   text-shadow: none;
   color: #ffffff;
 }
@@ -108,7 +108,7 @@
 .mejs-container .mejs-controls i:active {
  color: #7abfea;
 }
-/* 
+/*
 
 end
 

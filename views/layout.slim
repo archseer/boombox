@@ -27,64 +27,63 @@ html
     == yield_content :head
 
   body
-    #container
-      #header.cf
-        #toolbar.cf
+    header
+      #toolbar
 
-          form#search onsubmit="return false"
-            input id="searchbox" name="q" type="text" size="10" placeholder="Search..."
-            i class="icon-search"
-          #volume
-            i.icon-volume-down
-            #volume-bar
-            i.icon-volume-up
-          /button class="edit-button" style='float:left' Edit tags
-          #player-buttons
-            button.backward : i.icon-backward
-            button.playpause : i.icon-play
-            button.forward : i.icon-forward
-        #audio-container
-          audio controls="" preload="none" width="640" height="30" id="player" src="http://archive.org/download/DWK159/Mr._Moods_-_03_-_Burst_Into_Flames.mp3"
-        .clear
+        form#search onsubmit="return false"
+          input id="searchbox" name="q" type="text" size="10" placeholder="Search..."
+          i class="icon-search"
+        #volume
+          i.icon-volume-down
+          #volume-bar
+          i.icon-volume-up
+          / button class="edit-button" style='float:left' Edit tags
+        #player-buttons
+          button.back : i.icon-backward
+          button.playpause : i.icon-play
+          button.next : i.icon-forward
+      #audio-container
+        audio controls="" preload="none" width="640" height="30" id="player" src="http://archive.org/download/DWK159/Mr._Moods_-_03_-_Burst_Into_Flames.mp3"
+      .clear
 
-      #body
-        #menu
-          h1 Library
-          ul.cf
-            a href="/"
-              li class=("selected" if request.path_info == "/")
-                i class="icon-music"
-                | Music
-                /span = tracks.count
-            a href="/player"
-              li class=("selected" if request.path_info.starts_with? "/player")
-                i class="icon-headphones"
-                | Player
-            a href="/waveform"
-              li class=("selected" if request.path_info.starts_with? "/sync")
-                i class="icon-retweet"
-                | Syncronize
-            a href="#"
-              li class=("selected" if request.path_info.starts_with? "/refresh")
-                i class="icon-refresh"
-                | Update DB
-            /a href="#"
-            /  li
-            /    i class="icon-hdd"
-            /    h1 Song
-            a href="#"
-              li class=("selected" if request.path_info.starts_with? "/torrent")
-                i class="icon-download-alt"
-                | Torrent
+    section.main
+      .sidebar
+        h1 Library
+        ul
+          a href="/"
+            li class=("selected" if request.path_info == "/")
+              i class="icon-music"
+              | Music
+              /span = tracks.count
+          a href="/player"
+            li class=("selected" if request.path_info.starts_with? "/player")
+              i class="icon-headphones"
+              | Player
+          a href="/waveform"
+            li class=("selected" if request.path_info.starts_with? "/sync")
+              i class="icon-retweet"
+              | Sync
+          a href="/reset"
+            li class=("selected" if request.path_info.starts_with? "/reset")
+              i class="icon-refresh"
+              | Update DB
+          /a href="#"
+          /  li
+          /    i class="icon-hdd"
+          /    h1 Song
+          /a href="#"
+          /  li class=("selected" if request.path_info.starts_with? "/torrent")
+          /    i class="icon-download-alt"
+          /    | Torrent
 
-          h1 Playlists
+        h1 Playlists
 
-          #now-playing
-            .title Now Playing
-            .cover: img src=''
-        #contents class=(request.path[1..-1])
-          == yield
+        #now-playing
+          .title Now Playing
+          .cover: img src=''
+      #contents class=(request.path[1..-1])
+        == yield
 
-      #statusbar
-        #side-status
-        #main-status Songs: #{Track.count}
+    footer.statusbar
+      #side-status
+      #main-status Songs: #{Track.count}
