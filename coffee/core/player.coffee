@@ -85,8 +85,14 @@ class window.Player
       $('#now-playing .cover img').attr 'src', data.cover
 
   playNextSong: ->
-    @playSong @nowPlaying.next()
+    nextSong = @nowPlaying.next()
+    if nextSong.length > 0 then @playSong nextSong
+    else @playSong @nowPlaying.parent().children('tr:first')
 
+  playPrevSong: ->
+    prevSong = @nowPlaying.prev()
+    if prevSong.length > 0 then @playSong prevSong
+    else @playSong @nowPlaying.parent().children('tr:last')
 
   registerHooks: ->
     icon = $('#player-buttons .playpause i')
@@ -106,12 +112,16 @@ class window.Player
       icon.removeClass('icon-pause').addClass('icon-play')
     , false)
 
-    playButton = $('#player-buttons .playpause')
-
-    playButton.click (e) =>
+    # Top bar button handlers
+    $('#player-buttons .playpause').click (e) =>
       e.preventDefault()
-
-      if @isPlaying()
-        @pause()
-      else
-        @play()
+      if @isPlaying() then @pause() else @play()
+      false
+    $('#player-buttons .next').click (e) =>
+      e.preventDefault()
+      @playNextSong()
+      false
+    $('#player-buttons .back').click (e) =>
+      e.preventDefault()
+      @playPrevSong()
+      false
