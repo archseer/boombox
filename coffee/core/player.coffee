@@ -3,7 +3,7 @@ class window.Player
   constructor: ->
     @instance = new MediaElementPlayer('audio', {
       width: '100%',
-      features: ['playpause','progress','current','duration','volume'],
+      features: ['current','duration','progress','volume'],
       timeAndDurationSeparator: ' <span class="mejs-timeseparator"> / </span> ',
       success: (mediaElement, domObject) =>
         # keep track of the mediaElement object for additional callbacks

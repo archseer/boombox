@@ -166,6 +166,22 @@ section.main {
   left: -1px;
 }
 
+.volume-bar-handle {
+  position: absolute;
+  z-index: 2;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  background: url('../img/handle.png') no-repeat 50% 50%; /* image stolen from http://www.premiumpixels.com/freebies/slider-interface-metal-handle-psd/ */
+  font-weight: bold;
+  color: #1C94C4;
+  outline: none;
+  top: 14px;
+  margin-left: -12px;
+  
+  left: 80px; /* temp */
+}
+
 #player-buttons {
   border-left: 1px solid #d5d5d5;
   border-right: 1px solid #a5a5a5;

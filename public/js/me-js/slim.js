@@ -41,7 +41,7 @@ if (typeof jQuery != 'undefined') {
     autosizeProgress : true,
 
     // features to show
-    features: ['current','duration','progress','volume'],
+    features: ['duration','current','progress','volume'],
 
     // turns keyboard support on and off for this instance
     enableKeyboard: true,
