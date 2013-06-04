@@ -991,3 +991,5 @@ if (typeof jQuery != 'undefined') {
       }
     }
   });
+
+})(mejs.$);
