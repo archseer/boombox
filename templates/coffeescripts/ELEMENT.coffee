@@ -76,7 +76,7 @@ class window.Player
     $.get "api/track/#{$(e).attr('id')}", (data) =>
       @pause()
       @setSrc("/#{data.filename}")
-      $("#player")[0].load()
+      @instance.load()
       @play()
       @songID = $(e).attr 'id'
       @nowPlaying.removeClass('playing paused') if @nowPlaying
