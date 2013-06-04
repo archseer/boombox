@@ -39,7 +39,6 @@ header {
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #d4d4d4), color-stop(1, #a8a8a8));
   background-image: -o-linear-gradient(top, #d4d4d4 0%, #a8a8a8 100%);
   background-image: -moz-linear-gradient(top, #d4d4d4 0%, #a8a8a8 100%);
-  background-image: -ms-linear-gradient(top, #d4d4d4 0%, #a8a8a8 100%);
   background-image: -webkit-linear-gradient(top, #d4d4d4 0%, #a8a8a8 100%);
   background-image: linear-gradient(top, #d4d4d4 0%, #a8a8a8 100%);
 
@@ -323,13 +322,9 @@ section.main {
   text-transform: uppercase;
   font-size: 14px;
   text-align: center;
-  margin: 0;
-  height: 26px;
   line-height: 26px;
   background-color: rgb(212, 218, 233);
   border-top: 1px solid rgb(186, 197, 219);
-  color: #525866;
-  text-shadow: 0 1px 0 rgba(255,255,255,.9);
 }
 
 #now-playing .cover img {
@@ -430,7 +425,6 @@ button {
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #52a8e8), color-stop(100%, #377ad0));
   background-image: -webkit-linear-gradient(top, #52a8e8, #377ad0);
   background-image: -moz-linear-gradient(top, #52a8e8, #377ad0);
-  background-image: -ms-linear-gradient(top, #52a8e8, #377ad0);
   background-image: -o-linear-gradient(top, #52a8e8, #377ad0);
   background-image: linear-gradient(top, #52a8e8, #377ad0);
   border-top: 1px solid #4081af;
@@ -454,7 +448,6 @@ button:hover {
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3e9ee5), color-stop(100%, #206bcb));
   background-image: -webkit-linear-gradient(top, #3e9ee5 0%, #206bcb 100%);
   background-image: -moz-linear-gradient(top, #3e9ee5 0%, #206bcb 100%);
-  background-image: -ms-linear-gradient(top, #3e9ee5 0%, #206bcb 100%);
   background-image: -o-linear-gradient(top, #3e9ee5 0%, #206bcb 100%);
   background-image: linear-gradient(top, #3e9ee5 0%, #206bcb 100%);
   border-top: 1px solid #2a73a6;
@@ -477,8 +470,6 @@ button:active {
 }
 
 button::-moz-focus-inner {border: 0; padding: 0}
-
-button::before {margin-right: 5px} /* adds icon margin (if any) */
 
 /* default input styles */
 input[type="text"] {
@@ -595,9 +586,6 @@ label, legend {
   top: 24px;
 }
 
-
-/* audio player */
-.mejs-timeseparator {margin: 0 3px}
 
 /****************************
     PAGES

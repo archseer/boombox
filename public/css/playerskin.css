@@ -6,6 +6,8 @@
   position: absolute;
 }
 
+.mejs-timeseparator {margin: 0 3px}
+
 /* Start: CONTROL BAR */
 .mejs-container .mejs-controls {
   padding: 5px;
