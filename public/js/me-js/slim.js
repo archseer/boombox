@@ -991,15 +991,3 @@ if (typeof jQuery != 'undefined') {
       }
     }
   });
-
-})(mejs.$);
-(function($) {
-
-  $.extend(MediaElementPlayer.prototype, {
-    mediaElementz: function() {
-      console.log('hi')
-      return this.media;
-    }
-  });
-
-})(mejs.$);
