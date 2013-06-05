@@ -14,8 +14,7 @@ Put your music files, folders and cover art (mp3) into `public/music`, then open
 ## TODO
 
 * ~~Wire up the volume bar plugin into the new volume bar design.~~(Add a .volume-bar-total to limit the handle to an inner margin (narrows the bar with a padding of half the volume handle width)? right now it spans too much.
-* Wire up shuffle and loop.
-* Make a blue-ish hue glow for the header buttons.
+* ~~Make a blue-ish hue glow for the header buttons.~~
 * Fix tabs, so that events work when we switch pages back and forth.
 * Fix up the coffeescript to follow a certain pattern -- make it actually make sense...
 
@@ -41,5 +40,6 @@ v2
 
 * (enable streaming via. MPD?)
 * Playlists
+* Wire up shuffle and loop. (after we have playlists)
 * Support for [AAC](https://github.com/audiocogs/aac.js), [FLAC](https://github.com/audiocogs/flac.js), [ALAC](https://github.com/audiocogs/alac.js). Is ogg supported? 
 * Funky waveforms in canvas via the new audio API's by FF and Chrome.

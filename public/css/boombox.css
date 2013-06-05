@@ -197,6 +197,11 @@ section.main {
   margin: 0 12px;
 }
 
+#controls i:hover, #controls i:active { /* doesn't activate for some reason */
+  color: #0f96ff;
+  text-shadow: 0 -1px #043db0, 0 1px #eee;
+}
+
 #player-buttons {
   border-left: 1px solid #d5d5d5;
   border-right: 1px solid #a5a5a5;
