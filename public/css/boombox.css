@@ -433,6 +433,7 @@ section.main {
   width: 150px;
   background-color: #fff;
   padding: 3px 10px 0;
+  text-align: center; /* the covers get centered (inline-blocks) */
 }
 
 #table-album-list .cover img {
@@ -446,6 +447,7 @@ section.main {
   overflow: hidden;
   background-clip: padding-box;
   box-shadow: 0 1px 1px rgba(0,0,0, .5);
+  display: inline-block; /* the div should fit the image and never expand or the box-shadow doesn't fit! */
 }
 
 #table-album-list .img::after {
