@@ -18,6 +18,8 @@ Put your music files, folders and cover art (mp3) into `public/music`, then open
 * ~~Fix tabs, so that events work when we switch pages back and forth.~~
 * Fix up the coffeescript to follow a certain pattern -- make it actually make sense...
 
+* Fix scrollbar on table.
+
 * Login system via Warden, later support for multiple users.
 
 * ~~Get view icons from fontello and figure out where to put them on the UI.~~
@@ -34,6 +36,8 @@ Put your music files, folders and cover art (mp3) into `public/music`, then open
 * CSS Animations, effects, eyecandy! :3 ~~Port CSS3 cover art effects from Redbird.~~
 
 * Restyle buttons.
+
+* Extend models to feature Artist and Album models (albums are separate unless artist or albumartist or the sort field matches!)
 
 
 

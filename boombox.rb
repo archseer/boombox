@@ -79,6 +79,10 @@ class Boombox < Sinatra::Base
     slim :waveform
   end
 
+  get '/cover_view' do
+    slim :cover_view
+  end
+
   get '/reset' do
     Track.delete_all
     Tagger.generate_db self
