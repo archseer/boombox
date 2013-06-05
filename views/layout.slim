@@ -91,4 +91,10 @@ html
 
     footer.statusbar
       #side-status
-      #main-status Songs: #{Track.count}
+      #main-status
+        .info
+          .song-count Songs: #{Track.count}
+        .views
+          a.list-view href="": i.icon-reorder
+          a.album-view.active href="": i.icon-th-list
+          a.cover-view href="": i.icon-th-large

@@ -20,9 +20,10 @@ Put your music files, folders and cover art (mp3) into `public/music`, then open
 
 * Login system via Warden, later support for multiple users.
 
-* Get view icons from fontello and figure out where to put them on the UI.
+* ~~Get view icons from fontello and figure out where to put them on the UI.~~
 * Cover art view (thumbnail view), incorporate [this tutorial](http://tympanus.net/Tutorials/ThumbnailGridExpandingPreview/), where the preview would be a tracklist.
 * Cover flow view
+* Store the preferences (view, shuffle/loop) in the user session and/or user's DB model.
 
 * AJAX-ify the tables and/or figure out a way to make it work with huuuuge filelists.
 

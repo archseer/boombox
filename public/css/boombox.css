@@ -94,6 +94,34 @@ footer.statusbar {
   padding: 0 15px;
 }
 
+#main-status .info {float: left}
+
+/* view changer */
+.views {
+  float: right;
+}
+.views a {
+  float: left;
+  margin: 0 4px;
+  font-size: 14px;
+  color: #747b8e;
+  text-decoration: none;
+}
+.views a i {
+  padding: 4px 8px;
+}
+.views a:hover {
+  color: #959db0;
+}
+.views a.active i {
+  color: #fff;
+  background-color: #747b8e;
+  border-radius: 3px;
+}
+.views a:last-child { margin-right: 0; }
+
+/* */
+
 #audio-container {
   padding: 0 10px;
   height: 48px;
