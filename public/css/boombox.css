@@ -147,7 +147,7 @@ section.main {
 
 .volume-bar {
   display: inline-block;
-  position: relative;
+  position: relative; /* http://css-tricks.com/absolute-positioning-inside-relative-positioning/ */
 
   border: 1px solid #7c7c7c;
   border-top-color: #6b6b6b;

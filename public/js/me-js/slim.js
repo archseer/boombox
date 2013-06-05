@@ -854,7 +854,6 @@ if (typeof jQuery != 'undefined') {
       volumeHandle = volume.find('.volume-bar-handle'),
 
       positionVolumeHandle = function(volume, secondTry) {
-        console.log(volume);
         if (!volumeSlider.is(':visible') && typeof secondTry == 'undefined') {
           volumeSlider.show();
           positionVolumeHandle(volume, true);
