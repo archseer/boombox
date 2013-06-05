@@ -440,6 +440,9 @@ section.main {
   height: 150px;
   vertical-align: top; /* prevent the cell collapse */
 }
+#table-album-list .cover .img { /* in FF, the vertical-align must be set on the <div> for some reason and not the <img> */
+  vertical-align: top; /* prevent the cell collapse */
+}
 
 /* make the cover pop! */
 #table-album-list .img {
@@ -448,6 +451,7 @@ section.main {
   background-clip: padding-box;
   box-shadow: 0 1px 1px rgba(0,0,0, .5);
   display: inline-block; /* the div should fit the image and never expand or the box-shadow doesn't fit! */
+  /*vertical-align: middle;*/ /* required for stuff outside table */
 }
 
 #table-album-list .img::after {
