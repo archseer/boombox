@@ -391,6 +391,7 @@ section.main {
 
 #table-album-list table:first-child { /* Header */
   position: fixed;
+  z-index: 1;
 }
 #table-album-list table:nth-child(2) { /* Body */
   margin-top: 25px;
