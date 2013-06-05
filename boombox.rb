@@ -48,7 +48,7 @@ class Boombox < Sinatra::Base
   use Rack::MethodOverride
 
   set :server, :thin
-  set :port, 8080
+  set :port, 8081
 
   configure :development do
     use BetterErrors::Middleware
@@ -68,7 +68,7 @@ class Boombox < Sinatra::Base
   end
 
   get '/' do
-    slim :index
+    slim :empty
   end
 
   get '/player' do
@@ -86,6 +86,12 @@ class Boombox < Sinatra::Base
 
   get '/clear' do
     Track.delete_all
+  end
+
+  # Get listings rendered for injection
+  get '/views/*' do
+    filename = params[:splat].first
+    slim filename.to_sym, layout: false
   end
 
   post '/ajax/search' do
@@ -142,6 +148,10 @@ class Boombox < Sinatra::Base
     else
       json :album => "Unknown", :artist => "Unknown", :title => "No song", :cover => "blank.png"
     end
+  end
+
+  get '/api/tracks/all' do
+    json Track.sort(:album, :disc, :track).all
   end
 
   # Disable layout if request is via pjax

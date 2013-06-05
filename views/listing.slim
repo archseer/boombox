@@ -1,0 +1,26 @@
+#table-album-list data-ng-controller="listingController"
+  table
+    thead
+      tr
+        th.cover
+        th.track_num
+        th.title Title
+        th.time Time
+        th.artist Artist
+        th.album Album
+  table
+    tbody
+      tr data-ng-repeat="track in tracks"
+        td.cover
+          | {{ track.cover }}
+        td.track_num
+        td.title
+          | {{ track.title }}
+        td.time
+          | {{ track.time }}
+        td.artist
+          | {{ track.artist }}
+        td.album
+          | {{ track.album }}
+
+/script type="text/javascript" src="/coffee/page-index.js"
