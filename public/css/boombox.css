@@ -120,7 +120,6 @@ section.main {
   padding-left: 24px;
   -webkit-appearance: none;
   box-shadow: inset 0px 1px 3px -1px rgba(0,0,0,.4);
-
 }
 
 #search {
@@ -135,6 +134,7 @@ section.main {
   top: 19px;
   left: 34px;
   color: #808080;
+  text-shadow: none;
 }
 
 #volume {
@@ -330,7 +330,7 @@ section.main {
 #now-playing .cover img {
   display: block;
   max-width: 100%;
-  /* above doesn't work in moz, so.. */ width: 210px; min-height: 200px;
+  /* above doesn't work in moz, so.. BAT HAXX! */ width: 210px; min-height: 200px;
   background-color: #333;
 }
 #now-playing .cover {position: relative;}

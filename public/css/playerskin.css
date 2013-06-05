@@ -91,9 +91,6 @@
   background-color: #222;
   color: #999;
 }
-.mejs-container .mejs-controls i:active {
- color: #7abfea;
-}
 /*
 
 end
@@ -190,7 +187,6 @@ end
 .mejs-controls div.mejs-volume-slider {
   width: 62px;
   position: relative;
-  background:none;
 }
 
 .mejs-controls .mejs-volume-slider .mejs-volume-total {
@@ -214,8 +210,6 @@ end
   width: 50px;
   height: 6px;
   margin: 1px;
-  padding: 0;
-  font-size: 1px;
 
   background: #6b63e6;
   background-image: -o-linear-gradient(left , #458afb 0%, #6b63e6 100%);
@@ -224,9 +218,6 @@ end
   background-image: linear-gradient(left , #458afb 0%, #6b63e6 100%);
 }
 
-.mejs-controls .mejs-volume-slider .mejs-volume-handle {
-  display: none;
-}
 /* End: Mute/Volume */
 
 .mejs-clear {

@@ -33,6 +33,8 @@ Put your music files, folders and cover art (mp3) into `public/music`, then open
 
 * CSS Animations, effects, eyecandy! :3 Port CSS3 cover art effects from Redbird.
 
+* Restyle buttons.
+
 v2
 
 * (enable streaming via. MPD?)
