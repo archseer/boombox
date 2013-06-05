@@ -22,7 +22,7 @@ Put your music files, folders and cover art (mp3) into `public/music`, then open
 
 * ~~Get view icons from fontello and figure out where to put them on the UI.~~
 * Cover art view (thumbnail view), incorporate [this tutorial](http://tympanus.net/Tutorials/ThumbnailGridExpandingPreview/), where the preview would be a tracklist.
-* Cover flow view
+* Cover flow view (add the icon to the view switcher!)
 * Store the preferences (view, shuffle/loop) in the user session and/or user's DB model.
 
 * AJAX-ify the tables and/or figure out a way to make it work with huuuuge filelists.
@@ -31,7 +31,7 @@ Put your music files, folders and cover art (mp3) into `public/music`, then open
 
 * Make a mobile version, swipable tabs?
 
-* CSS Animations, effects, eyecandy! :3 Port CSS3 cover art effects from Redbird.
+* CSS Animations, effects, eyecandy! :3 ~~Port CSS3 cover art effects from Redbird.~~
 
 * Restyle buttons.
 

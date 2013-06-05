@@ -5,7 +5,7 @@
       td.cover rowspan=(row = rowspan.shift)
         - if row > 5
           / display image only when we have enough space. (at least 6)
-          img src=track.cover
+          .img: img src=track.cover
     td.track_num = track.track
     td.title = track.title
     td.time = track.length
