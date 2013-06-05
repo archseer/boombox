@@ -13,7 +13,7 @@ Put your music files, folders and cover art (mp3) into `public/music`, then open
 
 ## TODO
 
-* Wire up the volume bar plugin into the new volume bar design.
+* ~~Wire up the volume bar plugin into the new volume bar design.~~(Add a .volume-bar-total to limit the handle to an inner margin (narrows the bar with a padding of half the volume handle width)? right now it spans too much.
 * Wire up shuffle and loop.
 * Make a blue-ish hue glow for the header buttons.
 * Fix tabs, so that events work when we switch pages back and forth.
@@ -34,6 +34,8 @@ Put your music files, folders and cover art (mp3) into `public/music`, then open
 * CSS Animations, effects, eyecandy! :3 Port CSS3 cover art effects from Redbird.
 
 * Restyle buttons.
+
+
 
 v2
 

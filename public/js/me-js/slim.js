@@ -838,7 +838,6 @@ if (typeof jQuery != 'undefined') {
 (function($) {
 
   $.extend(mejs.MepDefaults, {
-    muteText: 'Mute Toggle',
     hideVolumeOnTouchDevices: true,
   });
 
@@ -847,25 +846,15 @@ if (typeof jQuery != 'undefined') {
       // Android and iOS don't support volume controls
       if (mejs.MediaFeatures.hasTouch && this.options.hideVolumeOnTouchDevices)
         return;
-
-      var t = this,
-        mute = $('<div class="mejs-button mejs-volume-button mejs-mute">'+
-          '<button type="button" aria-controls="' + t.id + '" title="' + t.options.muteText + '"></button>'+
-        '</div>' +
-        '<div class="mejs-volume-slider">'+ // outer background
-          '<div class="mejs-volume-total"></div>'+ // line background
-          '<div class="mejs-volume-current"></div>'+ // current volume
-          '<div class="mejs-volume-handle"></div>'+ // handle
-        '</div>'
-        )
-          .appendTo(controls),
-      volumeSlider = t.container.find('.mejs-volume-slider'),
-      volumeTotal = t.container.find('.mejs-volume-total'),
-      volumeCurrent = t.container.find('.mejs-volume-current'),
-      volumeHandle = t.container.find('.mejs-volume-handle'),
+      
+      var volume = $('#volume');
+      volumeSlider = volume.find('.volume-bar'),
+      //volumeTotal = volume.find('.mejs-volume-total'),
+      volumeCurrent = volume.find('.volume-bar-slider'),
+      volumeHandle = volume.find('.volume-bar-handle'),
 
       positionVolumeHandle = function(volume, secondTry) {
-
+        console.log(volume);
         if (!volumeSlider.is(':visible') && typeof secondTry == 'undefined') {
           volumeSlider.show();
           positionVolumeHandle(volume, true);
@@ -877,26 +866,23 @@ if (typeof jQuery != 'undefined') {
         volume = Math.max(0,volume);
         volume = Math.min(volume,1);
 
-        // ajust mute button style
-        if (volume == 0) {
+        // adjust mute button style
+        /*if (volume == 0) {
           mute.removeClass('mejs-mute').addClass('mejs-unmute');
         } else {
           mute.removeClass('mejs-unmute').addClass('mejs-mute');
-        }
+        }*/
 
         // position slider
         var
-          // height of the full size volume slider background
-          totalWidth = volumeTotal.width(),
-
-          // top/left of full size volume slider background
-          totalPosition = volumeTotal.position(),
+          // width of the slider
+          totalWidth = volumeSlider.width(),
 
           // the new left position based on the current volume
           newLeft = totalWidth * volume;
 
         // handle
-        volumeHandle.css('left', Math.round(totalPosition.left + newLeft - (volumeHandle.width() / 2)));
+        volumeHandle.css('left', Math.round(newLeft)); /* - (volumeHandle.width() / 2) */
 
         // rezize the current part of the volume bar
         volumeCurrent.width( Math.round(newLeft) );
@@ -905,11 +891,11 @@ if (typeof jQuery != 'undefined') {
       handleVolumeMove = function(e) {
 
         var volume = null,
-          totalOffset = volumeTotal.offset();
+          totalOffset = volumeSlider.offset();
 
         // calculate the new volume based on the mouse position
         var
-          railWidth = volumeTotal.width(),
+          railWidth = volumeSlider.width(),
           newX = e.pageX - totalOffset.left;
 
         volume = newX / railWidth;
@@ -934,13 +920,13 @@ if (typeof jQuery != 'undefined') {
 
       // SLIDER
 
-      mute
+      /*mute
         .hover(function() {
           volumeSlider.show();
           mouseIsOver = true;
         }, function() {
           mouseIsOver = false;
-        });
+        });*/
 
       volumeSlider
         .bind('mouseover', function() {
@@ -963,24 +949,24 @@ if (typeof jQuery != 'undefined') {
 
 
       // MUTE button
-      mute.find('button').click(function() {
+      /*mute.find('button').click(function() {
         media.setMuted( !media.muted );
-      });
+      });*/
 
       // listen for volume change events from other sources
       media.addEventListener('volumechange', function(e) {
         if (!mouseIsDown) {
           if (media.muted) {
             positionVolumeHandle(0);
-            mute.removeClass('mejs-mute').addClass('mejs-unmute');
+            //mute.removeClass('mejs-mute').addClass('mejs-unmute');
           } else {
             positionVolumeHandle(media.volume);
-            mute.removeClass('mejs-unmute').addClass('mejs-mute');
+            //mute.removeClass('mejs-unmute').addClass('mejs-mute');
           }
         }
       }, false);
 
-      if (t.container.is(':visible')) {
+      if (volume.is(':visible')) {
         // set initial volume
         positionVolumeHandle(player.options.startVolume);
 

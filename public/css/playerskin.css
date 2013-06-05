@@ -1,10 +1,6 @@
-.mejs-container {
-  min-width: 150px;
-}
+.mejs-container { min-width: 150px; }
 
-.me-plugin {
-  position: absolute;
-}
+.me-plugin { position: absolute; }
 
 .mejs-timeseparator {margin: 0 3px}
 
@@ -18,84 +14,23 @@
 
 .mejs-container .mejs-controls div {
   float: left;
-  margin-right: 6px;
   height: 24px;
   font-size: 11px;
   margin-top: 5px;
-}
-
-.mejs-controls .mejs-button button {
-  cursor: pointer;
-  display: block;
-  text-decoration: none;
-  margin: 0;
-  padding: 0;
-  background: transparent;
-  border: 0;
-  box-shadow: none;
-  height: 24px;
-  width: 24px;
-}
-
-/* :focus for accessibility */
-.mejs-controls .mejs-button button:focus {
-  outline: solid 1px yellow;
 }
 
 /* End: CONTROL BAR */
 
 /* Start: Time (current / duration) */
 .mejs-container .mejs-controls .mejs-time {
-  text-align: center;
   margin-top: 6px;
+  margin-right: 16px;
 }
 .mejs-container .mejs-controls .mejs-time span {
   display: block;
   float: left;
 }
 /* End: Time (current / duration) */
-
-/*
-
-  FontAwesome Buttons override
-
-*/
-
-/* Start: Mute/Volume */
-.mejs-controls .mejs-mute .icon-volume-off {
-    display: none;
-}
-.mejs-controls .mejs-unmute button {
-    left: -4px;
-}
-.mejs-controls .mejs-unmute .icon-volume-up {
-    display: none;
-}
-/* End: Mute/Volume */
-
-/* FontAwesome Buttons */
-.mejs-container .mejs-controls i {
-    display: block;
-
-    font-size: 14px;
-    -webkit-transition: color 0.2s ease;
-    -moz-transition: color 0.2s ease;
-    -o-transition: color 0.2s ease;
-    transition: color 0.2s ease;
-}
-.mejs-container .mejs-controls button {
-  text-shadow: none;
-  color: #ffffff;
-}
-.mejs-container .mejs-controls button:hover {
-  background-color: #222;
-  color: #999;
-}
-/*
-
-end
-
-*/
 
 /* Start: Progress bar */
 .mejs-controls div.mejs-time-rail {
@@ -182,43 +117,6 @@ end
   left: 13px;
 }
 /* End: Progress bar */
-
-/* Start: Mute/Volume */
-.mejs-controls div.mejs-volume-slider {
-  width: 62px;
-  position: relative;
-}
-
-.mejs-controls .mejs-volume-slider .mejs-volume-total {
-  position: absolute;
-  left: 0;
-  top: 8px;
-  width: 50px;
-  height: 9px;
-  margin: 0;
-  padding: 1px;
-  font-size: 1px;
-  background: #262929;
-  border-bottom: #3d3f40 1px solid;
-  box-shadow: inset 1px 1px rgba(0, 0, 0, .4);
-}
-
-.mejs-controls .mejs-volume-slider .mejs-volume-current {
-  position: absolute;
-  left: 0;
-  top: 8px;
-  width: 50px;
-  height: 6px;
-  margin: 1px;
-
-  background: #6b63e6;
-  background-image: -o-linear-gradient(left , #458afb 0%, #6b63e6 100%);
-  background-image: -moz-linear-gradient(left , #458afb 0%, #6b63e6 100%);
-  background-image: -webkit-linear-gradient(left , #458afb 0%, #6b63e6 100%);
-  background-image: linear-gradient(left , #458afb 0%, #6b63e6 100%);
-}
-
-/* End: Mute/Volume */
 
 .mejs-clear {
   clear: both;

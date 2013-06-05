@@ -10,7 +10,6 @@ class window.Player
         #@mediaElement = mediaElement
 
         # Speed Up: Make elements and add their class the right way, but ugly.
-        $('.mejs-volume-button button').append('<i class="icon-volume-up"></i><i class="icon-volume-off"></i>')
         $('.mejs-stop-button button').append('<i class="icon-stop"></i>')
         $('.mejs-loop-button button').append('<i class="icon-repeat"></i>')
 
