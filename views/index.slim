@@ -1,14 +1,15 @@
 - tracks = Track.sort(:album, :disc, :track).all
-table#table
-  thead
-    tr
-      th.cover
-      th.track_num
-      th.title Title
-      th.time Time
-      th.artist Artist
-      th.album Album
-
-  tbody
-    == partial :tracklist, :locals => {:tracks => tracks}
+#table-album-list
+  table
+    thead
+      tr
+        th.cover
+        th.track_num
+        th.title Title
+        th.time Time
+        th.artist Artist
+        th.album Album
+  table
+    tbody
+      == partial :tracklist, :locals => {:tracks => tracks}
 script src="/coffee/page-index.js"

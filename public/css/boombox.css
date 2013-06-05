@@ -350,13 +350,25 @@ section.main {
   overflow: auto;
 }
 
-#table {
+#table-album-list {
+  float: left;
+  width: 100%;
+}
+
+#table-album-list table {
   background-color: #fff;
   width: 100%;
   cursor: default;
 }
 
-#table th {
+#table-album-list table:first-child { /* Header */
+  position: fixed;
+}
+#table-album-list table:nth-child(2) { /* Body */
+  margin-top: 25px;
+}
+
+#table-album-list th {
   color: #34313a;
   font-weight: 600;
   text-shadow: 0 1px 0 #f9f9f9;
@@ -371,16 +383,16 @@ section.main {
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, lightGrey), color-stop(1,#F3F3F3))
 }
 
-#table tr:nth-of-type(odd) {
+#table-album-list tr:nth-of-type(odd) {
   background-color: hsl(261, 9%, 93%);
 }
 
-#table td, #table th {
+#table-album-list td, #table-album-list th {
   text-align: left;
   padding: 2px; /* 3 */
 }
 
-#table tr.active {
+#table-album-list tr.active {
   background-color: #478dff;
   color: #fff;
   border-bottom-color: #2674f0;
@@ -388,25 +400,25 @@ section.main {
   text-shadow: 0px 0px 1px rgba(0,0,0,.5); /* this should be left at least on track_num:after (icon) */
 }
 
-#table .cover {
+#table-album-list .cover {
   width: 150px;
   background-color: #fff;
 }
 
-#table .cover img {
+#table-album-list .cover img {
   height: 150px;
   margin: 3px 10px 0;
   vertical-align: top; /* prevent the cell collapse */
   border: 1px solid #111;
 }
 
-#table .track_num  {
+#table-album-list .track_num  {
   text-align: right;
   width: 12px;
   padding: 0 20px 0 15px;
 }
 
-#table .track_num:after { /* the play/pause icon */
+#table-album-list .track_num:after { /* the play/pause icon */
   font-family: FontAwesome;
   display: inline-block;
   position: relative;
@@ -414,10 +426,10 @@ section.main {
   width: 0; /* fixes the fuckup of the padding */
   -webkit-font-smoothing: antialiased;
 }
-  #table .playing .track_num:after {content: "\f028"}
-  #table .paused .track_num:after {content: "\f026"}
+  #table-album-list .playing .track_num:after {content: "\f028"}
+  #table-album-list .paused .track_num:after {content: "\f026"}
 
-#table .time { /* td and th */
+#table-album-list .time { /* td and th */
   text-align: right;
   padding-right: 15px;
 }
