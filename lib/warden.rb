@@ -81,12 +81,10 @@ module Sinatra
       end
 
       app.get '/login' do
-        puts "We're on GET /login -- #{flash}"
         slim :login, :layout => 'layout_login'.to_sym
       end
 
       app.post '/login' do
-        puts "We're on POST /login -- #{flash}"
         warden.authenticate!
 
         flash[:success] = env['warden'].message
@@ -103,10 +101,8 @@ module Sinatra
       end
 
       app.post '/auth/unauthenticated' do
-        raise
         session[:return_to] = env['warden.options'][:attempted_path]
         flash[:error] = warden.message || "There was an error while "
-         puts "We're on POST /auth/unauthenticated -- #{flash}"
         redirect '/login'
       end
 
