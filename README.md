@@ -23,6 +23,10 @@ Note: waveform requires SoX installed.
 
 * Fix scrollbar on table.
 
+* FF: event binding doesn't work -- the play/pause button doesn't update and the player page doesn't work.
+* Cover art doesn't update on the player page.
+* Now playing icon (small speaker) needs to be reapplied on the listing mode.
+
 * ~~Login system via Warden, later support for multiple users.~~
 * Add a logout button on the UI.
 * Invite new users via mail system
@@ -43,8 +47,6 @@ Note: waveform requires SoX installed.
 * Restyle buttons.
 
 * Extend models to feature Artist and Album models (albums are separate unless artist or albumartist or the sort field matches!)
-
-
 
 v2
 
