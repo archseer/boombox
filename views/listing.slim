@@ -1,0 +1,24 @@
+div#table-album-list data-ng-controller="listingController"
+  table
+    thead
+      tr
+        th.cover
+        th.track_num
+        th.title Title
+        th.time Time
+        th.artist Artist
+        th.album Album
+  table
+    tbody
+      tr data-ng-repeat="track in tracks" id="{{ track.id }}"
+        td.cover data-ng-bind-html-unsafe="track.cover" data-ng-if="track.cover.length" rowspan="{{ track.rowspan }}"
+        td.track_num
+          | {{ track.track }}
+        td.title
+          | {{ track.title }}
+        td.time
+          | {{ track.length }}
+        td.artist
+          | {{ track.artist }}
+        td.album
+          | {{ track.album }}

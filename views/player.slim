@@ -1,17 +1,14 @@
-#data
+#data data-ng-controller="playerController"
   #info
-    h1.title No song
+    h1.title
+      | {{ track.title }}
     h2
-      | by
-      span.artist  Unknown
+      | by 
+      span.artist
+        | {{ track.artist }}
     h2
-      | from
-      span.album  Unknown
+      | from 
+      span.album
+        | {{ track.album }}
   #cover
     img src="/img/blank.png"
-
-script type="text/javascript" src="/coffee/page-player.js"
-
-/ Inline JS is triggered with ajax request
-javascript:
-  $("#contents").trigger("refreshPlayer");

@@ -28,12 +28,6 @@ class CoffeeHandler < Sinatra::Base
   end
 end
 
-class Sinatra::Request
-  def pjax?
-    env['HTTP_X_PJAX'] || self['_pjax']
-  end
-end
-
 class Boombox < Sinatra::Base
   register Sinatra::Reloader
   register Sinatra::Async
@@ -68,7 +62,7 @@ class Boombox < Sinatra::Base
   end
 
   get '/' do
-    slim :index
+    slim :layout, layout: false
   end
 
   get '/player' do
@@ -86,6 +80,12 @@ class Boombox < Sinatra::Base
 
   get '/clear' do
     Track.delete_all
+  end
+
+  # Get views rendered for injection
+  get '/views/*' do
+    filename = params[:splat].first
+    slim filename.to_sym, layout: false, :disable_escape => true
   end
 
   post '/ajax/search' do
@@ -144,9 +144,8 @@ class Boombox < Sinatra::Base
     end
   end
 
-  # Disable layout if request is via pjax
-  before do
-    @default_layout = false if request.pjax?
+  get '/api/tracks/all' do
+    json Track.sort(:album, :disc, :track).all
   end
 
   # start the server if ruby file executed directly
