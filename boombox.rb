@@ -62,7 +62,7 @@ class Boombox < Sinatra::Base
   end
 
   get '/' do
-    slim :empty
+    slim :layout, layout: false
   end
 
   get '/player' do
@@ -82,7 +82,7 @@ class Boombox < Sinatra::Base
     Track.delete_all
   end
 
-  # Get listings rendered for injection
+  # Get views rendered for injection
   get '/views/*' do
     filename = params[:splat].first
     slim filename.to_sym, layout: false, :disable_escape => true
