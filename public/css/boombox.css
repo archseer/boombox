@@ -118,6 +118,7 @@ footer.statusbar {
   background-color: #747b8e;
   border-radius: 3px;
 }
+.views a:focus {outline: none;}
 .views a:last-child { margin-right: 0; }
 
 /* */
