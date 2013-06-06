@@ -78,7 +78,7 @@ class window.Player
       @songID = $(e).attr 'id'
       @nowPlaying.removeClass('playing paused') if @nowPlaying
       @nowPlaying = e.addClass 'playing'
-      $('#now-playing .cover img').attr 'src', data.cover
+      $('#now-playing .cover img').attr 'src', "/#{data.cover}"
 
   playNextSong: ->
     nextSong = @nowPlaying.next()

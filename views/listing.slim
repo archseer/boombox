@@ -10,7 +10,7 @@
         th.album Album
   table
     tbody
-      tr data-ng-repeat="track in tracks"
+      tr data-ng-repeat="track in tracks" id="{{ track.id }}"
         td.cover
           | {{ track.cover }}
         td.track_num

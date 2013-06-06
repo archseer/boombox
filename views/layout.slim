@@ -16,17 +16,17 @@ html data-ng-app="boombox"
     script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"
     script type="text/javascript" src="/js/angular.js"
     /script type="text/javascript" src="/js/jquery-pjax.js"
-    /script type="text/javascript" src='/js/toe.js'
+    script type="text/javascript" src='/js/toe.js'
 
-    /script type="text/javascript" src='/js/me-js/mediaelement.js'
-    /script type="text/javascript" src='/js/me-js/slim.js'
+    script type="text/javascript" src='/js/me-js/mediaelement.js'
+    script type="text/javascript" src='/js/me-js/slim.js'
 
-    /script type="text/javascript" src="/coffee/core/utility.js"
+    script type="text/javascript" src="/coffee/core/utility.js"
     /script type="text/javascript" src="/coffee/core/global.js"
-    /script type="text/javascript" src='/coffee/core/player.js'
+    script type="text/javascript" src='/coffee/core/player.js'
 
     script type="text/javascript" src='/coffee/boombox.js'
-    /script type="text/javascript" src='/coffee/controllers/playerController.js'
+    script type="text/javascript" src='/coffee/controllers/playerController.js'
     script type="text/javascript" src='/coffee/controllers/listingController.js'
 
     == yield_content :head
@@ -61,12 +61,12 @@ html data-ng-app="boombox"
         h1 Library
         ul
           a href="/#"
-            li class=("selected" if request.path_info == "/#")
+            li#link-index class=("selected" if request.path_info == "/#")
               i class="icon-music"
               | Music
               /span = tracks.count
           a href="/#player"
-            li class=("selected" if request.path_info.starts_with? "/#player")
+            li#link-player class=("selected" if request.path_info.starts_with? "/#player")
               i class="icon-headphones"
               | Player
           a href="/#waveform"
