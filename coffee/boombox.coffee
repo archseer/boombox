@@ -13,6 +13,14 @@ window.boomboxApp.config ($routeProvider) ->
     controller: "playerController",
     templateUrl: "/views/player"
   }
+  $routeProvider.when "/waveform", {
+    controller: "waveformController",
+    templateUrl: "/views/waveform"
+  }
+  $routeProvider.when "/reset", {
+    controller: "resetController",
+    templateUrl: "/views/reset"
+  }
   $routeProvider.otherwise({ redirectTo: "/" })
 
   true

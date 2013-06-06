@@ -22,9 +22,13 @@ html data-ng-app="boombox"
     script type="text/javascript" src="/coffee/core/utility.js"
     script type="text/javascript" src="/coffee/core/player.js"
 
-    script type="text/javascript" src='/coffee/boombox.js'
-    script type="text/javascript" src='/coffee/controllers/playerController.js'
-    script type="text/javascript" src='/coffee/controllers/listingController.js'
+    script type="text/javascript" src="/coffee/boombox.js"
+
+    / Controllers
+    script type="text/javascript" src="/coffee/controllers/playerController.js"
+    script type="text/javascript" src="/coffee/controllers/listingController.js"
+    script type="text/javascript" src="/coffee/controllers/waveformController.js"
+    script type="text/javascript" src="/coffee/controllers/resetController.js"
 
     == yield_content :head
 
@@ -66,11 +70,11 @@ html data-ng-app="boombox"
               i class="icon-headphones"
               | Player
           a href="/#waveform"
-            li class=("selected" if request.path_info.starts_with? "/#waveform")
+            li#link-waveform class=("selected" if request.path_info.starts_with? "/#waveform")
               i class="icon-retweet"
-              | Sync
+              | Waveform
           a href="/#reset"
-            li class=("selected" if request.path_info.starts_with? "/#reset")
+            li#link-reset class=("selected" if request.path_info.starts_with? "/#reset")
               i class="icon-refresh"
               | Update DB
           /a href="#"
