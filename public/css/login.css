@@ -1,0 +1,93 @@
+* {box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box}
+
+body {
+  background-color: #ccc;
+  background-image: url('/img/solarclipse2.jpg');
+  text-align: center;
+}
+
+
+.title {
+  color: #fff;
+  font-size: 80px;
+  font-weight: 100;
+  font-family: Roboto;
+  text-transform: uppercase;
+  line-height: 80px;
+  margin-top: 90px;
+  
+  text-shadow: 0 1px 5px rgba(0,0,0,.6), 0 1px rgba(0,0,0,.2);
+  
+}
+
+.tagline {
+  font-family: Roboto;
+  color: rgba(255,255,255,.80);
+  
+  font-weight: 300;
+  margin-top: 15px;
+  font-size: 20px;
+  text-shadow: 0 -1px rgba(0,0,0,.3), 0 1px rgba(0,0,0,.3);
+
+}
+
+form {
+  max-width: 270px;
+  margin: 55px auto 30px;
+}
+
+input, button {
+  width: 100%;
+  font-family: Open Sans;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+input {
+  border: 1px solid rgba(0,0,0,.3);
+  background-color: rgba(0,0,0,.13);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.2), 0 1px rgba(255,255,255,.20);
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,.4);
+}
+
+/* merge fields */
+input:first-of-type {
+  border-radius: 4px 4px 0 0;
+  margin-bottom: 0;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.2);
+}
+
+input:last-of-type {
+  margin-top: 0;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  
+  box-shadow: 0 1px rgba(255,255,255,.20), inset 0 1px 2px rgba(0,0,0,.2), inset 0 1px rgba(255,255,255,.25);
+}
+/**/
+
+input:last-of-type {
+  margin-bottom: 10px;
+}
+
+input:focus {
+  outline: none;
+}
+
+button {
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+  border: 1px solid #6d51a8;
+  background-image: -webkit-linear-gradient(top, #a178fa 0%, #662bdc 100%);
+  box-shadow: inset 0 1px rgba(255,255,255,.45), 0 0 4px rgba(0,0,0,.3);
+  border: 1px solid #222;
+}
+
+button:hover {
+  background-image: -webkit-linear-gradient(top, #c198ff 0%, #763bec 100%);    
+}
+
+button:active {
+  background: #763bec;    
+}

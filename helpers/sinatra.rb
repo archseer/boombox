@@ -13,4 +13,8 @@ module WebHelpers
       slim(:"#{template}", options)
     end
   end
+
+  def relative_to path
+    Pathname.new(path).relative_path_from(Pathname.new(settings.public_folder)).to_s
+  end
 end

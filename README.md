@@ -8,7 +8,10 @@ Note: waveform requires SoX installed.
 
 ## Setup
 
-Put your music files, folders and cover art (mp3) into `public/music`, then open the `/reset` URL in your browser.
+1. Put your music files, folders and cover art (mp3) into `public/music`.
+2. Create a new user account by running `ruby script/new_account'
+3. Run the server and log in.
+4. Open the `/reset` URL in your browser to force boombox to scan the music dir.
 
 
 ## TODO
@@ -20,7 +23,9 @@ Put your music files, folders and cover art (mp3) into `public/music`, then open
 
 * Fix scrollbar on table.
 
-* Login system via Warden, later support for multiple users.
+* ~~Login system via Warden, later support for multiple users.~~
+* Add a logout button on the UI.
+* Invite new users via mail system
 
 * ~~Get view icons from fontello and figure out where to put them on the UI.~~
 * Cover art view (thumbnail view), incorporate [this tutorial](http://tympanus.net/Tutorials/ThumbnailGridExpandingPreview/), where the preview would be a tracklist.

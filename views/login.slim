@@ -1,0 +1,8 @@
+.title Boombox
+.tagline Your personal music server
+
+form#login action="/login" method="post"
+  / TODO: add CSRF
+  input type="text" name="user[username]" placeholder="Username"
+  input type="password" name="user[password]" placeholder="Password"
+  button type="submit" Sign in

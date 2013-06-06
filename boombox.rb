@@ -10,14 +10,13 @@ require 'sinatra/content_for'
 require "better_errors"
 require_relative 'lib/core_ext/hash'
 require_relative 'helpers/sinatra'
+require_relative 'models/user'
 require_relative 'models/track'
 require 'pathname'
 require 'json'
 
 require_relative 'lib/tagger'
-
-# disable running by default, otherwise just requiring it would trigger a duplicate
-set :run, false
+require_relative 'lib/warden'
 
 class CoffeeHandler < Sinatra::Base
   set :views, File.dirname(__FILE__) + '/coffee'
@@ -36,7 +35,7 @@ end
 
 class Boombox < Sinatra::Base
   register Sinatra::Reloader
-  register Sinatra::Async
+  also_reload "lib/*.rb"
   also_reload "helpers/*.rb"
   also_reload "models/*.rb"
 
@@ -47,76 +46,12 @@ class Boombox < Sinatra::Base
   set :server, :thin
   set :port, 8080
 
-  configure :development do
-    use BetterErrors::Middleware
-    BetterErrors.application_root = File.expand_path("..", __FILE__)
-  end
-
   use CoffeeHandler
   use Rack::MethodOverride
+  use Rack::Session::Cookie, secret: 'psssshdonttellthistoanyone!'
+  use Rack::Flash
 
-  use Rack::Session::Cookie#, secret: ''
-
-  # Warden
-  use Warden::Manager do |config|
-    # Tell Warden how to save our User info into a session.
-    # Sessions can only take strings, not Ruby code, we'll store 
-    # the User's `id`
-    config.serialize_into_session{|user| user.id }
-    # Now tell Warden how to take what we've stored in the session
-    # and get a User from that information.
-    config.serialize_from_session{|id| User.get(id) }
-
-    config.scope_defaults :default,
-      # "strategies" is an array of named methods with which to
-      # attempt authentication. We have to define this later.
-      strategies: [:password],
-      # The action is a route to send the user to when
-      # warden.authenticate! returns a false answer. We'll show
-      # this route below.
-      action: 'auth/unauthenticated'
-    # When a user tries to log in and cannot, this specifies the
-    # app to send the user to.
-    config.failure_app = self
-  end
-
-  Warden::Manager.before_failure do |env,opts|
-    env['REQUEST_METHOD'] = 'POST'
-  end
-
-  Warden::Strategies.add(:password) do
-    def valid?
-      params['user']['username'] && params['user']['password']
-    end
-
-    def authenticate!
-      user = User.first(username: params['user']['username'])
-
-      if user.nil?
-        fail!("The username you entered does not exist.")
-        flash.error = ""
-      elsif user.authenticate(params['user']['password'])
-        flash.success = "Successfully Logged In"
-        success!(user)
-      else
-        fail!("Could not log in")
-      end
-    end
-  end
-
-  def warden_handler
-      env['warden']
-  end
-
-  def current_user
-      warden_handler.user
-  end
-
-  def check_authentication
-      redirect '/login' unless warden_handler.authenticated?
-  end
-
-  # end Warden
+  register Sinatra::WardenAuth # our custom Warden module
 
   def generate_coverspan tracks
     result = [] << 1 # add 1 for first entry
@@ -126,21 +61,8 @@ class Boombox < Sinatra::Base
     return result
   end
 
-  def relative_to path
-    Pathname.new(path).relative_path_from(Pathname.new(settings.public_folder)).to_s
-  end
-
-  before do
-    pass if request.path_info == '/login'
-    check_authentication
-  end
-
   get '/' do
     slim :index
-  end
-
-  get '/login' do
-    slim :login, :layout => 'layouts/login'.to_sym
   end
 
   get '/player' do
@@ -219,7 +141,6 @@ class Boombox < Sinatra::Base
       json :album => "Unknown", :artist => "Unknown", :title => "No song", :cover => "blank.png"
     end
   end
-
   
   before do
     if request.pjax? # Disable layout if request is via pjax
@@ -227,6 +148,11 @@ class Boombox < Sinatra::Base
     else
       @default_layout = 'layouts/application'.to_sym
     end
+  end
+
+  configure :development do
+    use BetterErrors::Middleware
+    BetterErrors.application_root = File.expand_path("..", __FILE__)
   end
 
   # start the server if ruby file executed directly
