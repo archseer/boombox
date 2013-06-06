@@ -28,12 +28,6 @@ class CoffeeHandler < Sinatra::Base
   end
 end
 
-class Sinatra::Request
-  def pjax?
-    env['HTTP_X_PJAX'] || self['_pjax']
-  end
-end
-
 class Boombox < Sinatra::Base
   register Sinatra::Reloader
   register Sinatra::Async
@@ -48,7 +42,7 @@ class Boombox < Sinatra::Base
   use Rack::MethodOverride
 
   set :server, :thin
-  set :port, 8081
+  set :port, 8080
 
   configure :development do
     use BetterErrors::Middleware
@@ -152,11 +146,6 @@ class Boombox < Sinatra::Base
 
   get '/api/tracks/all' do
     json Track.sort(:album, :disc, :track).all
-  end
-
-  # Disable layout if request is via pjax
-  before do
-    @default_layout = false if request.pjax?
   end
 
   # start the server if ruby file executed directly
