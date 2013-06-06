@@ -11,7 +11,7 @@ div#table-album-list data-ng-controller="listingController"
   table
     tbody
       tr data-ng-repeat="track in tracks" id="{{ track.id }}"
-        td.cover ng-bind-html-unsafe="track.cover" ng-if="track.cover.length" rowspan="{{ track.rowspan }}"
+        td.cover data-ng-bind-html-unsafe="track.cover" data-ng-if="track.cover.length" rowspan="{{ track.rowspan }}"
         td.track_num
           | {{ track.track }}
         td.title

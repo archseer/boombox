@@ -10,7 +10,7 @@ window.boomboxApp.controller "listingController", ($scope, $http) ->
   $("#contents").removeClass().addClass "index"
 
   # Set up events
-  Boombox?.unloadTempEventListeners()
+  Boombox.unloadTempEventListeners()
 
   # Table cell selection
   lastCell = ''
@@ -31,7 +31,7 @@ window.boomboxApp.controller "listingController", ($scope, $http) ->
     $(this).toggleClass 'active'
     Boombox.playSong($(this))
 
-  if Boombox? and Boombox.songID?
+  if Boombox.songID?
     Boombox.nowPlaying = $("tr##{Boombox.songID}")
     if Boombox.isPlaying()
       Boombox.nowPlaying.replaceClass('paused', 'playing')

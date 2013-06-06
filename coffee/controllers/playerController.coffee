@@ -9,7 +9,7 @@ window.boomboxApp.controller "playerController", ($scope, $http) ->
   $("#link-player").addClass "selected"
   $("#contents").removeClass().addClass "player"
 
-  Boombox?.unloadTempEventListeners()
+  Boombox.unloadTempEventListeners()
 
   oldID = -1 # something that the ID will never be for start value
   loadData = ->
