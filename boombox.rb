@@ -1,7 +1,7 @@
 require 'bundler/setup'
 Bundler.require
 
-MongoMapper.database = "boombox"
+Mongoid.load!("mongoid.yml")
 
 require 'fileutils'
 require 'sinatra/reloader'
@@ -10,14 +10,13 @@ require 'sinatra/content_for'
 require "better_errors"
 require_relative 'lib/core_ext/hash'
 require_relative 'helpers/sinatra'
+require_relative 'models/user'
 require_relative 'models/track'
 require 'pathname'
 require 'json'
 
 require_relative 'lib/tagger'
-
-# disable running by default, otherwise just requiring it would trigger a duplicate
-set :run, false
+require_relative 'lib/warden'
 
 class CoffeeHandler < Sinatra::Base
   set :views, File.dirname(__FILE__) + '/coffee'
@@ -30,7 +29,7 @@ end
 
 class Boombox < Sinatra::Base
   register Sinatra::Reloader
-  register Sinatra::Async
+  also_reload "lib/*.rb"
   also_reload "helpers/*.rb"
   also_reload "models/*.rb"
 
@@ -38,16 +37,15 @@ class Boombox < Sinatra::Base
   helpers Sinatra::JSON
   helpers WebHelpers
 
-  use CoffeeHandler
-  use Rack::MethodOverride
-
   set :server, :thin
   set :port, 8080
 
-  configure :development do
-    use BetterErrors::Middleware
-    BetterErrors.application_root = File.expand_path("..", __FILE__)
-  end
+  use CoffeeHandler
+  use Rack::MethodOverride
+  use Rack::Session::Cookie, secret: 'psssshdonttellthistoanyone!'
+  use Rack::Flash
+
+  register Sinatra::WardenAuth # our custom Warden module
 
   def generate_coverspan tracks
     result = [] << 1 # add 1 for first entry
@@ -55,10 +53,6 @@ class Boombox < Sinatra::Base
       track.album == next_track.album ? result[-1] += 1 : result << 1
     end
     return result
-  end
-
-  def relative_to path
-    Pathname.new(path).relative_path_from(Pathname.new(settings.public_folder)).to_s
   end
 
   get '/' do
@@ -71,6 +65,10 @@ class Boombox < Sinatra::Base
 
   get '/waveform' do
     slim :waveform
+  end
+
+  get '/cover_view' do
+    slim :cover_view
   end
 
   get '/reset' do
@@ -90,11 +88,11 @@ class Boombox < Sinatra::Base
 
   post '/ajax/search' do
     # if string is empty, return all tracks instead of searching for it, speed optimization
-    tracks = params[:query].blank? ? Track.sort(:album, :disc, :track).all : Track.where(:$or => [
+    tracks = params[:query].blank? ? Track.desc(:album, :disc, :track).all : Track.where(:$or => [
       {:album => /#{params[:query]}/i},
       {:artist => /#{params[:query]}/i},
       {:title => /#{params[:query]}/i},
-      ]).sort(:album, :track).all
+      ]).desc(:album, :disc, :track).all
     body partial :tracklist, :locals => {:tracks => tracks}
   end
 
@@ -144,8 +142,22 @@ class Boombox < Sinatra::Base
     end
   end
 
+
   get '/api/tracks/all' do
     json Track.sort(:album, :disc, :track).all
+  end
+  
+  before do
+    if request.pjax? # Disable layout if request is via pjax
+      @default_layout = false
+    else
+      @default_layout = 'layouts/application'.to_sym
+    end
+  end
+
+  configure :development do
+    use BetterErrors::Middleware
+    BetterErrors.application_root = File.expand_path("..", __FILE__)
   end
 
   # start the server if ruby file executed directly

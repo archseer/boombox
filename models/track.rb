@@ -1,22 +1,24 @@
 class Track
-  include MongoMapper::Document
-  validates_presence_of :filename
-  key :title, String
-  key :artist, String
-  key :album, String
-  key :year, String
-  key :track, Integer
-  key :disc, Integer
-  key :albumartist, String
-  key :total_tracks, Integer
-  key :total_discs, Integer
-  key :genre, String
-  key :rating, Integer
-  key :bpm, Integer
+  include Mongoid::Document
+  include Mongoid::Timestamps
 
-  key :time, Integer
-  key :filename, String
-  timestamps!
+  validates_presence_of :filename
+
+  field :title,         type: String
+  field :artist,        type: String
+  field :album,         type: String
+  field :year,          type: String
+  field :track,         type: Integer
+  field :disc,          type: Integer
+  field :albumartist,   type: String
+  field :total_tracks,  type: Integer
+  field :total_discs,   type: Integer
+  field :genre,         type: String
+  field :rating,        type: Integer
+  field :bpm,           type: Integer
+
+  field :time,          type: Integer
+  field :filename,      type: String
 
   attr_protected :filename
 
