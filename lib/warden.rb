@@ -82,7 +82,7 @@ module Sinatra
 
       app.get '/login' do
         puts "We're on GET /login -- #{flash}"
-        slim :login, :layout => 'layouts/login'.to_sym
+        slim :login, :layout => 'layout_login'.to_sym
       end
 
       app.post '/login' do

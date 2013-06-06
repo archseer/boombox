@@ -46,15 +46,6 @@ class Boombox < Sinatra::Base
   use Rack::Flash
 
   register Sinatra::WardenAuth # our custom Warden module
-
-  def generate_coverspan tracks
-    result = [] << 1 # add 1 for first entry
-    tracks.each_cons(2) do |track, next_track|
-      track.album == next_track.album ? result[-1] += 1 : result << 1
-    end
-    return result
-  end
-
   get '/' do
     slim :layout, layout: false
   end
@@ -142,17 +133,8 @@ class Boombox < Sinatra::Base
     end
   end
 
-
   get '/api/tracks/all' do
-    json Track.sort(:album, :disc, :track).all
-  end
-  
-  before do
-    if request.pjax? # Disable layout if request is via pjax
-      @default_layout = false
-    else
-      @default_layout = 'layouts/application'.to_sym
-    end
+    json Track.desc(:album, :disc, :track).all
   end
 
   configure :development do
