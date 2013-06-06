@@ -29,6 +29,7 @@ html data-ng-app="boombox"
     script type="text/javascript" src="/coffee/controllers/listingController.js"
     script type="text/javascript" src="/coffee/controllers/waveformController.js"
     script type="text/javascript" src="/coffee/controllers/resetController.js"
+    script type="text/javascript" src="/coffee/controllers/coverviewController.js"
 
     == yield_content :head
 
@@ -58,23 +59,23 @@ html data-ng-app="boombox"
 
     section.main
       .sidebar
-        h1 Library
+        h1 Libraryviews
         ul
           a href="/#"
-            li#link-index class=("selected" if request.path_info == "/#")
+            li.link-list-view class=("selected" if request.path_info == "/#")
               i class="icon-music"
               | Music
               /span = tracks.count
           a href="/#player"
-            li#link-player class=("selected" if request.path_info.starts_with? "/#player")
+            li.link-player class=("selected" if request.path_info.starts_with? "/#player")
               i class="icon-headphones"
               | Player
           a href="/#waveform"
-            li#link-waveform class=("selected" if request.path_info.starts_with? "/#waveform")
+            li.link-waveform class=("selected" if request.path_info.starts_with? "/#waveform")
               i class="icon-retweet"
               | Waveform
           a href="/#reset"
-            li#link-reset class=("selected" if request.path_info.starts_with? "/#reset")
+            li.link-reset class=("selected" if request.path_info.starts_with? "/#reset")
               i class="icon-refresh"
               | Update DB
           /a href="#"
@@ -99,6 +100,6 @@ html data-ng-app="boombox"
         .info
           .song-count Songs: #{Track.count}
         .views
-          a.list-view href="": i.icon-reorder
-          a.album-view.active href="": i.icon-th-list
-          a.cover-view href="/cover_view": i.icon-th-large
+          a.link-list-view href="/#": i.icon-reorder
+          a.link-album-view.active href="": i.icon-th-list
+          a.link-cover-view href="/#covers": i.icon-th-large

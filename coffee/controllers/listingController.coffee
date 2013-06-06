@@ -5,8 +5,10 @@
 window.boomboxApp.controller "listingController", ($scope, $http) ->
 
   # Update sidebar
+  $('.views a').removeClass "active"
   $('.sidebar li').removeClass "selected"
-  $("#link-index").addClass "selected"
+  $(".sidebar .link-list-view").addClass "selected"
+  $(".views .link-list-view").addClass "active"
   $("#contents").removeClass().addClass "index"
 
   # Set up events

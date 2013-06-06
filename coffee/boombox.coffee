@@ -21,6 +21,10 @@ window.boomboxApp.config ($routeProvider) ->
     controller: "resetController",
     templateUrl: "/views/reset"
   }
+  $routeProvider.when "/covers", {
+    controller: "coverviewController",
+    templateUrl: "/views/cover_view"
+  }
   $routeProvider.otherwise({ redirectTo: "/" })
 
   true
