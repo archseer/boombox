@@ -5,22 +5,22 @@ html data-ng-app="boombox"
     title Boombox
     meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 
-    link rel='stylesheet' type='text/css' href='/css/vendor/reset.css'
+    link rel="stylesheet" type="text/css" href="/css/vendor/reset.css"
 
-    link rel='stylesheet' type='text/css' href='/css/vendor/open-sans.css'
-    link rel="stylesheet" type='text/css' href="/css/vendor/font-awesome.min.css"
+    link rel="stylesheet" type="text/css" href="/css/vendor/open-sans.css"
+    link rel="stylesheet" type="text/css" href="/css/vendor/font-awesome.min.css"
 
-    link rel='stylesheet' type='text/css' href='/css/playerskin.css'
-    link rel='stylesheet' type='text/css' href='/css/boombox.css'
+    link rel="stylesheet" type="text/css" href="/css/playerskin.css"
+    link rel="stylesheet" type="text/css" href="/css/boombox.css"
 
-    script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"
+    script type="text/javascript" src="/js/jquery.min.js"
     script type="text/javascript" src="/js/angular.js"
 
-    script type="text/javascript" src='/js/me-js/mediaelement.js'
-    script type="text/javascript" src='/js/me-js/slim.js'
+    script type="text/javascript" src="/js/me-js/mediaelement.js"
+    script type="text/javascript" src="/js/me-js/slim.js"
 
     script type="text/javascript" src="/coffee/core/utility.js"
-    script type="text/javascript" src='/coffee/core/player.js'
+    script type="text/javascript" src="/coffee/core/player.js"
 
     script type="text/javascript" src='/coffee/boombox.js'
     script type="text/javascript" src='/coffee/controllers/playerController.js'
@@ -31,7 +31,6 @@ html data-ng-app="boombox"
   body
     header
       #toolbar
-
         form#search onsubmit="return false"
           input id="searchbox" name="q" type="text" size="10" placeholder="Search..."
           i class="icon-search"
@@ -41,7 +40,7 @@ html data-ng-app="boombox"
             .volume-bar-slider
             .volume-bar-handle
           i.icon-volume-up
-          / button class="edit-button" style='float:left' Edit tags
+          / button class="edit-button" style="float:left" Edit tags
         #controls
           i.icon-random
           i.icon-retweet
@@ -87,7 +86,7 @@ html data-ng-app="boombox"
 
         #now-playing
           .title Now Playing
-          .cover: img src=''
+          .cover: img src=""
       #contents data-ng-view="" class=(request.path[1..-1])
 
     footer.statusbar
