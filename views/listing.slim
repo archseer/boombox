@@ -1,4 +1,4 @@
-#table-album-list data-ng-controller="listingController"
+div#table-album-list data-ng-controller="listingController"
   table
     thead
       tr
@@ -11,16 +11,14 @@
   table
     tbody
       tr data-ng-repeat="track in tracks" id="{{ track.id }}"
-        td.cover
-          | {{ track.cover }}
+        td.cover ng-bind-html-unsafe="track.cover" ng-if="track.cover.length" rowspan="{{ track.rowspan }}"
         td.track_num
+          | {{ track.track }}
         td.title
           | {{ track.title }}
         td.time
-          | {{ track.time }}
+          | {{ track.length }}
         td.artist
           | {{ track.artist }}
         td.album
           | {{ track.album }}
-
-/script type="text/javascript" src="/coffee/page-index.js"

@@ -91,7 +91,7 @@ class Boombox < Sinatra::Base
   # Get listings rendered for injection
   get '/views/*' do
     filename = params[:splat].first
-    slim filename.to_sym, layout: false
+    slim filename.to_sym, layout: false, :disable_escape => true
   end
 
   post '/ajax/search' do
