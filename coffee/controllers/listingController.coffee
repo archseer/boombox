@@ -56,12 +56,11 @@ window.boomboxApp.controller "listingController", ($scope, $http) ->
     setupCover = (track, i) ->
       coverUrl = track.cover
       row = rowspan.shift()
-      cover =  '<div>'
+      cover =  ''
       if row > 5
         cover += '<div class="img">'
         cover += '<img src="' + coverUrl + '"/>'
         cover += '</div>'
-      cover += '</div>'
       track.cover = cover
       track.rowspan = row
       track

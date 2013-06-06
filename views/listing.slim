@@ -10,7 +10,7 @@ div#table-album-list data-ng-controller="listingController"
         th.album Album
   table
     tbody
-      tr data-ng-repeat="track in tracks" id="{{ track.id }}"
+      tr data-ng-repeat="track in tracks" id="{{ track._id }}"
         td.cover data-ng-bind-html-unsafe="track.cover" data-ng-if="track.cover.length" rowspan="{{ track.rowspan }}"
         td.track_num
           | {{ track.track }}
