@@ -6,8 +6,6 @@ class window.Player
       features: ['current','duration','progress','volume'],
       timeAndDurationSeparator: ' <span class="mejs-timeseparator"> / </span> ',
       success: (mediaElement, domObject) =>
-        # keep track of the mediaElement object for additional callbacks
-        #@mediaElement = mediaElement
 
         # Speed Up: Make elements and add their class the right way, but ugly.
         $('.mejs-stop-button button').append('<i class="icon-stop"></i>')
