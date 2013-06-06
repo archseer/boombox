@@ -12,13 +12,14 @@ $(document).ready ->
   resizeWindow()
 
   # AJAX search
+  # Each page should have its own handler
   previousSearch = '' # we check if the query has actually changed
   $('#searchbox').keyup ->
     value = $(this).val()
     if value isnt previousSearch #and value.length >= 3 #minlength
       $.post 'ajax/search', { query: value }, (data) ->
         previousSearch = value
-        $('#table tbody').html(data)
+        $('#contents tbody').html(data)
 
   # tag editing
   $('.edit-button').on 'click', ->
