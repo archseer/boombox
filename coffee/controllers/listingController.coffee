@@ -37,7 +37,7 @@ window.boomboxApp.controller "listingController", ($scope, $http) ->
       Boombox.nowPlaying.replaceClass('playing', 'paused')
 
   # Tag Editing
-  $('.edit-button').on 'click', ->
+  $('.edit-button').click ->
     ids = (n.id for n in $('#table-album-list tr.active'))
 
     if ids.length > 0
@@ -48,11 +48,11 @@ window.boomboxApp.controller "listingController", ($scope, $http) ->
         $scope.$emit "centerRequest"
 
         # add save and close actions
-        $('#modal .close').on 'click', ->
+        $('#modal .close').click ->
           modal.remove()
           $('#overlay').remove()
 
-        $('#modal .save').on 'click', (e) ->
+        $('#modal .save').click (e) ->
           e.preventDefault()
           $.post 'ajax/edit', $('#modal #edit').serialize(), (data) ->
             modal.remove()
@@ -62,7 +62,7 @@ window.boomboxApp.controller "listingController", ($scope, $http) ->
         # multi track edit
         checkboxes = $('#modal input[type="checkbox"]')
         if checkboxes?
-          checkboxes.on 'click', ->
+          checkboxes.click ->
             obj = $(this)
             name = obj.attr('name').match(/check\[(\w+)\]/)[1]
 
