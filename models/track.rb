@@ -28,7 +28,7 @@ class Track
     elsif dir = Dir.glob("public/#{File.dirname self.filename}/*.{jpg,jpeg,png}", File::FNM_CASEFOLD)
       path = dir.first
     end
-    path ||= "img/blank.png"
+    path ||= "/img/blank.png"
     path.gsub('public/', '')
   end
 
