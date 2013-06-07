@@ -9,7 +9,7 @@ Note: waveform requires SoX installed.
 ## Setup
 
 1. Put your music files, folders and cover art (mp3) into `public/music`.
-2. Create a new user account by running `ruby script/new_account'
+2. Create a new user account by running `ruby script/new_account`.
 3. Run the server and log in.
 4. Open the `/reset` URL in your browser to force boombox to scan the music dir.
 
@@ -52,6 +52,8 @@ v2
 
 * (enable streaming via. MPD?)
 * Playlists
+* Rating system
+* Match up songs that go great together
 * Wire up shuffle and loop. (after we have playlists)
 * Support for [AAC](https://github.com/audiocogs/aac.js), [FLAC](https://github.com/audiocogs/flac.js), [ALAC](https://github.com/audiocogs/alac.js). Is ogg supported?
 * Funky waveforms in canvas via the new audio API's by FF and Chrome.

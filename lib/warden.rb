@@ -4,18 +4,6 @@ module Sinatra
   module WardenAuth
 
     module Helpers
-      #def authorized?
-      #  session[:authorized]
-      #end
-
-      #def authorize!
-      #  redirect '/login' unless authorized?
-      #end
-
-      #def logout!
-      #  session[:authorized] = false
-      #end
-
       def warden
         env['warden']
       end
