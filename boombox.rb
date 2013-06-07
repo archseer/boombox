@@ -128,7 +128,7 @@ class Boombox < Sinatra::Base
         json :error => "404 - Not Found"
       end
     else
-      json :album => "Unknown", :artist => "Unknown", :title => "No song", :cover => "blank.png"
+      json :album => "Unknown", :artist => "Unknown", :title => "No song", :cover => "/img/blank.png"
     end
   end
 
