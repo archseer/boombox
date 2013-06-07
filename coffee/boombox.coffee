@@ -3,7 +3,10 @@
 window.boomboxApp = angular.module "boombox", []
 
 # Routing
-window.boomboxApp.config ($routeProvider) ->
+window.boomboxApp.config ($routeProvider, $locationProvider) ->
+
+  # HTML5 Urls
+  $locationProvider.html5Mode true
 
   $routeProvider.when "/", {
     controller: "listingController",
