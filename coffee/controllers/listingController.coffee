@@ -40,6 +40,41 @@ window.boomboxApp.controller "listingController", ($scope, $http) ->
     else
       Boombox.nowPlaying.replaceClass('playing', 'paused')
 
+  # Tag Editing
+  $('.edit-button').on 'click', ->
+    ids = (n.id for n in $('#table-album-list tr.active'))
+
+    if ids.length > 0
+      $.post 'ajax/edit-modal', { query: ids }, (data) ->
+
+        $('body').append data
+        modal = $('#modal')
+        $scope.$emit "centerRequest"
+
+        # add save and close actions
+        $('#modal .close').on 'click', ->
+          modal.remove()
+          $('#overlay').remove()
+
+        $('#modal .save').on 'click', (e) ->
+          e.preventDefault()
+          $.post 'ajax/edit', $('#modal #edit').serialize(), (data) ->
+            modal.remove()
+            $('#overlay').remove()
+            $('#container').html(data)
+
+        # multi track edit
+        checkboxes = $('#modal input[type="checkbox"]')
+        if checkboxes?
+          checkboxes.on 'click', ->
+            obj = $(this)
+            name = obj.attr('name').match(/check\[(\w+)\]/)[1]
+
+            if obj.is(':checked')
+              $('input#id3_#{name}').removeAttr('disabled')
+            else
+              $('input#id3_#{name}').prop('disabled', true)
+
   # Request data
   $http({
       url: "/api/tracks/all",

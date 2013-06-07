@@ -7,15 +7,5 @@ jQuery.fn.between = (elm0, elm1) ->
   else
     return this.slice index1, index0 + 1
 
-jQuery.fn.center = ->
-  @css "position", "absolute"
-  @css("top", Math.max(0, (($(window).height() - @outerHeight()) / 2) + $(window).scrollTop()) + "px")
-  @css("left", Math.max(0, (($(window).width() - @outerWidth()) / 2) + $(window).scrollLeft()) + "px")
-  this
-
 jQuery.fn.replaceClass = (original, replacement) ->
   @removeClass(original).addClass(replacement)
-
-window.resizeWindow = ->
-  $('#modal').center()
-  true

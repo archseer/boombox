@@ -38,10 +38,6 @@ $(document).ready ->
   # Create Boombox!
   window.Boombox = new Player
 
-  #add the window resize callback
-  $(window).resize resizeWindow
-  resizeWindow()
-
   # AJAX search
   previousSearch = '' # we check if the query has actually changed
   $('#searchbox').keyup ->
@@ -54,3 +50,21 @@ $(document).ready ->
   window.Boombox.registerHooks()
 
   true
+
+# Run block, hooks up global listener
+window.boomboxApp.run ($rootScope) ->
+
+  # Auto-centering
+  $rootScope.$on "centerRequest", ->
+    $(".center").each ->
+      _element = $(this)
+
+      _top = Math.max 0, ($(window).height() - _element.outerHeight()) / 2
+      _left = Math.max 0, ($(window).width() - _element.outerWidth()) / 2
+      _top += $(window).scrollTop()
+      _left += $(window).scrollLeft()
+
+      _element.css "position", "absolute"
+      _element.css "top", _top + "px"
+      _element.css "left", _left + "px"
+      true
