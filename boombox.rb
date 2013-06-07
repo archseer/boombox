@@ -13,7 +13,6 @@ require_relative 'helpers/sinatra'
 require_relative 'models/user'
 require_relative 'models/track'
 require 'pathname'
-require 'json'
 
 require_relative 'lib/tagger'
 require_relative 'lib/warden'
