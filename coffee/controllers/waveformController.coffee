@@ -4,10 +4,8 @@
 #
 window.boomboxApp.controller "waveformController", ($scope) ->
 
-  # Update sidebar
-  $('.sidebar li').removeClass "selected"
-  $("#link-waveform").addClass "selected"
-  $("#contents").removeClass().addClass "waveform"
+  # Eye candy, #contents class
+  $scope.$emit "highlightLink", ".link-waveform", "waveform"
 
   Boombox.unloadTempEventListeners()
 

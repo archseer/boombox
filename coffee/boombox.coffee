@@ -68,3 +68,16 @@ window.boomboxApp.run ($rootScope) ->
       _element.css "top", _top + "px"
       _element.css "left", _left + "px"
       true
+
+  # Active link highlighting
+  $rootScope.$on "highlightLink", (e, selector, contentsClass) ->
+
+    # Reset links
+    $('.views a').removeClass "active"
+    $('.sidebar li').removeClass "selected"
+
+    $(".sidebar " + selector).addClass "selected"
+    $(".views " + selector).addClass "active"
+
+    # If supplied, set up #contents with the proper class
+    if contentsClass then $("#contents").removeClass().addClass contentsClass

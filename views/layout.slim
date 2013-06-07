@@ -61,21 +61,21 @@ html data-ng-app="boombox"
       .sidebar
         h1 Libraryviews
         ul
-          a href="/#"
-            li.link-list-view class=("selected" if request.path_info == "/#")
+          a href="/"
+            li.link-list-view
               i class="icon-music"
               | Music
               /span = tracks.count
-          a href="/#player"
-            li.link-player class=("selected" if request.path_info.starts_with? "/#player")
+          a href="/player"
+            li.link-player
               i class="icon-headphones"
               | Player
-          a href="/#waveform"
-            li.link-waveform class=("selected" if request.path_info.starts_with? "/#waveform")
+          a href="/waveform"
+            li.link-waveform
               i class="icon-retweet"
               | Waveform
-          a href="/#reset"
-            li.link-reset class=("selected" if request.path_info.starts_with? "/#reset")
+          a href="/reset"
+            li.link-reset
               i class="icon-refresh"
               | Update DB
           /a href="#"
@@ -100,6 +100,6 @@ html data-ng-app="boombox"
         .info
           .song-count Songs: #{Track.count}
         .views
-          a.link-list-view href="/#": i.icon-reorder
+          a.link-list-view href="/": i.icon-reorder
           a.link-album-view.active href="": i.icon-th-list
-          a.link-cover-view href="/#covers": i.icon-th-large
+          a.link-cover-view href="/covers": i.icon-th-large

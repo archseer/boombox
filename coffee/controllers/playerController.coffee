@@ -4,10 +4,8 @@
 #
 window.boomboxApp.controller "playerController", ($scope, $http) ->
 
-  # Update sidebar
-  $('.sidebar li').removeClass "selected"
-  $("#link-player").addClass "selected"
-  $("#contents").removeClass().addClass "player"
+  # Eye candy, #contents class
+  $scope.$emit "highlightLink", ".link-player", "player"
 
   Boombox.unloadTempEventListeners()
 

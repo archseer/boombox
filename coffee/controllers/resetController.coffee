@@ -4,10 +4,8 @@
 #
 window.boomboxApp.controller "resetController", ($scope, $http) ->
 
-  # Update sidebar
-  $('.sidebar li').removeClass "selected"
-  $("#link-reset").addClass "selected"
-  $("#contents").removeClass().addClass "reset"
+  # Eye candy, #contents class
+  $scope.$emit "highlightLink", ".link-reset", "reset"
 
   $http({
     url: "/reset",
