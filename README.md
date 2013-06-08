@@ -30,6 +30,7 @@ Note: waveform requires SoX installed.
 * ~~Login system via Warden, later support for multiple users.~~
 * Add a logout button on the UI.
 * Invite new users via mail system
+* ~~Import Roboto into the project.~~
 
 * ~~Get view icons from fontello and figure out where to put them on the UI.~~
 * Cover art view (thumbnail view), incorporate [this tutorial](http://tympanus.net/Tutorials/ThumbnailGridExpandingPreview/), where the preview would be a tracklist.
@@ -37,15 +38,12 @@ Note: waveform requires SoX installed.
 * Store the preferences (view, shuffle/loop) in the user session and/or user's DB model.
 
 * AJAX-ify the tables and/or figure out a way to make it work with huuuuge filelists.
-
 * Rewrite tagger. Support embedded cover art. Cache cover art. Use GridFS maybe?
-
 * Make a mobile version, swipable tabs?
-
 * CSS Animations, effects, eyecandy! :3 ~~Port CSS3 cover art effects from Redbird.~~
-
 * Restyle buttons.
 
+* Some songs, like LATENYC #1 and #2 
 * Extend models to feature Artist and Album models (albums are separate unless artist or albumartist or the sort field matches!)
 
 v2
