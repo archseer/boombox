@@ -20,30 +20,26 @@ Note: waveform requires SoX installed.
 * ~~Make a blue-ish hue glow for the header buttons.~~
 * ~~Fix tabs, so that events work when we switch pages back and forth.~~
 * ~~Fix up the coffeescript to follow a certain pattern -- make it actually make sense~~...
-
+* Change the listing back onto a single table structure (to get rid of the header bug)
 * Fix scrollbar on table.
-
 * FF: event binding doesn't work -- the play/pause button doesn't update and the player page doesn't work.
-* Cover art doesn't update on the player page.
+* ~~Cover art doesn't update on the player page.~~
 * Now playing icon (small speaker) needs to be reapplied on the listing mode.
-
 * ~~Login system via Warden, later support for multiple users.~~
 * Add a logout button on the UI.
 * Invite new users via mail system
 * ~~Import Roboto into the project.~~
-
 * ~~Get view icons from fontello and figure out where to put them on the UI.~~
 * Cover art view (thumbnail view), incorporate [this tutorial](http://tympanus.net/Tutorials/ThumbnailGridExpandingPreview/), where the preview would be a tracklist.
 * Cover flow view (add the icon to the view switcher!)
 * Store the preferences (view, shuffle/loop) in the user session and/or user's DB model.
-
 * AJAX-ify the tables and/or figure out a way to make it work with huuuuge filelists.
 * Rewrite tagger. Support embedded cover art. Cache cover art. Use GridFS maybe?
 * Make a mobile version, swipable tabs?
 * CSS Animations, effects, eyecandy! :3 ~~Port CSS3 cover art effects from Redbird.~~
-* Restyle buttons.
-
-* Some songs, like LATENYC #1 and #2 
+* ~~Restyle buttons.~~ Pick a general color scheme and restyle again.
+* Use a tabular layout (or ANYTHING saner) for the multi edit form.
+* Some songs, like LATENYC #1 and #2 are actually longer in time than what the player shows.
 * Extend models to feature Artist and Album models (albums are separate unless artist or albumartist or the sort field matches!)
 
 v2
