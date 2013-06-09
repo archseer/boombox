@@ -745,7 +745,7 @@ label, legend {
   /*height: 250px;*/
 }
 
-.cover-grid li img {
+.cover-grid li .cover img {
   max-width: 250px;
   height: auto;
   vertical-align: middle;
@@ -762,7 +762,192 @@ label, legend {
 .cover-grid .artist {
   color: #999;
   text-shadow: 0 -1px 0 rgba(0,0,0,.4);
-} 
+}
+
+.cover-grid li > a,
+.cover-grid li > a img {
+  border: none;
+  outline: none;
+  display: block;
+  position: relative;
+}
+
+.cover-grid li.cover-expanded > a::after {
+  top: auto;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-bottom-color: #ddd;
+  border-width: 15px;
+  left: 50%;
+  margin: -15px 0 0 -15px;
+}
+
+.cover-expander {
+  position: absolute;
+  background: #ddd;
+  top: auto;
+
+  /* make it span only the content area width */
+  left: 210px; /* sidebar width */
+  right: 0;
+
+  margin-top: 15px;
+  text-align: left;
+  
+  overflow: hidden;
+}
+
+.cover-expander-inner {
+  padding: 50px 30px;
+  height: 100%;
+}
+
+.cover-close {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.cover-close::before,
+.cover-close::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  height: 1px;
+  background: #888;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.cover-close::after {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.cover-close:hover::before,
+.cover-close:hover::after {
+  background: #333;
+}
+
+.cover-fullimg,
+.cover-details {
+  width: 50%;
+  float: left;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.cover-details {
+  padding: 0 40px 0 20px;
+}
+
+.cover-fullimg {
+  text-align: center;
+}
+
+.cover-fullimg img {
+  display: inline-block;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.cover-details h3 {
+  font-weight: 300;
+  font-size: 52px;
+  padding: 40px 0 10px;
+  margin-bottom: 10px;
+}
+
+.cover-details p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #999;
+}
+
+.cover-details a {
+  font-weight: 700;
+  font-size: 16px;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 10px 20px;
+  border: 3px solid #333;
+  display: inline-block;
+  margin: 30px 0 0;
+  outline: none;
+}
+
+.cover-details a::before {
+  content: '\2192';
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.cover-details a:hover {
+  border-color: #999;
+  color: #999;
+}
+
+.cover-loading {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ddd;
+  box-shadow: 0 0 1px #ccc, 15px 30px 1px #ccc, -15px 30px 1px #ccc;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px;
+  -webkit-animation: loader 0.5s infinite ease-in-out both;
+  -moz-animation: loader 0.5s infinite ease-in-out both;
+  animation: loader 0.5s infinite ease-in-out both;
+}
+
+@-webkit-keyframes loader {
+  0% { background: #ddd; }
+  33% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ccc, -15px 30px 1px #ddd; }
+  66% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ddd, -15px 30px 1px #ccc; }
+}
+
+@-moz-keyframes loader {
+  0% { background: #ddd; }
+  33% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ccc, -15px 30px 1px #ddd; }
+  66% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ddd, -15px 30px 1px #ccc; }
+}
+
+@keyframes loader {
+  0% { background: #ddd; }
+  33% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ccc, -15px 30px 1px #ddd; }
+  66% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ddd, -15px 30px 1px #ccc; }
+}
+
+@media screen and (max-width: 830px) {
+
+  .cover-expander h3 { font-size: 32px; }
+  .cover-expander p { font-size: 13px; }
+  .cover-expander a { font-size: 12px; }
+
+}
+
+@media screen and (max-width: 650px) {
+
+  .cover-fullimg { display: none; }
+  .cover-details { float: none; width: 100%; }
+  
+}
+/* END: Cover view */
 /* END: Cover view */
 
 

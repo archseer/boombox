@@ -23,6 +23,7 @@ Note: waveform requires SoX installed.
 * ~~Change the listing back onto a single table structure (to get rid of the header bug)~~
 * Fix scrollbar on table.
 * FF: event binding doesn't work -- the play/pause button doesn't update and the player page doesn't work.
+* Fix DOM memory leaks that happen when we change the page and don't empty out the container. (use .empty()!)
 * ~~Cover art doesn't update on the player page.~~
 * Now playing icon (small speaker) needs to be reapplied on the listing mode.
 * ~~Login system via Warden, later support for multiple users.~~
