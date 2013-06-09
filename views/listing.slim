@@ -8,7 +8,6 @@ div#table-album-list
         th.time Time
         th.artist Artist
         th.album Album
-  table
     tbody
       tr data-ng-repeat="track in tracks" id="{{ track._id }}"
         td.cover data-ng-bind-html-unsafe="track.cover" data-ng-if="track.cover.length" rowspan="{{ track.rowspan }}"
