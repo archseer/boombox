@@ -780,24 +780,24 @@ label, legend {
   width: 0;
   position: absolute;
   pointer-events: none;
-  border-bottom-color: #ddd;
+  border-bottom-color: #fff;
   border-width: 15px;
   left: 50%;
   margin: -15px 0 0 -15px;
+  z-index: 1;
 }
 
 .cover-expander {
   position: absolute;
-  background: #ddd;
+  background: #fff;
   top: auto;
-
   /* make it span only the content area width */
   left: 210px; /* sidebar width */
   right: 0;
 
   margin-top: 15px;
   text-align: left;
-  
+  box-shadow: 0 -3px 3px -2px #000;
   overflow: hidden;
 }
 
