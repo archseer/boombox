@@ -40,13 +40,14 @@ class window.Player
       @_callbacks.shift().call(Boombox)
   # weird END
 
+  # TODO: useCapture is now bubble, so this is probably invalid
   addEventListener: (type, listener, useCapture) ->
     @instance.media.addEventListener type, listener, useCapture
 
   # Allows us to register a set of event listeners which we can then remove by calling unloadTempEventListeners()
   registerTempEventListener: (type, listener, useCapture) ->
-    @tempEventListeners.push {type: type, listener: listener, useCapture: useCapture}
-    @addEventListener(type, listener, useCapture)
+    @tempEventListeners.push {type: type, "listener": listener, useCapture: useCapture}
+    @addEventListener type, listener, useCapture
 
   unloadTempEventListeners: ->
     $(@tempEventListeners).each (index, el) =>
@@ -89,33 +90,37 @@ class window.Player
     else @playSong @nowPlaying.parent().children('tr:last')
 
   registerHooks: ->
-    icon = $('#player-buttons .playpause i')
+    icon = $("#player-buttons .playpause i")
 
-    # addEventListener doesn't work for FF... WTF?
-    @addEventListener('play', ->
-      icon.removeClass('icon-play').addClass('icon-pause')
-    , false)
-    @addEventListener('playing', ->
-      icon.removeClass('icon-play').addClass('icon-pause')
-    , false)
+    # addEventListener doesn"t work for FF... WTF?
+    @addEventListener "play", ->
+      alert "ASDF"
+      icon.removeClass("icon-play").addClass "icon-pause"
+    , false
+    @addEventListener "playing", ->
+      alert "ASDF"
+      icon.removeClass("icon-play").addClass "icon-pause"
+    , false
 
-    @addEventListener('pause', ->
-      icon.removeClass('icon-pause').addClass('icon-play')
-    , false)
-    @addEventListener('paused', ->
-      icon.removeClass('icon-pause').addClass('icon-play')
-    , false)
+    @addEventListener "pause", ->
+      alert "ASDF"
+      icon.removeClass("icon-pause").addClass "icon-play"
+    , false
+    @addEventListener "paused", ->
+      alert "ASDF"
+      icon.removeClass("icon-pause").addClass "icon-play"
+    , false
 
     # Top bar button handlers
-    $('#player-buttons .playpause').click (e) =>
+    $("#player-buttons .playpause").click (e) =>
       e.preventDefault()
       if @isPlaying() then @pause() else @play()
       false
-    $('#player-buttons .next').click (e) =>
+    $("#player-buttons .next").click (e) =>
       e.preventDefault()
       @playNextSong()
       false
-    $('#player-buttons .back').click (e) =>
+    $("#player-buttons .back").click (e) =>
       e.preventDefault()
       @playPrevSong()
       false

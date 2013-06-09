@@ -20,7 +20,7 @@ Note: waveform requires SoX installed.
 * ~~Make a blue-ish hue glow for the header buttons.~~
 * ~~Fix tabs, so that events work when we switch pages back and forth.~~
 * ~~Fix up the coffeescript to follow a certain pattern -- make it actually make sense~~...
-* Change the listing back onto a single table structure (to get rid of the header bug)
+* ~~Change the listing back onto a single table structure (to get rid of the header bug)~~
 * Fix scrollbar on table.
 * FF: event binding doesn't work -- the play/pause button doesn't update and the player page doesn't work.
 * ~~Cover art doesn't update on the player page.~~

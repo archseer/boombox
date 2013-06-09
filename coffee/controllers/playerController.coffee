@@ -12,14 +12,14 @@ window.boomboxApp.controller "playerController", ($scope, $http) ->
   oldID = -1 # something that the ID will never be for start value
   loadData = ->
     unless oldID == Boombox.songID
-      $http({
-        url: "/api/track/#{Boombox.songID}",
+      $http
+        url: "/api/track/#{Boombox.songID}"
         method: "GET"
-      }).success (data) ->
+      .success (data) ->
         $scope.track = data
         oldID = Boombox.songID
 
   loadData()
 
   Player.executeOnLoad ->
-    Boombox.registerTempEventListener('play', loadData, false)
+    Boombox.registerTempEventListener "play", loadData, false
