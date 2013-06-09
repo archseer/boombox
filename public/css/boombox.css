@@ -172,6 +172,7 @@ section.main {
   float: right;
   padding: 0 17px;
   border-left: 1px solid #d5d5d5;
+  text-decoration: none;
 }
 
 /* Volume bar styles */
