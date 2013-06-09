@@ -1,4 +1,4 @@
-* {box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box}
+* {-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box}
 
 .clear {clear:both}
 
@@ -30,7 +30,6 @@ header {
 }
 
 #toolbar {
-  padding-right: 10px;
   line-height: 53px; /* - border */
   height: 55px;
 
@@ -46,15 +45,14 @@ header {
   position: relative;
   z-index: 1;
 
-  /*
-  box-shadow: 0 1px 3px rgba(0,0,0, .3), inset 0 15px 50px -30px rgba(0,0,0,.4), inset 0 -15px 50px -20px rgba(0,0,0,.4);
-  */
+  /* box-shadow: 0 1px 3px rgba(0,0,0, .3), inset 0 15px 50px -30px rgba(0,0,0,.4), inset 0 -15px 50px -20px rgba(0,0,0,.4); */
 }
 
 #toolbar i {
   font-size: 14px;
   color: #666;
   text-shadow: 0 -1px 0 #000, 0 1px 0 #fff;
+  text-decoration: none;
 }
 
 footer.statusbar {
@@ -87,7 +85,7 @@ footer.statusbar {
   border-top: 1px solid #d1d5e1;
   margin-left: 210px;
   color: #959db0;
-   font-weight: 600;
+  font-weight: 600;
 }
 
 #side-status, #main-status {
@@ -149,21 +147,31 @@ section.main {
   padding-left: 24px;
   -webkit-appearance: none;
   box-shadow: inset 0px 1px 3px -1px rgba(0,0,0,.4);
+  
+  display: inline-block;
 }
 
 #search {
   float: right;
-  padding-left: 25px;
   border-left: 1px solid #d5d5d5;
+  border-right: 1px solid #a5a5a5;
   position: relative;
+  text-align: center;
+  width: 230px;
 }
 
 #search i {
   position: absolute;
-  top: 19px;
-  left: 34px;
+  top: 18px;
+  left: 18px;
   color: #808080;
   text-shadow: none;
+}
+
+.settings {
+  float: right;
+  padding: 0 17px;
+  border-left: 1px solid #d5d5d5;
 }
 
 /* Volume bar styles */
@@ -238,7 +246,7 @@ section.main {
   text-align: center;
 
   margin-left: 152px;
-  margin-right: 226px; /* HAXX search width */
+  margin-right: 280px; /* HAXX search width */
 }
 
 #player-buttons button {
@@ -333,16 +341,16 @@ section.main {
 .sidebar ul a:hover, .sidebar ul a:focus {color: #458afb} /* needs to be applied to a in order for focus to work*/
 
 .sidebar ul li.selected {
- background-color: #478afb;
- color: #fff;
- text-shadow: 0 1px 0 #376df1;
- border-color: #2674f0;
+  background-color: #478afb;
+  color: #fff;
+  text-shadow: 0 1px 0 #376df1;
+  border-color: #2674f0;
 }
 
-.sidebar ul li i {font-size: 14px; margin-right: 10px;}
-
-.sidebar ul li h1 {font-size: 14px; display: inline-block;}
-
+.sidebar ul li i {
+  font-size: 14px;
+  margin-right: 10px;
+}
 
 
 #now-playing {
@@ -438,6 +446,28 @@ section.main {
   vertical-align: top; /* prevent the cell collapse */
 }
 
+#table-album-list .track_num  {
+  text-align: right;
+  width: 12px;
+  padding: 0 20px 0 15px;
+}
+
+#table-album-list .track_num:after { /* the play/pause icon */
+  font-family: FontAwesome;
+  display: inline-block;
+  position: relative;
+  left: 4px;
+  width: 0; /* fixes the fuckup of the padding */
+  -webkit-font-smoothing: antialiased;
+}
+  #table-album-list .playing .track_num:after {content: "\f028"}
+  #table-album-list .paused .track_num:after {content: "\f026"}
+
+#table-album-list .time { /* td and th */
+  text-align: right;
+  padding-right: 15px;
+}
+
 /* make the cover pop! */
 .cover .img {
   position: relative;
@@ -469,28 +499,6 @@ section.main {
   border: solid 1px rgba(255,255,255,0.2);
 }
 /* end make the image pop! */
-
-#table-album-list .track_num  {
-  text-align: right;
-  width: 12px;
-  padding: 0 20px 0 15px;
-}
-
-#table-album-list .track_num:after { /* the play/pause icon */
-  font-family: FontAwesome;
-  display: inline-block;
-  position: relative;
-  left: 4px;
-  width: 0; /* fixes the fuckup of the padding */
-  -webkit-font-smoothing: antialiased;
-}
-  #table-album-list .playing .track_num:after {content: "\f028"}
-  #table-album-list .paused .track_num:after {content: "\f026"}
-
-#table-album-list .time { /* td and th */
-  text-align: right;
-  padding-right: 15px;
-}
 
 /* default button style */
 button {
