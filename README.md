@@ -26,7 +26,7 @@ Note: waveform requires SoX installed.
 * ~~Cover art doesn't update on the player page.~~
 * Now playing icon (small speaker) needs to be reapplied on the listing mode.
 * ~~Login system via Warden, later support for multiple users.~~
-* Add a logout button on the UI.
+* ~~Add a logout button on the UI.~~ Wire up the link and make it pop down a menu (logout, options, invite)
 * Invite new users via mail system
 * ~~Import Roboto into the project.~~
 * ~~Get view icons from fontello and figure out where to put them on the UI.~~

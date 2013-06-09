@@ -36,9 +36,10 @@ html data-ng-app="boombox"
   body
     header
       #toolbar
+        a.settings href="/logout": i.icon-cogs
         form#search onsubmit="return false"
           input id="searchbox" name="q" type="text" size="10" placeholder="Search..."
-          i class="icon-search"
+          i.icon-search
         #volume
           i.icon-volume-down
           .volume-bar
