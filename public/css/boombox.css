@@ -371,10 +371,13 @@ section.main {
 #now-playing .cover img {
   display: block;
   max-width: 100%;
-  /* above doesn't work in moz, so.. BAT HAXX! */ width: 210px; min-height: 200px;
+  /* above doesn't work in moz, so.. BAT HAXX! */ width: 212px; /* +2px for navbar border removal */ min-height: 200px;
   background-color: #333;
 }
-#now-playing .cover {position: relative;}
+#now-playing .cover {
+  position: relative;
+  margin: -1px; /* get rid of left/right border of sidebar */
+}
 #now-playing .cover:before {
     content: ' ';
     box-shadow: inset 0 0 10px #000;

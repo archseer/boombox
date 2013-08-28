@@ -94,20 +94,16 @@ class window.Player
 
     # addEventListener doesn"t work for FF... WTF?
     @addEventListener "play", ->
-      alert "ASDF"
       icon.removeClass("icon-play").addClass "icon-pause"
     , false
     @addEventListener "playing", ->
-      alert "ASDF"
       icon.removeClass("icon-play").addClass "icon-pause"
     , false
 
     @addEventListener "pause", ->
-      alert "ASDF"
       icon.removeClass("icon-pause").addClass "icon-play"
     , false
     @addEventListener "paused", ->
-      alert "ASDF"
       icon.removeClass("icon-pause").addClass "icon-play"
     , false
 
