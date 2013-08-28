@@ -435,6 +435,10 @@ section.main {
   text-shadow: 0px 0px 1px rgba(0,0,0,.5); /* this should be left at least on track_num:after (icon) */
 }
 
+#table-album-list tr.separator { /* draw a separator between different albums */
+  border-top: 1px solid #ccc;
+}
+
 #table-album-list .cover {
   width: 150px;
   background-color: #fff;

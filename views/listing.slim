@@ -9,7 +9,7 @@ div#table-album-list
         th.artist Artist
         th.album Album
     tbody
-      tr data-ng-repeat="track in tracks" id="{{ track._id }}"
+      tr data-ng-repeat="track in tracks" id="{{ track._id }}" data-ng-class="{separator: track.cover.length}"
         td.cover data-ng-bind-html-unsafe="track.cover" data-ng-if="track.cover.length" rowspan="{{ track.rowspan }}"
         td.track_num
           | {{ track.track }}
