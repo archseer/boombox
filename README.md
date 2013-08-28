@@ -16,28 +16,20 @@ Note: waveform requires SoX installed.
 
 ## TODO
 
-* ~~Wire up the volume bar plugin into the new volume bar design.~~(Add a .volume-bar-total to limit the handle to an inner margin (narrows the bar with a padding of half the volume handle width)? right now it spans too much.
-* ~~Make a blue-ish hue glow for the header buttons.~~
-* ~~Fix tabs, so that events work when we switch pages back and forth.~~
-* ~~Fix up the coffeescript to follow a certain pattern -- make it actually make sense~~...
-* ~~Change the listing back onto a single table structure (to get rid of the header bug)~~
+* ~(Add a .volume-bar-total to limit the volume bar handle to an inner margin (narrows the bar with a padding of half the volume handle width)? right now it spans too much.
 * Fix scrollbar on table.
 * FF: event binding doesn't work -- the play/pause button doesn't update and the player page doesn't work.
 * Fix DOM memory leaks that happen when we change the page and don't empty out the container. (use .empty()!)
-* ~~Cover art doesn't update on the player page.~~
 * Now playing icon (small speaker) needs to be reapplied on the listing mode.
-* ~~Login system via Warden, later support for multiple users.~~
-* ~~Add a logout button on the UI.~~ Wire up the link and make it pop down a menu (logout, options, invite)
+* Wire up the settings icon and make it pop down a menu (logout, options, invite)
 * Invite new users via mail system
-* ~~Import Roboto into the project.~~
-* ~~Get view icons from fontello and figure out where to put them on the UI.~~
 * Cover art view (thumbnail view), incorporate [this tutorial](http://tympanus.net/Tutorials/ThumbnailGridExpandingPreview/), where the preview would be a tracklist.
 * Cover flow view (add the icon to the view switcher!)
 * Store the preferences (view, shuffle/loop) in the user session and/or user's DB model.
 * AJAX-ify the tables and/or figure out a way to make it work with huuuuge filelists.
 * Rewrite tagger. Support embedded cover art. Cache cover art. Use GridFS maybe?
 * Make a mobile version, swipable tabs?
-* CSS Animations, effects, eyecandy! :3 ~~Port CSS3 cover art effects from Redbird.~~
+* CSS Animations, effects, eyecandy! :3
 * ~~Restyle buttons.~~ Pick a general color scheme and restyle again.
 * Use a tabular layout (or ANYTHING saner) for the multi edit form.
 * Some songs, like LATENYC #1 and #2 are actually longer in time than what the player shows.
