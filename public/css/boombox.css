@@ -11,8 +11,6 @@
   height: 0;
 }
 
-i {-webkit-font-smoothing: antialiased} /* stands for icon not italic */
-
 body {
   font: 400 13px/21px Open Sans;
   border-top: 1px solid #252525;
@@ -45,7 +43,7 @@ header {
   position: relative;
   z-index: 1;
 
-  /* box-shadow: 0 1px 3px rgba(0,0,0, .3), inset 0 15px 50px -30px rgba(0,0,0,.4), inset 0 -15px 50px -20px rgba(0,0,0,.4); */
+  /* box-shadow: 0 1px 3px rgba(0,0,0, .3), inset 0 15px 30px -30px rgba(0,0,0,.4), inset 0 -15px 40px -20px rgba(0,0,0,.4); */
 }
 
 #toolbar i {
@@ -147,7 +145,7 @@ section.main {
   padding-left: 24px;
   -webkit-appearance: none;
   box-shadow: inset 0px 1px 3px -1px rgba(0,0,0,.4);
-  
+
   display: inline-block;
 }
 
@@ -442,7 +440,6 @@ section.main {
 #table-album-list .cover {
   width: 150px;
   background-color: #fff;
-  padding: 3px 10px 0;
   text-align: center; /* the covers get centered (inline-blocks) */
 }
 
@@ -452,6 +449,7 @@ section.main {
 }
 #table-album-list .cover .img { /* in FF, the vertical-align must be set on the <div> for some reason and not the <img> */
   vertical-align: top; /* prevent the cell collapse */
+  margin: 5px 10px 0;
 }
 
 #table-album-list .track_num  {
