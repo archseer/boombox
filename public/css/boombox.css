@@ -807,16 +807,16 @@ label, legend {
 }
 
 .cover-expander-inner {
-  padding: 50px 30px;
+  padding: 30px;
   height: 100%;
 }
 
 .cover-close {
   position: absolute;
-  width: 40px;
-  height: 40px;
-  top: 20px;
-  right: 20px;
+  width: 20px;
+  height: 20px;
+  top: 10px;
+  right: 10px;
   cursor: pointer;
 }
 
@@ -844,21 +844,18 @@ label, legend {
   background: #333;
 }
 
-.cover-fullimg,
-.cover-details {
-  width: 50%;
-  float: left;
+.cover-fullimg {
+  float: right;
   height: 100%;
   overflow: hidden;
   position: relative;
 }
 
 .cover-details {
-  padding: 0 40px 0 20px;
-}
-
-.cover-fullimg {
-  text-align: center;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  padding-right: 40px;
 }
 
 .cover-fullimg img {
@@ -869,9 +866,8 @@ label, legend {
 
 .cover-details h3 {
   font-weight: 300;
-  font-size: 52px;
-  padding: 40px 0 10px;
-  margin-bottom: 10px;
+  font-size: 40px;
+  padding: 10px 0;
 }
 
 .cover-details p {
@@ -881,40 +877,45 @@ label, legend {
   color: #999;
 }
 
-.cover-details a {
-  font-weight: 700;
-  font-size: 16px;
-  color: #333;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  padding: 10px 20px;
-  border: 3px solid #333;
-  display: inline-block;
-  margin: 30px 0 0;
-  outline: none;
+.cover-tracklist {
+  /*background: rgba(0,0,0,.1);*/
+  -webkit-column-count: 2;
+  -webkit-column-gap: 60px;
+  height: 200px;
+  margin: 15px 5px;
+  
+  counter-reset: tracklist-counter;
 }
 
-.cover-details a::before {
-  content: '\2192';
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.cover-details a:hover {
-  border-color: #999;
+.cover-tracklist .track {
+  font-weight: 600;
   color: #999;
 }
+.cover-tracklist .track::before {
+  content: counter(tracklist-counter, decimal);
+  counter-increment: tracklist-counter;
+  display: inline-block;
+  margin-right: 15px;
+}
 
+.cover-tracklist .track .trackname {
+  color: #333;
+  display: inline;
+}
+.cover-tracklist .track .time {
+  float: right;
+  display: inline-block;
+}
 .cover-loading {
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background: #ddd;
-  box-shadow: 0 0 1px #ccc, 15px 30px 1px #ccc, -15px 30px 1px #ccc;
+  box-shadow: 0 0 1px #ccc, 15px 30px #ccc, -15px 30px #ccc;
   position: absolute;
   top: 50%;
   left: 50%;
-  margin: -25px 0 0 -25px;
+  margin: -20px 0 0 -10px;
   -webkit-animation: loader 0.5s infinite ease-in-out both;
   -moz-animation: loader 0.5s infinite ease-in-out both;
   animation: loader 0.5s infinite ease-in-out both;
@@ -922,34 +923,30 @@ label, legend {
 
 @-webkit-keyframes loader {
   0% { background: #ddd; }
-  33% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ccc, -15px 30px 1px #ddd; }
-  66% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ddd, -15px 30px 1px #ccc; }
+  33% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px #ccc, -15px 30px #ddd; }
+  66% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px #ddd, -15px 30px #ccc; }
 }
 
 @-moz-keyframes loader {
   0% { background: #ddd; }
-  33% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ccc, -15px 30px 1px #ddd; }
-  66% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ddd, -15px 30px 1px #ccc; }
+  33% { background: #ccc; box-shadow: 0 0 #ccc, 15px 30px #ccc, -15px 30px #ddd; }
+  66% { background: #ccc; box-shadow: 0 0 #ccc, 15px 30px #ddd, -15px 30px #ccc; }
 }
 
 @keyframes loader {
   0% { background: #ddd; }
-  33% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ccc, -15px 30px 1px #ddd; }
-  66% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ddd, -15px 30px 1px #ccc; }
-}
-
+  33% { background: #ccc; box-shadow: 0 0 #ccc, 15px 30px #ccc, -15px 30px #ddd; }
+  66% { background: #ccc; box-shadow: 0 0 #ccc, 15px 30px #ddd, -15px 30px #ccc; }
 @media screen and (max-width: 830px) {
 
   .cover-expander h3 { font-size: 32px; }
   .cover-expander p { font-size: 13px; }
-  .cover-expander a { font-size: 12px; }
 
 }
 
 @media screen and (max-width: 650px) {
 
   .cover-fullimg { display: none; }
-  .cover-details { float: none; width: 100%; }
   
 }
 /* END: Cover view */
