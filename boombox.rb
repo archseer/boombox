@@ -8,7 +8,6 @@ require 'sinatra/reloader'
 require 'sinatra/json'
 require 'sinatra/content_for'
 require "better_errors"
-require_relative 'lib/core_ext/hash'
 require_relative 'helpers/sinatra'
 require_relative 'models/user'
 require_relative 'models/track'
