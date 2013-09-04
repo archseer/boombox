@@ -16,7 +16,7 @@ module Tagger
         :album => tag.album || old_tag.album,
         :year => tag.year || old_tag.year,
         :track => tag.track || old_tag.track,
-        :time => file.audio_properties.length,
+        :duration => file.audio_properties.length,
         :disc => disc[0],
         :albumartist => tag.frame_list('TPE2').first.to_s,
         :total_tracks => tag.frame_list('TRCK').first.to_s.split('/')[1],

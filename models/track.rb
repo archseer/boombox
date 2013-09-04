@@ -14,7 +14,7 @@ class Track
   field :rating,        type: Integer
   field :bpm,           type: Integer
 
-  field :time,          type: Integer
+  field :duration,      type: Integer
   field :filename,      type: String
 
   belongs_to :artist
@@ -33,7 +33,7 @@ class Track
   end
 
   def length
-    sec = self.time
+    sec = self.duration
     min, sec = sec.divmod(60)
     h, min = min.divmod(60)
     str = ""
