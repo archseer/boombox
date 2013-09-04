@@ -5,10 +5,10 @@
     h2
       | by 
       span.artist
-        | {{ track.artist }}
+        | {{ track.artist.name }}
     h2
       | from 
       span.album
-        | {{ track.album }}
+        | {{ track.album.name }}
   #cover
     img data-ng-src="{{ track.cover }}"

@@ -5,12 +5,9 @@ class Track
   validates_presence_of :filename
 
   field :title,         type: String
-  field :artist,        type: String
-  field :album,         type: String
   field :year,          type: String
   field :track,         type: Integer
   field :disc,          type: Integer
-  field :albumartist,   type: String
   field :total_tracks,  type: Integer
   field :total_discs,   type: Integer
   field :genre,         type: String
@@ -19,6 +16,9 @@ class Track
 
   field :time,          type: Integer
   field :filename,      type: String
+
+  belongs_to :artist
+  belongs_to :album
 
   attr_protected :filename
 
@@ -45,10 +45,49 @@ class Track
 
   # Add cover by default to json and escape URI
   def as_json(*args)
-    hash = super(*args)
+    hash = super(*args, include: [:artist, :album]) # bad hack! we should merge the include key. use RABL instead.
     hash['filename'] = URI.escape(hash['filename'])
     hash[:cover] = cover
     return hash
+  end
+
+
+  # Setter overrides (this is almost definitively not safe at all!)
+  #------------------
+  # if we pass a string, we want to set it to a different
+  # model, which should be either found or created.
+  def album=(param)
+    if param.is_a?(String)
+      self[:album] = Album.find_or_create_by(name: param, artist: self.albumartist || self.artist)._id
+    else
+      self[:album] = param._id
+    end
+  end
+
+  def artist=(param)
+    if param.is_a?(String)
+      self[:artist] = Artist.find_or_create_by(name: param)._id
+    else
+      self[:artist] = param._id
+    end
+  end
+
+  # setting the albumartist means we want the track
+  # to belong to an album that is owned by that artist,
+  # not the artist set in the artist field
+  def albumartist=(param)
+    if param.is_a?(String)
+      artist = Artist.find_or_create_by(name: param)
+      self[:album] = Album.find_or_create_by(name: self.album.try(:name), artist: artist)._id
+    elsif param.is_a?(Artist)
+      self[:album] = Album.find_or_create_by(name: self.album.try(:name), artist: param)._id
+    else
+      raise TypeError, "expected String or Artist"
+    end
+  end
+
+  def albumartist
+    self.album.try(:artist)
   end
 
   def write_tags

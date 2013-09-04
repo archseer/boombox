@@ -10,6 +10,8 @@ require 'sinatra/content_for'
 require "better_errors"
 require_relative 'helpers/sinatra'
 require_relative 'models/user'
+require_relative 'models/album'
+require_relative 'models/artist'
 require_relative 'models/track'
 require 'pathname'
 
@@ -62,11 +64,9 @@ class Boombox < Sinatra::Base
 
   get '/reset' do
     Track.delete_all
+    Artist.delete_all
+    Album.delete_all
     Tagger.generate_db self
-  end
-
-  get '/clear' do
-    Track.delete_all
   end
 
   # Get views rendered for injection
@@ -119,16 +119,22 @@ class Boombox < Sinatra::Base
   # API
   get '/api/track/:id' do
     if params[:id] != "undefined"
-      track = Track.find params[:id]
-      if track
-        content_type "application/json"
-        track.to_json
+      if track = Track.find(params[:id])
+        json track
       else
         json :error => "404 - Not Found"
       end
     else
       json :album => "Unknown", :artist => "Unknown", :title => "No song", :cover => "/img/blank.png"
     end
+  end
+
+  get '/api/albums/all' do
+    json Album.asc(:name).all
+  end
+
+  get '/api/artists/all' do
+    json Artist.asc(:name).all
   end
 
   get '/api/tracks/all' do

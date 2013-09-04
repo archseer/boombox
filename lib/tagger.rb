@@ -10,7 +10,7 @@ module Tagger
       disc = tag.frame_list('TPOS').first
       disc = disc ? disc.to_s.split('/') : [nil, nil]
 
-      t = Track.new(
+      track = Track.new(
         :title => tag.title || old_tag.title || File.basename(filename).gsub(/\.mp3\z/, ''),
         :artist => tag.artist || old_tag.artist,
         :album => tag.album || old_tag.album,
@@ -25,12 +25,12 @@ module Tagger
         #:rating => ,
         :bpm => tag.frame_list('TBPM').first.to_s.to_i,
       )
-      t.filename = sinatra.relative_to filename
+      track.filename = sinatra.relative_to filename
 
       # pwd is project root
       # %x{bin/waveform --width 1200 --height 180 --color-bg ffffffff --color-center 00000000 --color-outer 00000000 "public/#{t.filename}" "public/waveforms/#{t.id}.png"}
 
-      t.save!
+      track.save!
     }
   end
 end

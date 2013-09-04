@@ -81,7 +81,7 @@ window.boomboxApp.controller "listingController", ($scope, $http) ->
     rowspan = [1]
     for track, i in data
       if i < data.length - 1
-        if track.album == data[i+1].album
+        if track.album._id == data[i+1].album._id
           rowspan[rowspan.length - 1] += 1
         else
           rowspan.push 1
@@ -102,7 +102,7 @@ window.boomboxApp.controller "listingController", ($scope, $http) ->
     for track, i in data
       if i == 0
         track = setupCover(track, i)
-      else if track.album != data[i - 1].album
+      else if track.album._id != data[i - 1].album._id
         track = setupCover(track, i)
       else
         track.cover = false
