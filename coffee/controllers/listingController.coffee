@@ -73,7 +73,7 @@ window.boomboxApp.controller "listingController", ($scope, $http) ->
 
   # Request data
   $http
-      url: "/api/tracks/all"
+      url: "/api/tracks"
       method: "GET"
   .success (data) ->
 

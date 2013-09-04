@@ -69,7 +69,7 @@ class window.Player
     !@instance.media.paused
 
   playSong: (e) -> # e is a row in the list of songs
-    $.get "api/track/#{$(e).attr('id')}", (data) =>
+    $.get "api/tracks/#{$(e).attr('id')}", (data) =>
       @pause()
       @setSrc("/#{data.filename}")
       @instance.load()

@@ -13,7 +13,7 @@ window.boomboxApp.controller "playerController", ($scope, $http) ->
   loadData = ->
     unless oldID == Boombox.songID
       $http
-        url: "/api/track/#{Boombox.songID}"
+        url: "/api/tracks/#{Boombox.songID}"
         method: "GET"
       .success (data) ->
         $scope.track = data

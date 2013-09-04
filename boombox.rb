@@ -117,7 +117,21 @@ class Boombox < Sinatra::Base
   end
 
   # API
-  get '/api/track/:id' do
+  get '/api/search/:query' do
+    # if string is empty, return all tracks instead of searching for it, speed optimization
+    tracks = params[:query].blank? ? Track.asc(:album, :disc, :track).all : Track.where(:$or => [
+      {:album => /#{params[:query]}/i},
+      {:artist => /#{params[:query]}/i},
+      {:title => /#{params[:query]}/i},
+      ]).asc(:album, :disc, :track).all
+    json tracks
+  end
+
+  get '/api/tracks' do
+    json Track.asc(:album, :disc, :track).all
+  end
+
+  get '/api/tracks/:id' do
     if params[:id] != "undefined"
       if track = Track.find(params[:id])
         json track
@@ -129,16 +143,20 @@ class Boombox < Sinatra::Base
     end
   end
 
-  get '/api/albums/all' do
+  get '/api/albums' do
     json Album.asc(:name).all
   end
 
-  get '/api/artists/all' do
+  get '/api/albums/:id' do
+    json Album.find(params[:id])
+  end
+
+  get '/api/artists' do
     json Artist.asc(:name).all
   end
 
-  get '/api/tracks/all' do
-    json Track.asc(:album, :disc, :track).all
+  get '/api/artists/:id' do
+    json Album.find(params[:id])
   end
 
   configure :development do
