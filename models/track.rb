@@ -47,6 +47,7 @@ class Track
   def as_json(*args)
     hash = super(*args, include: [:artist, :album]) # bad hack! we should merge the include key. use RABL instead.
     hash['filename'] = URI.escape(hash['filename'])
+    hash['length'] = self.length
     hash[:cover] = cover
     return hash
   end
