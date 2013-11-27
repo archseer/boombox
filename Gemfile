@@ -10,6 +10,7 @@ gem 'sinatra', require: 'sinatra/base'
 gem 'sinatra-contrib'
 gem 'slim'
 gem 'oj'
+gem 'rabl'
 
 gem 'warden', '~> 1.2.1'
 gem 'bcrypt-ruby'

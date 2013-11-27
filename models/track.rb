@@ -58,6 +58,7 @@ class Track
   # if we pass a string, we want to set it to a different
   # model, which should be either found or created.
   def album=(param)
+    return if param.nil?
     if param.is_a?(String)
       self[:album] = Album.find_or_create_by(name: param, artist: self.albumartist || self.artist)._id
     else
@@ -66,6 +67,7 @@ class Track
   end
 
   def artist=(param)
+    return if param.nil?
     if param.is_a?(String)
       self[:artist] = Artist.find_or_create_by(name: param)._id
     else
@@ -77,6 +79,7 @@ class Track
   # to belong to an album that is owned by that artist,
   # not the artist set in the artist field
   def albumartist=(param)
+    return if param.nil?
     if param.is_a?(String)
       artist = Artist.find_or_create_by(name: param)
       self[:album] = Album.find_or_create_by(name: self.album.try(:name), artist: artist)._id
@@ -97,8 +100,8 @@ class Track
       tag = file.id3v2_tag
 
       tag.title = self.title
-      tag.artist = self.artist
-      tag.album = self.album
+      tag.artist = self.artist.try(:name)
+      tag.album = self.album.try(:name)
       tag.year = self.year.to_i
       tag.genre = self.genre
       # track count

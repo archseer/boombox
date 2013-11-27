@@ -45,6 +45,13 @@ class Boombox < Sinatra::Base
   use Rack::Session::Cookie, secret: 'psssshdonttellthistoanyone!'
   use Rack::Flash
 
+  Rabl.register! # register RABL templates
+
+  Rabl.configure do |config|
+    config.include_json_root = false
+    config.include_child_root = false
+  end
+
   register Sinatra::WardenAuth # our custom Warden module
   get '/' do
     slim :layout, layout: false
@@ -73,16 +80,6 @@ class Boombox < Sinatra::Base
   get '/views/*' do
     filename = params[:splat].first
     slim filename.to_sym, layout: false, :disable_escape => true
-  end
-
-  post '/ajax/search' do
-    # if string is empty, return all tracks instead of searching for it, speed optimization
-    tracks = params[:query].blank? ? Track.asc(:album, :disc, :track).all : Track.where(:$or => [
-      {:album => /#{params[:query]}/i},
-      {:artist => /#{params[:query]}/i},
-      {:title => /#{params[:query]}/i},
-      ]).asc(:album, :disc, :track).all
-    body partial :tracklist, :locals => {:tracks => tracks}
   end
 
   post '/ajax/edit-modal' do
@@ -117,24 +114,28 @@ class Boombox < Sinatra::Base
   end
 
   # API
+  before '/api/*' do
+    content_type 'application/json'
+  end
+
   get '/api/search/:query' do
     # if string is empty, return all tracks instead of searching for it, speed optimization
-    tracks = params[:query].blank? ? Track.asc(:album, :disc, :track).all : Track.where(:$or => [
-      {:album => /#{params[:query]}/i},
-      {:artist => /#{params[:query]}/i},
-      {:title => /#{params[:query]}/i},
-      ]).asc(:album, :disc, :track).all
+    tracks = (params[:query].blank? ? Track : Track.where(:$or => [
+      {:title => /#{params[:query]}/i}
+    ])).asc(:album, :disc, :track).all
+
     json tracks
   end
 
   get '/api/tracks' do
-    json Track.asc(:album, :disc, :track).all
+    @tracks = Track.asc(:album, :disc, :track).all
+    rabl :'api/tracks'
   end
 
   get '/api/tracks/:id' do
     if params[:id] != "undefined"
-      if track = Track.find(params[:id])
-        json track
+      if @track = Track.find(params[:id])
+        rabl :'api/track'
       else
         json :error => "404 - Not Found"
       end
@@ -144,19 +145,23 @@ class Boombox < Sinatra::Base
   end
 
   get '/api/albums' do
-    json Album.asc(:name).all
+    @albums = Album.asc(:name).all
+    rabl :'api/albums'
   end
 
   get '/api/albums/:id' do
-    json Album.find(params[:id])
+    @album = Album.find(params[:id])
+    rabl :'api/album'
   end
 
   get '/api/artists' do
-    json Artist.asc(:name).all
+    @artists = Artist.asc(:name).all
+    rabl :'api/artists'
   end
 
   get '/api/artists/:id' do
-    json Album.find(params[:id])
+    @artist = Album.find(params[:id])
+    rabl :'api/artist'
   end
 
   configure :development do
